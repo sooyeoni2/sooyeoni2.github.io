@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뽈뽈뽈 (BallBallBall) - 포트폴리오</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+    <style>
+        :root {
+            /* Primary (App Brand Blue) */
+            --primary-100: #0098E9;
+            --primary-80: #52C1FF;
+            --primary-60: #85D3FF;
+            --primary-40: #B8E5FF;
+            --primary-20: #F6FAF9;
+
+            /* Secondary Orange */
+            --orange-100: #FF9C00;
+            --orange-80: #FFAB1A;
+            --orange-60: #FFBA4D;
+            --orange-40: #FFCE80;
+            --orange-20: #FFE1B3;
+
+            /* Functional */
+            --warning: #F94A59;
+            --warning-light: #FFE5E7;
+            --success: #31BD67;
+            --rating: #FFAD30;
+
+            /* Neutrals */
+            --black: #000000;
+            --gray-1: #4B4B48;
+            --gray-2: #797979;
+            --gray-3: #A8A9A9;
+            --gray-4: #D9D9D9;
+            --gray-5: #F2F2F2;
+            --white: #FFFFFF;
+
+            /* Semantic */
+            --bg: #F5F5F5;
+            --card: #FFFFFF;
+            --text-primary: #000000;
+            --text-secondary: #4B4B48;
+            --text-disabled: #797979;
+            --text-hint: #A8A9A9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== Hero (Login Screen Style) ===== */
+        .hero {
+            background: var(--bg);
+            padding-top: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-logo {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto -30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .hero-card {
+            background: var(--white);
+            border-radius: 32px;
+            padding: 40px 8% 32px;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            margin: 0 12px 8px;
+        }
+
+        .hero-card h1 {
+            font-size: 1.8em;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .hero-card .app-name {
+            color: var(--primary-100);
+        }
+
+        .hero-card .subtitle {
+            font-size: 0.95em;
+            color: var(--text-disabled);
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        /* ===== Section ===== */
+        section {
+            background: var(--card);
+            padding: 36px 5%;
+            margin-bottom: 8px;
+            margin-left: 12px;
+            margin-right: 12px;
+            border-radius: 20px;
+        }
+
+        section h2 {
+            font-size: 1.25em;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        section h2 .badge {
+            background: var(--primary-100);
+            color: var(--white);
+            font-size: 0.55em;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 12px;
+        }
+
+        /* ===== Overview ===== */
+        .overview-item {
+            display: flex;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--gray-5);
+        }
+
+        .overview-item:last-child {
+            border-bottom: none;
+        }
+
+        .overview-item .label {
+            font-weight: 600;
+            color: var(--text-secondary);
+            min-width: 100px;
+            font-size: 0.9em;
+        }
+
+        .overview-item .value {
+            color: var(--text-primary);
+            font-size: 0.95em;
+        }
+
+        .overview-item a {
+            color: var(--primary-100);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* ===== AR Banner Style (Highlight) ===== */
+        .highlight-banner {
+            background: linear-gradient(to right, #BFE6FF, #E9D9FF);
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .highlight-banner p {
+            font-weight: 700;
+            font-size: 0.95em;
+            color: #2A2A2A;
+            line-height: 1.6;
+        }
+
+        .highlight-banner .em {
+            color: var(--primary-100);
+        }
+
+        /* ===== Tech Stack Tags ===== */
+        .tech-section-title {
+            font-size: 0.85em;
+            font-weight: 700;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            margin-top: 16px;
+        }
+
+        .tech-section-title:first-of-type {
+            margin-top: 0;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tag {
+            display: inline-flex;
+            align-items: center;
+            background: var(--primary-20);
+            color: var(--primary-100);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82em;
+            font-weight: 600;
+            border: 1px solid var(--primary-40);
+        }
+
+        .tech-tag.backend {
+            background: var(--orange-20);
+            color: var(--orange-100);
+            border-color: var(--orange-40);
+        }
+
+        .tech-tag.infra {
+            background: #E8F5E9;
+            color: #2E7D32;
+            border-color: #A5D6A7;
+        }
+
+        /* ===== Feature Card (App Card Style) ===== */
+        .feature-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 24px 20px;
+            margin-bottom: 16px;
+            border: 1px solid var(--gray-5);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .feature-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .feature-number {
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            background: var(--gray-5);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.95em;
+            flex-shrink: 0;
+        }
+
+
+        .feature-title {
+            font-size: 1.05em;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .feature-subtitle {
+            font-size: 0.8em;
+            font-weight: 500;
+            color: var(--text-hint);
+            margin-top: 2px;
+        }
+
+        .feature-label {
+            font-size: 0.82em;
+            font-weight: 700;
+            color: var(--primary-100);
+            margin: 16px 0 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .feature-card ul {
+            padding-left: 16px;
+            margin: 0;
+        }
+
+        .feature-card li {
+            margin-bottom: 6px;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .feature-card li strong {
+            color: var(--text-primary);
+        }
+
+        /* ===== Flow (Step Indicator Style) ===== */
+        .flow-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin: 12px 0;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 8px 0;
+        }
+
+        .flow-dot-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 20px;
+            flex-shrink: 0;
+        }
+
+        .flow-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary-100);
+            flex-shrink: 0;
+            margin-top: 6px;
+        }
+
+        .flow-line {
+            width: 2px;
+            flex: 1;
+            background: var(--primary-40);
+            min-height: 16px;
+        }
+
+        .flow-step:last-child .flow-line {
+            display: none;
+        }
+
+        .flow-text {
+            font-size: 0.88em;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            padding-bottom: 4px;
+        }
+
+        /* ===== Challenge Box ===== */
+        .challenge {
+            background: var(--primary-20);
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 14px;
+        }
+
+        .challenge-title {
+            font-weight: 700;
+            color: var(--primary-100);
+            font-size: 0.82em;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .challenge ul {
+            padding-left: 16px;
+            margin: 0;
+        }
+
+        .challenge li {
+            font-size: 0.85em;
+            color: var(--gray-1);
+            margin-bottom: 4px;
+            line-height: 1.5;
+        }
+
+        /* ===== Performance Optimization ===== */
+        .perf-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85em;
+            margin-top: 12px;
+        }
+
+        .perf-table th {
+            background: var(--gray-5);
+            color: var(--text-secondary);
+            font-size: 0.8em;
+            font-weight: 700;
+            padding: 10px 14px;
+            text-align: left;
+        }
+
+        .perf-table th:first-child { border-radius: 10px 0 0 10px; }
+        .perf-table th:last-child  { border-radius: 0 10px 10px 0; }
+
+        .perf-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--gray-5);
+            vertical-align: top;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .perf-table td code {
+            background: var(--primary-20);
+            color: var(--primary-100);
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.92em;
+        }
+
+        .perf-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .perf-sub-title {
+            font-size: 0.88em;
+            font-weight: 700;
+            color: var(--text-secondary);
+            margin: 20px 0 10px;
+        }
+
+        .perf-list {
+            padding-left: 16px;
+            margin: 0;
+        }
+
+        .perf-list li {
+            font-size: 0.88em;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 6px;
+        }
+
+        .perf-list li strong {
+            color: var(--text-primary);
+        }
+
+        .component-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .component-card {
+            background: var(--gray-5);
+            border-radius: 12px;
+            padding: 14px 16px;
+        }
+
+        .component-card .comp-name {
+            font-family: 'Consolas', monospace;
+            font-size: 0.82em;
+            font-weight: 700;
+            color: var(--primary-100);
+            margin-bottom: 4px;
+        }
+
+        .component-card .comp-desc {
+            font-size: 0.78em;
+            color: var(--text-disabled);
+            line-height: 1.5;
+        }
+
+        @media (max-width: 600px) {
+            .component-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ===== Architecture Tree ===== */
+        .arch-tree {
+            background: var(--gray-5);
+            border-radius: 16px;
+            padding: 20px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.78em;
+            line-height: 1.9;
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        .arch-tree .folder {
+            color: var(--primary-100);
+            font-weight: 700;
+        }
+
+        .arch-tree .comment {
+            color: var(--text-hint);
+        }
+
+        /* ===== Principles (Button Style Cards) ===== */
+        .principles {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .principle {
+            background: var(--white);
+            border: 1px solid var(--gray-5);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            padding: 16px;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .principle strong {
+            display: block;
+            color: var(--primary-100);
+            font-size: 0.88em;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .principle span {
+            font-size: 0.78em;
+            color: var(--text-disabled);
+            line-height: 1.4;
+        }
+
+        /* ===== Result Cards ===== */
+        .result-card {
+            background: var(--white);
+            border: 1px solid var(--gray-5);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 12px;
+        }
+
+        .result-card h4 {
+            font-weight: 700;
+            font-size: 0.95em;
+            color: var(--primary-100);
+            margin-bottom: 12px;
+        }
+
+        .result-card ul {
+            padding-left: 16px;
+        }
+
+        .result-card li {
+            margin-bottom: 6px;
+            font-size: 0.88em;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* ===== Screenshot Grid ===== */
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .screenshot-grid img {
+            width: 100%;
+            border-radius: 16px;
+            border: 1px solid var(--gray-4);
+            display: block;
+        }
+
+        /* ===== Screenshot Row (horizontal scroll) ===== */
+        .screenshot-row {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--gray-4) transparent;
+            margin-top: 12px;
+        }
+
+        .screenshot-row::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .screenshot-row::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .screenshot-row::-webkit-scrollbar-thumb {
+            background: var(--gray-4);
+            border-radius: 4px;
+        }
+
+        .screenshot-item {
+            flex-shrink: 0;
+            width: 130px;
+            text-align: center;
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            border-radius: 14px;
+            border: 1px solid var(--gray-4);
+            display: block;
+        }
+
+        .screenshot-item .sc-label {
+            font-size: 0.72em;
+            color: var(--text-hint);
+            margin-top: 6px;
+            font-weight: 500;
+        }
+
+        /* ===== Contact (Menu Item Style) ===== */
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--gray-5);
+            gap: 16px;
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: var(--primary-20);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--primary-100);
+        }
+
+        .contact-info .contact-label {
+            font-size: 0.78em;
+            color: var(--text-hint);
+            font-weight: 500;
+        }
+
+        .contact-info .contact-value {
+            font-size: 0.95em;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* ===== Trouble Shooting ===== */
+        .trouble-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 24px 20px;
+            margin-bottom: 16px;
+            border: 1px solid var(--gray-5);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .trouble-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .trouble-tag {
+            background: var(--white);
+            color: var(--primary-100);
+            border: 1.5px solid var(--primary-100);
+            font-size: 0.75em;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 8px;
+            white-space: nowrap;
+        }
+
+        .trouble-title {
+            font-size: 1em;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .trouble-row {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 8px 16px;
+            margin-bottom: 10px;
+            align-items: baseline;
+        }
+
+        .trouble-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .trouble-label {
+            font-size: 0.95em;
+            font-weight: 700;
+            white-space: nowrap;
+            text-align: right;
+            justify-self: end;
+        }
+
+        .trouble-label.problem {
+            color: #F47A84;
+        }
+
+        .trouble-label.cause {
+            color: var(--orange-100);
+        }
+
+        .trouble-label.solve {
+            color: #5DCBA0;
+        }
+
+        .trouble-label.learn {
+            color: var(--primary-100);
+        }
+
+        .trouble-text {
+            font-size: 0.88em;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            padding-top: 3px;
+        }
+
+        .code-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .code-block {
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .code-block-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            font-size: 0.75em;
+            font-weight: 700;
+        }
+
+        .code-block-header.before {
+            background: #fde8ea;
+            color: var(--warning);
+        }
+
+        .code-block-header.after {
+            background: #e6f9ef;
+            color: var(--success);
+        }
+
+        .code-block pre {
+            background: #1e1e2e;
+            margin: 0;
+            padding: 14px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.78em;
+            line-height: 1.7;
+            overflow-x: auto;
+            color: #cdd6f4;
+        }
+
+        .code-block pre .kw  { color: #cba6f7; }
+        .code-block pre .fn  { color: #89b4fa; }
+        .code-block pre .str { color: #a6e3a1; }
+        .code-block pre .cm  { color: #6c7086; font-style: italic; }
+        .code-block pre .hl  { color: #f38ba8; }
+
+        @media (max-width: 700px) {
+            .code-compare { grid-template-columns: 1fr; }
+        }
+
+        /* ===== Bottom Nav Style Footer ===== */
+        .footer-nav {
+            background: var(--white);
+            padding: 20px 6%;
+            text-align: center;
+            border-top: 1px solid var(--gray-5);
+            margin-top: 8px;
+            margin-left: 12px;
+            margin-right: 12px;
+            border-radius: 20px;
+        }
+
+        .footer-nav p {
+            font-size: 0.78em;
+            color: var(--text-hint);
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 600px) {
+            .hero-card {
+                padding: 32px 6% 24px;
+            }
+
+            section {
+                padding: 24px 5%;
+                margin-left: 8px;
+                margin-right: 8px;
+            }
+
+            .screenshot-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .principles {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card {
+                padding: 20px 16px;
+            }
+
+            .hero-card h1 {
+                font-size: 1.4em;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .container {
+                max-width: 100%;
+                box-shadow: none;
+            }
+
+            section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Hero (Login Screen Style) -->
+    <div class="hero">
+        <div class="hero-logo"><img src="images/ball_login.png" alt="뽈뽈뽈 로고"></div>
+    </div>
+    <div class="hero-card">
+        <h1><img src="images/app_logo.png" alt="뽈뽈뽈 BallBallBall" style="height:1.6em; vertical-align:middle;"></h1>
+        <p class="subtitle">언제 어디서나 야구 팬을 연결하는 지속 가능한 커뮤니티 플랫폼</p>
+    </div>
+
+    <!-- 프로젝트 개요 -->
+    <section>
+        <h2>프로젝트 개요</h2>
+        <div class="overview-item">
+            <span class="label">프로젝트명</span>
+            <span class="value">뽈뽈뽈 (BallBallBall)</span>
+        </div>
+        <div class="overview-item">
+            <span class="label">개발 기간</span>
+            <span class="value">2025.01 ~ 2025.02 (6주)</span>
+        </div>
+        <div class="overview-item">
+            <span class="label">팀 구성</span>
+            <span class="value">6명 (FE 2 / BE 4)</span>
+        </div>
+        <div class="overview-item">
+            <span class="label">담당 역할</span>
+            <span class="value">프론트엔드 개발</span>
+        </div>
+        <div class="overview-item">
+            <span class="label">GitHub</span>
+            <span class="value"><a href="#">GitHub 링크</a></span>
+        </div>
+    </section>
+
+    <!-- 기획 배경 -->
+    <section>
+        <h2>기획 배경</h2>
+
+        <!-- 시장 현황 -->
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:20px;">
+            <div style="background:var(--primary-20); border-radius:16px; padding:16px; text-align:center;">
+                <div style="font-size:1.4em; font-weight:800; color:var(--primary-100);">1,200만</div>
+                <div style="font-size:0.75em; color:var(--text-secondary); margin-top:4px;">2025 KBO 관중 수</div>
+            </div>
+            <div style="background:var(--primary-20); border-radius:16px; padding:16px; text-align:center;">
+                <div style="font-size:1.4em; font-weight:800; color:var(--primary-100);">75%</div>
+                <div style="font-size:0.75em; color:var(--text-secondary); margin-top:4px;">관람객 중 2~30대 비율</div>
+            </div>
+            <div style="background:var(--primary-20); border-radius:16px; padding:16px; text-align:center;">
+                <div style="font-size:1.4em; font-weight:800; color:var(--primary-100);">76.6%</div>
+                <div style="font-size:0.75em; color:var(--text-secondary); margin-top:4px;">20대 여성 야구 SNS 활동</div>
+            </div>
+        </div>
+
+        <!-- 문제점 -->
+        <div class="highlight-banner">
+            <p>
+                야구 팬의 <span class="em">75%가 2~30대</span>로 SNS 활동이 활발하지만,<br>
+                커뮤니티는 네이버 카페·인스타그램·트위터 등 <span class="em">여러 플랫폼에 분산</span>되어 있고<br>
+                정보 탐색은 KBO 사이트·뉴스를 별도로 확인해야 하는 불편함이 있었습니다.
+            </p>
+        </div>
+
+        <p style="font-size:0.88em; color:var(--text-secondary); line-height:1.75; margin-top:14px;">
+            오프라인 관람에서도 동행 구하기, 음식 공동 구매, 이동 수단 공유 등 다양한 불편함이 존재했으며,
+            분산된 커뮤니티 환경 탓에 원하는 목적을 달성하는 데 불필요한 시간과 노력이 소모되고 있었습니다.
+        </p>
+
+        <p style="font-size:0.92em; color:var(--text-secondary); line-height:1.7; margin-top:16px;">
+            이를 해결하기 위해 <strong style="color:var(--primary-100);">뽈뽈뽈</strong>은
+            커뮤니티·정보·동행을 하나로 통합한
+            <strong style="color:var(--primary-100);">야구 팬 전용 올인원 플랫폼</strong>으로 기획되었습니다.
+        </p>
+    </section>
+
+    <!-- 기술 스택 -->
+    <section>
+        <h2>기술 스택</h2>
+
+        <div class="tech-section-title">Frontend (Mobile)</div>
+        <div class="tech-tags">
+            <span class="tech-tag">Flutter 3.38.7</span>
+            <span class="tech-tag">Dart 3.10.7</span>
+            <span class="tech-tag">Riverpod 2.5.1</span>
+            <span class="tech-tag">Dio 5.4.0</span>
+            <span class="tech-tag">Retrofit 4.4.1</span>
+            <span class="tech-tag">GoRouter 17.0.1</span>
+            <span class="tech-tag">STOMP WebSocket</span>
+            <span class="tech-tag">Firebase FCM</span>
+            <span class="tech-tag">WebView</span>
+            <span class="tech-tag">Secure Storage</span>
+        </div>
+
+        <div class="tech-section-title">Backend (협업)</div>
+        <div class="tech-tags">
+            <span class="tech-tag backend">Spring Boot 3.5</span>
+            <span class="tech-tag backend">Java 17</span>
+            <span class="tech-tag backend">Apache Maven</span>
+            <span class="tech-tag backend">Spring Data JPA</span>
+            <span class="tech-tag backend">Hibernate 6</span>
+            <span class="tech-tag backend">Spring Security</span>
+            <span class="tech-tag backend">JWT 0.13.0</span>
+            <span class="tech-tag backend">Springdoc OpenAPI 2.6.0</span>
+            <span class="tech-tag backend">Kafka</span>
+        </div>
+
+        <div class="tech-section-title">AI 추천 서비스 (협업)</div>
+        <div class="tech-tags">
+            <span class="tech-tag" style="background:var(--warning-light); color:var(--warning); border-color:#f9a8b0;">Flask</span>
+            <span class="tech-tag" style="background:var(--warning-light); color:var(--warning); border-color:#f9a8b0;">Python 3.12.3</span>
+            <span class="tech-tag" style="background:var(--warning-light); color:var(--warning); border-color:#f9a8b0;">LightGBM</span>
+            <span class="tech-tag" style="background:var(--warning-light); color:var(--warning); border-color:#f9a8b0;">pgvector</span>
+            <span class="tech-tag" style="background:var(--warning-light); color:var(--warning); border-color:#f9a8b0;">OpenAI Embedding</span>
+        </div>
+
+        <div class="tech-section-title">인프라</div>
+        <div class="tech-tags">
+            <span class="tech-tag infra">Docker</span>
+            <span class="tech-tag infra">Docker Compose</span>
+            <span class="tech-tag infra">Jenkins</span>
+            <span class="tech-tag infra">PostgreSQL 15</span>
+            <span class="tech-tag infra">Redis 7</span>
+            <span class="tech-tag infra">AWS EC2</span>
+            <span class="tech-tag infra">AWS RDS</span>
+            <span class="tech-tag infra">AWS S3</span>
+        </div>
+    </section>
+
+    <!-- 담당 기능 상세 -->
+    <section>
+        <h2>담당 기능 <span class="badge">6개</span></h2>
+
+        <!-- 1. 로그인/로그아웃 -->
+        <div class="feature-card">
+            <div class="feature-header">
+                <div>
+                    <div class="feature-title">로그인 / 로그아웃</div>
+                    <div class="feature-subtitle">OAuth 소셜 로그인</div>
+                </div>
+            </div>
+
+            <div class="feature-label">구현 내용</div>
+            <ul>
+                <li>네이버 OAuth 소셜 로그인 연동</li>
+                <li>Deep Link를 활용한 OAuth 콜백 처리</li>
+                <li>JWT 토큰 기반 인증 (Access + Refresh Token)</li>
+                <li>Flutter Secure Storage 토큰 보안 저장</li>
+                <li>로그인 후 FCM 토큰 자동 등록</li>
+                <li>신규/기존 유저 분기 처리</li>
+            </ul>
+
+            <div class="feature-label">주요 흐름</div>
+            <div class="flow-steps">
+                <div class="flow-step">
+                    <div class="flow-dot-col"><div class="flow-dot"></div><div class="flow-line"></div></div>
+                    <div class="flow-text">로그인 버튼 클릭 (네이버)</div>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-dot-col"><div class="flow-dot"></div><div class="flow-line"></div></div>
+                    <div class="flow-text">OAuth 서버 리다이렉트 → Deep Link로 앱 복귀</div>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-dot-col"><div class="flow-dot"></div><div class="flow-line"></div></div>
+                    <div class="flow-text">백엔드 API로 토큰 교환 → Secure Storage 저장</div>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-dot-col"><div class="flow-dot"></div><div class="flow-line"></div></div>
+                    <div class="flow-text">FCM 토큰 등록</div>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-dot-col"><div class="flow-dot"></div></div>
+                    <div class="flow-text">신규 유저 → 프로필 설정 / 기존 유저 → 메인 화면</div>
+                </div>
+            </div>
+
+            <div class="feature-label">주요 화면</div>
+            <div class="screenshot-row">
+                <div class="screenshot-item">
+                    <img src="images/login.png" alt="로그인 화면">
+                    <div class="sc-label">로그인</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="images/profilesetup.png" alt="프로필 설정">
+                    <div class="sc-label">프로필 설정</div>
+                </div>
+            </div>
+
+            <div class="challenge">
+                <div class="challenge-title">기술적 챌린지</div>
+                <ul>
+                    <li>Deep Link 핸들러를 통한 OAuth 콜백 라우팅</li>
+                    <li>Riverpod AuthNotifier로 전역 인증 상태 관리</li>
+                    <li>Dio Interceptor 토큰 자동 갱신 처리</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 2. 더치페이 -->
+        <div class="feature-card">
+            <div class="feature-header">
+                <div>
+                    <div class="feature-title">더치페이</div>
+                    <div class="feature-subtitle">더치페이 / 결제 시스템</div>
+                </div>
+            </div>
+
+            <div class="feature-label">구현 내용</div>
+            <ul>
+                <li>토스페이먼츠 API 모바일 결제 시스템</li>
+                <li>더치페이 목록 생성 → 멤버 선택 → 금액 입력 → 결제 전체 플로우</li>
+                <li>WebView 기반 토스 결제 화면 연동</li>
+                <li>결제 성공/실패 콜백 처리</li>
+                <li>더치페이 취소 시 환불 재시도 메커니즘</li>
+            </ul>
+
+            <div class="feature-label">주요 흐름</div>
+            <div class="flow-steps">
+                <div class="flow-step">
+                    <div class="flow-dot-col"><div class="flow-dot"></div><div class="flow-line"></div></div>
+                    <div class="flow-text">더치페이 생성 (금액 입력 + 참여 멤버 선택)</div>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-dot-col"><div class="flow-dot"></div><div class="flow-line"></div></div>
+                    <div class="flow-text">토스페이먼츠 결제 HTML 생성 → WebView 로딩</div>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-dot-col"><div class="flow-dot"></div><div class="flow-line"></div></div>
+                    <div class="flow-text">결제 성공 / 실패 콜백 수신</div>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-dot-col"><div class="flow-dot"></div><div class="flow-line"></div></div>
+                    <div class="flow-text">백엔드 결제 확인 API 호출 → 더치페이 상태 업데이트</div>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-dot-col"><div class="flow-dot"></div></div>
+                    <div class="flow-text">취소 시 환불 API 호출 → 실패 시 재시도</div>
+                </div>
+            </div>
+
+            <div class="feature-label">주요 화면</div>
+            <div class="screenshot-row">
+                <div class="screenshot-item">
+                    <img src="images/dutchpay9.png" alt="상태별 목록">
+                    <div class="sc-label">상태별 목록</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="images/dutchpay1.png" alt="인원선택">
+                    <div class="sc-label">인원선택</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="images/dutchpay2.png" alt="금액입력">
+                    <div class="sc-label">금액입력</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="images/dutchpay3.png" alt="더치페이 생성">
+                    <div class="sc-label">더치페이 생성</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="images/dutchpay4.png" alt="더치페이 생성 요청알림">
+                    <div class="sc-label">더치페이 생성 요청알림</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="images/dutchpay5.png" alt="상세">
+                    <div class="sc-label">상세</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="images/dutchpay6.png" alt="결제 화면">
+                    <div class="sc-label">결제</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="images/dutchpay7.png" alt="결제">
+                    <div class="sc-label">결제</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="images/dutchpay8.png" alt="결제 완료">
+                    <div class="sc-label">결제완료</div>
+                </div>
+            </div>
+
+            <div class="challenge">
+                <div class="challenge-title">기술적 챌린지</div>
+                <ul>
+                    <li>WebView ↔ Flutter 간 결제 콜백 통신</li>
+                    <li>토스페이먼츠 결제 HTML 동적 생성 → WebView 로딩</li>
+                    <li>더치페이 상태별 UI 분기 (대기/완료/취소)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 3. 프로필 -->
+        <div class="feature-card">
+            <div class="feature-header">
+                <div>
+                    <div class="feature-title">프로필 관리</div>
+                    <div class="feature-subtitle">마이 프로필 / 유저 프로필</div>
+                </div>
+            </div>
+
+            <div class="feature-label">구현 내용</div>
+            <ul>
+                <li>마이 프로필 조회 (닉네임, 자기소개, 프로필 이미지, 동행 온도, 마이팀, 직관기록, 동행목록)</li>
+                <li>프로필 수정 (닉네임, 자기소개)</li>
+                <li>S3 Presigned URL 프로필 이미지 업로드</li>
+                <li>다른 유저 프로필 조회 (동행 히스토리, 온도, 통계)</li>
+                <li>동행 온도(신뢰도) 시각화 위젯</li>
+            </ul>
+
+            <div class="feature-label">주요 화면</div>
+            <div class="screenshot-row">
+                <div class="screenshot-item">
+                    <img src="images/myprofile.png" alt="마이 프로필">
+                    <div class="sc-label">마이 프로필</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="images/otherprofile.png" alt="유저 프로필">
+                    <div class="sc-label">유저 프로필</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="images/profileupdate.png" alt="프로필 수정">
+                    <div class="sc-label">프로필 수정</div>
+                </div>
+            </div>
+
+            <div class="challenge">
+                <div class="challenge-title">기술적 챌린지</div>
+                <ul>
+                    <li>S3 Presigned URL로 서버 부하 없이 직접 업로드</li>
+                    <li>동행 온도 커스텀 시각화 위젯 구현</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 4. 메뉴 -->
+        <div class="feature-card">
+            <div class="feature-header">
+                <div>
+                    <div class="feature-title">메뉴 / 설정</div>
+                    <div class="feature-subtitle">앱 설정 및 정보</div>
+                </div>
+            </div>
+
+            <div class="feature-label">구현 내용</div>
+            <ul>
+                <li>이용약관 / 개인정보처리방침</li>
+                <li>오픈소스 라이선스 안내</li>
+                <li>앱 정보 페이지</li>
+                <li>로그아웃 (API 호출 + 토큰 삭제 + 화면 전환)</li>
+            </ul>
+
+            <div class="challenge">
+                <div class="challenge-title">기술적 포인트</div>
+                <ul>
+                    <li>모듈화된 MenuItemTile 위젯 재사용</li>
+                    <li>로그아웃 시 Go Router 자동 리다이렉트</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 5. 커뮤니티 -->
+        <div class="feature-card">
+            <div class="feature-header">
+                <div>
+                    <div class="feature-title">커뮤니티</div>
+                    <div class="feature-subtitle">게시판 / 댓글 / 리액션</div>
+                </div>
+            </div>
+
+            <div class="feature-label">구현 내용</div>
+            <ul>
+                <li>게시판: 자유 게시판, 맛집 추천, 직관 후기</li>
+                <li>게시글 CRUD (작성/조회/수정/삭제)</li>
+                <li>이미지 첨부 (S3 업로드)</li>
+                <li>댓글 작성/수정/삭제</li>
+                <li>이모지 리액션</li>
+                <li>무한 스크롤 페이지네이션</li>
+            </ul>
+
+            <div class="feature-label">주요 화면</div>
+            <div class="screenshot-row">
+                <div class="screenshot-item">
+                    <img src="images/community.png" alt="게시글 목록">
+                    <div class="sc-label">게시글 목록</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="images/community1.png" alt="게시글 상세">
+                    <div class="sc-label">게시글 상세</div>
+                </div>
+            </div>
+
+            <div class="challenge">
+                <div class="challenge-title">기술적 챌린지</div>
+                <ul>
+                    <li>Riverpod 무한 스크롤 페이지네이션 상태 관리</li>
+                    <li>Firebase Push 실시간 댓글 알림</li>
+                    <li>이모지 리액션 통계 효율적 렌더링</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 6. 동행 평가 -->
+        <div class="feature-card">
+            <div class="feature-header">
+                <div>
+                    <div class="feature-title">동행 평가</div>
+                    <div class="feature-subtitle">동행 종료 후 동행인 별점 평가</div>
+                </div>
+            </div>
+
+            <div class="feature-label">구현 내용</div>
+            <ul>
+                <li>동행 종료 후 함께한 동행인 목록 표시</li>
+                <li>동행인 탭 시 별점 평가 다이얼로그 표시</li>
+                <li>1~5점 별점 평가 후 동행 온도(신뢰도)에 반영</li>
+                <li>평가 완료 후 완료 다이얼로그 표시 및 프로필 갱신</li>
+            </ul>
+
+            <div class="feature-label">주요 흐름</div>
+            <div class="flow-steps">
+                <div class="flow-step">
+                    <div class="flow-dot-col"><div class="flow-dot"></div><div class="flow-line"></div></div>
+                    <div class="flow-text">내 프로필 → 동행 목록 탭 진입</div>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-dot-col"><div class="flow-dot"></div><div class="flow-line"></div></div>
+                    <div class="flow-text">종료된 동행 선택 → 동행인 목록 화면</div>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-dot-col"><div class="flow-dot"></div><div class="flow-line"></div></div>
+                    <div class="flow-text">동행인 탭 → 별점 평가 다이얼로그</div>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-dot-col"><div class="flow-dot"></div></div>
+                    <div class="flow-text">평가 제출 → 완료 다이얼로그 + 프로필 온도 갱신</div>
+                </div>
+            </div>
+
+            <div class="feature-label">주요 화면</div>
+            <div class="screenshot-row">
+                <div class="screenshot-item">
+                    <img src="images/ondo1.png" alt="동행 평가 화면">
+                    <div class="sc-label">동행 평가</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="images/ondo2.png" alt="별점 다이얼로그">
+                    <div class="sc-label">별점 평가</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="images/ondo3.png" alt="완료 다이얼로그">
+                    <div class="sc-label">평가 완료</div>
+                </div>
+            </div>
+
+            <div class="challenge">
+                <div class="challenge-title">기술적 챌린지</div>
+                <ul>
+                    <li>Riverpod으로 멤버별 평가 상태 개별 관리</li>
+                    <li>별점 평가 결과를 동행 온도에 실시간 반영</li>
+                    <li>평가 완료 후 MenuProvider 자동 갱신 처리</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 트러블슈팅 -->
+    <section>
+        <h2>트러블슈팅</h2>
+
+        <!-- 1. 네이버 로그인 + Deep Link -->
+        <div class="trouble-card">
+            <div class="trouble-header">
+                <span class="trouble-tag">로그인</span>
+                <span class="trouble-title">OAuth 콜백 구조 변경 — 토큰·신규 유저 정보 미수신</span>
+            </div>
+            <div class="trouble-row">
+                <span class="trouble-label problem">문제</span>
+                <span class="trouble-text">초기 구현은 OAuth 표준 방식(인가 코드)으로 Deep Link를 수신했으나, 백엔드가 서버 사이드에서 토큰 교환까지 처리 후 accessToken·isNewUser를 Deep Link로 직접 내려주는 구조로 변경되어 앱이 콜백 파라미터를 받지 못함</span>
+            </div>
+            <div class="trouble-row">
+                <span class="trouble-label cause">원인</span>
+                <span class="trouble-text">Deep Link 핸들러가 code·state만 파싱하도록 되어 있어, 백엔드가 변경된 후 accessToken / refreshToken / isNewUser / signupCompleted 파라미터를 인식하지 못함</span>
+            </div>
+            <div class="trouble-row">
+                <span class="trouble-label solve">해결</span>
+                <span class="trouble-text">Deep Link 핸들러를 토큰 직접 수신 방식으로 수정하고, isNewUser 문자열을 Boolean으로 파싱해 AuthState에 저장 → Go Router가 신규/기존 유저를 분기 처리</span>
+            </div>
+            <div class="trouble-row">
+                <span class="trouble-label learn">배운 점</span>
+                <span class="trouble-text">프론트-백엔드 간 OAuth 콜백 구조는 초기 설계 단계에서 명확히 합의해야 하며, 백엔드 구조 변경 시 앱 측 핸들러도 함께 업데이트해야 함</span>
+            </div>
+            <div class="code-compare">
+                <div class="code-block">
+                    <div class="code-block-header before">✕ Before</div>
+                    <pre><span class="cm">// OAuth 인가 코드 방식</span>
+<span class="cm">// callback?code=xxx&state=xxx</span>
+<span class="kw">final</span> code =
+  uri.queryParameters[<span class="str">'code'</span>];
+<span class="kw">final</span> state =
+  uri.queryParameters[<span class="str">'state'</span>];
+
+<span class="kw">if</span> (code != <span class="kw">null</span> && state != <span class="kw">null</span>) {
+  NaverAuthCallback(
+    code: code, state: state);
+}</pre>
+                </div>
+                <div class="code-block">
+                    <div class="code-block-header after">✓ After</div>
+                    <pre><span class="cm">// 토큰 직접 수신 방식</span>
+<span class="cm">// callback?accessToken=xxx&isNewUser=true</span>
+<span class="kw">final</span> accessToken =
+  uri.queryParameters[<span class="str">'accessToken'</span>];
+<span class="kw">final</span> isNewUserStr =
+  uri.queryParameters[<span class="str">'isNewUser'</span>];
+<span class="kw">bool</span>? isNewUser;
+<span class="kw">if</span> (isNewUserStr != <span class="kw">null</span>) {
+  isNewUser = isNewUserStr
+    .toLowerCase() == <span class="str">'true'</span>;
+}</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. 신규/기존 유저 분기 -->
+        <div class="trouble-card">
+            <div class="trouble-header">
+                <span class="trouble-tag">로그인</span>
+                <span class="trouble-title">신규 유저와 기존 유저 화면 분기 오류</span>
+            </div>
+            <div class="trouble-row">
+                <span class="trouble-label problem">문제</span>
+                <span class="trouble-text">신규 유저임에도 프로필 설정 화면이 아닌 메인 화면으로 바로 이동하거나, 반대로 기존 유저가 매번 프로필 설정으로 이동</span>
+            </div>
+            <div class="trouble-row">
+                <span class="trouble-label cause">원인</span>
+                <span class="trouble-text">Deep Link 콜백 파라미터 구조 변경(위 이슈) 이후 isNewUser 값이 AuthState에 전달되지 않아 Go Router의 redirect 분기 조건이 항상 동일하게 평가됨</span>
+            </div>
+            <div class="trouble-row">
+                <span class="trouble-label solve">해결</span>
+                <span class="trouble-text">isNewUser를 Boolean으로 파싱해 AuthState에 저장하고, Go Router redirect에서 isNewUser·signupCompleted 값을 조합해 프로필 설정 / 메인 화면 분기 처리</span>
+            </div>
+            <div class="trouble-row">
+                <span class="trouble-label learn">배운 점</span>
+                <span class="trouble-text">인증 상태값이 라우팅 로직과 직결되어 있으므로, 상태 모델 변경 시 라우터 분기 조건도 함께 검토하는 습관이 필요</span>
+            </div>
+        </div>
+
+        <!-- 3. 토스페이먼츠 연동 -->
+        <div class="trouble-card">
+            <div class="trouble-header">
+                <span class="trouble-tag">더치페이</span>
+                <span class="trouble-title">토스페이먼츠 WebView 결제 결과 처리 — 임시 버튼 의존</span>
+            </div>
+            <div class="trouble-row">
+                <span class="trouble-label problem">문제</span>
+                <span class="trouble-text">WebView 내 결제 완료 후 성공/실패 결과를 Flutter로 전달받지 못해, AppBar에 '테스트 완료' 버튼을 임시로 두고 수동으로 완료 처리하는 상태였음</span>
+            </div>
+            <div class="trouble-row">
+                <span class="trouble-label cause">원인</span>
+                <span class="trouble-text">토스페이먼츠 결제 후 successUrl·failUrl로 리다이렉트될 때 WebView가 해당 URL을 그대로 열려 해서, 앱 커스텀 스킴(ballballball://payment/...)을 Flutter에서 가로채지 못함</span>
+            </div>
+            <div class="trouble-row">
+                <span class="trouble-label solve">해결</span>
+                <span class="trouble-text">WebViewController의 navigationDelegate에서 ballballball:// 스킴 URL을 감지해 NavigationDecision.prevent 반환, Flutter 측에서 결제 파라미터를 파싱해 백엔드 confirm API를 호출하고 더치페이 상태 업데이트</span>
+            </div>
+            <div class="trouble-row">
+                <span class="trouble-label learn">배운 점</span>
+                <span class="trouble-text">WebView와 네이티브 앱 간 통신 방식(커스텀 URL 스킴, JavascriptChannel 등)은 외부 SDK 연동 전 사전에 설계해야 하며, 임시 코드가 실제 릴리즈에 포함되지 않도록 주의가 필요</span>
+            </div>
+            <div class="code-compare">
+                <div class="code-block">
+                    <div class="code-block-header before">✕ Before</div>
+                    <pre><span class="cm">// 임시 '테스트 완료' 버튼으로 결제 처리</span>
+actions: [
+  TextButton(
+    onPressed: _handleTestComplete,
+    child: Text(<span class="str">'테스트 완료'</span>),
+  ),
+],
+
+<span class="kw">void</span> _handleTestComplete() {
+  ScaffoldMessenger.of(context)
+    .showSnackBar(SnackBar(
+      content: Text(<span class="str">'결제 완료! (테스트)'</span>)));
+  Navigator.of(context).pop(<span class="kw">true</span>);
+}</pre>
+                </div>
+                <div class="code-block">
+                    <div class="code-block-header after">✓ After</div>
+                    <pre><span class="cm">// navigationDelegate로 콜백 URL 감지</span>
+_webController =
+  WebViewController()
+  ..setJavaScriptMode(
+    JavaScriptMode.unrestricted)
+  ..setNavigationDelegate(
+    NavigationDelegate(
+      onNavigationRequest:
+        _handleNavigation))
+  ..loadHtmlString(html);
+
+<span class="cm">// ballballball:// 스킴 가로채기</span>
+NavigationDecision _handleNavigation(
+    NavigationRequest req) {
+  <span class="kw">if</span> (req.url.startsWith(_successScheme)) {
+    _handleSuccess(Uri.parse(req.url));
+    <span class="kw">return</span> NavigationDecision.prevent;
+  }
+  <span class="kw">return</span> NavigationDecision.navigate;
+}</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. 리액션 토글 상태 미유지 -->
+        <div class="trouble-card">
+            <div class="trouble-header">
+                <span class="trouble-tag">커뮤니티</span>
+                <span class="trouble-title">리액션 토글 후 화면 이탈 시 선택 상태 초기화</span>
+            </div>
+            <div class="trouble-row">
+                <span class="trouble-label problem">문제</span>
+                <span class="trouble-text">리액션 버튼을 눌러 선택 상태를 바꿔도, 게시글 상세에서 목록으로 돌아오거나 목록이 새로고침되면 토글 상태가 원래대로 돌아감</span>
+            </div>
+            <div class="trouble-row">
+                <span class="trouble-label cause">원인</span>
+                <span class="trouble-text">로컬 리액션 상태를 담는 CommunityReactionOverrides Provider에 keepAlive가 없어 화면 이탈 시 소멸되고, 목록 갱신 시에도 _applyOverridesToPosts() 없이 서버 원본 데이터를 그대로 사용해 로컬 토글이 덮어씌워짐</span>
+            </div>
+            <div class="trouble-row">
+                <span class="trouble-label solve">해결</span>
+                <span class="trouble-text">@Riverpod(keepAlive: true)로 앱 생애주기 동안 Provider를 유지하고, 목록 갱신 시 _applyOverridesToPosts()로 로컬 override를 서버 데이터에 합성해 UI와 실제 상태를 항상 일치시킴</span>
+            </div>
+            <div class="trouble-row">
+                <span class="trouble-label learn">배운 점</span>
+                <span class="trouble-text">낙관적 업데이트(optimistic update)를 적용할 때는 서버 데이터 재조회 시 로컬 상태를 merge하는 로직을 반드시 함께 설계해야 하며, Provider의 생명주기도 UX 관점에서 의도적으로 제어해야 함</span>
+            </div>
+            <div class="code-compare">
+                <div class="code-block">
+                    <div class="code-block-header before">✕ Before</div>
+                    <pre><span class="cm">// keepAlive 없음 — 화면 이탈 시 Provider 소멸</span>
+<span class="hl">@riverpod</span>
+<span class="kw">class</span> <span class="fn">CommunityReactionOverrides</span>
+  <span class="kw">extends</span> _$CommunityReactionOverrides {
+  <span class="kw">@override</span>
+  Map&lt;<span class="kw">int</span>, CommunityReactionEntity&gt;
+      build() => {};
+}
+
+<span class="cm">// 게시글 목록 갱신 시 override 미적용</span>
+state = state.copyWith(
+  posts: posts,  <span class="cm">// raw 서버 데이터</span>
+);</pre>
+                </div>
+                <div class="code-block">
+                    <div class="code-block-header after">✓ After</div>
+                    <pre><span class="cm">// keepAlive — 앱 생애주기 동안 상태 유지</span>
+<span class="hl">@Riverpod(keepAlive: true)</span>
+<span class="kw">class</span> <span class="fn">CommunityReactionOverrides</span>
+  <span class="kw">extends</span> _$CommunityReactionOverrides {
+  <span class="kw">@override</span>
+  Map&lt;<span class="kw">int</span>, CommunityReactionEntity&gt;
+      build() => {};
+}
+
+<span class="cm">// 목록 갱신 시 로컬 override 합성</span>
+<span class="kw">final</span> effectivePosts =
+  _applyOverridesToPosts(posts);
+state = state.copyWith(
+  posts: effectivePosts,
+);</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. 로그아웃 후 API 요청 -->
+        <div class="trouble-card">
+            <div class="trouble-header">
+                <span class="trouble-tag">인증</span>
+                <span class="trouble-title">로그아웃 후 서버 세션 미삭제 — FCM 알림 지속 수신</span>
+            </div>
+            <div class="trouble-row">
+                <span class="trouble-label problem">문제</span>
+                <span class="trouble-text">로그아웃 후에도 FCM 푸시 알림이 계속 수신되고, 서버 세션이 유지된 채로 남아 보안상 문제 발생</span>
+            </div>
+            <div class="trouble-row">
+                <span class="trouble-label cause">원인</span>
+                <span class="trouble-text">AuthNotifier에 logout() 메서드가 없어 메뉴 화면에서 clear()만 직접 호출 — 로컬 토큰은 삭제되지만 백엔드 로그아웃 API가 호출되지 않아 서버 세션과 FCM 토큰이 그대로 유지됨</span>
+            </div>
+            <div class="trouble-row">
+                <span class="trouble-label solve">해결</span>
+                <span class="trouble-text">auth_provider에 logout() 메서드 추가 — 백엔드 /api/v1/logout 호출 후 FCM 토큰·로컬 토큰 삭제 순서 보장. API 실패 시에도 로컬은 항상 초기화되도록 try-catch로 처리</span>
+            </div>
+            <div class="trouble-row">
+                <span class="trouble-label learn">배운 점</span>
+                <span class="trouble-text">로그아웃은 단순한 로컬 상태 초기화가 아닌 서버 세션 만료, FCM 토큰 해제, 로컬 토큰 삭제를 포함하는 복합 작업이며, 인증 관련 동작은 AuthNotifier 한 곳에 집중시켜야 함</span>
+            </div>
+            <div class="code-compare">
+                <div class="code-block">
+                    <div class="code-block-header before">✕ Before</div>
+                    <pre><span class="cm">// auth_provider에 logout() 없음</span>
+<span class="cm">// 메뉴 화면에서 직접 clear() 호출</span>
+<span class="kw">await</span> ref
+  .read(authNotifierProvider.notifier)
+  .clear(); <span class="cm">// API 호출 없이 로컬만 삭제</span>
+
+<span class="cm">// → 서버 세션·FCM 토큰 미삭제</span>
+<span class="cm">// → 로그아웃 후에도 push 알림 수신</span></pre>
+                </div>
+                <div class="code-block">
+                    <div class="code-block-header after">✓ After</div>
+                    <pre><span class="cm">// auth_provider에 logout() 추가</span>
+<span class="cm">// API 호출 → FCM + 토큰 삭제 순서 보장</span>
+<span class="kw">Future</span>&lt;<span class="kw">void</span>&gt; <span class="fn">logout</span>() <span class="kw">async</span> {
+  <span class="kw">try</span> {
+    <span class="kw">final</span> dio = ref.read(dioProvider);
+    <span class="kw">await</span> dio.post(
+      <span class="str">'/api/v1/logout'</span>);
+  } <span class="kw">catch</span> (_) {}
+  <span class="kw">await</span> <span class="fn">clear</span>(); <span class="cm">// FCM + token</span>
+}</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 프론트엔드 성능 최적화 -->
+    <section>
+        <h2>프론트엔드 성능 최적화 및 컴포넌트 설계</h2>
+
+        <div class="perf-sub-title">Widget Rebuild 최소화</div>
+        <p style="font-size:0.85em; color:var(--text-secondary); line-height:1.6; margin-bottom:10px;">
+            Flutter는 상태 변경 시 위젯 트리를 재빌드하므로, 불필요한 rebuild 범위를 줄이는 것이 성능의 핵심입니다.
+        </p>
+        <table class="perf-table">
+            <thead>
+                <tr>
+                    <th>기법</th>
+                    <th>적용 위치</th>
+                    <th>효과</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>const</code> 생성자</td>
+                    <td>버튼·카드·레이블 등 정적 위젯 전반</td>
+                    <td>상태 무관 위젯의 rebuild 완전 방지</td>
+                </tr>
+                <tr>
+                    <td><code>ref.watch(provider.select())</code></td>
+                    <td>게시글 목록 아이템</td>
+                    <td>구독 필드 변경 시에만 rebuild 트리거</td>
+                </tr>
+                <tr>
+                    <td><code>RepaintBoundary</code></td>
+                    <td>이모지 리액션 통계 위젯</td>
+                    <td>해당 영역만 리페인트 격리</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="perf-sub-title">리스트 렌더링 최적화</div>
+        <ul class="perf-list">
+            <li><strong>ListView.builder 적용</strong>: 커뮤니티 게시글 목록에 적용 → 화면에 보이는 아이템만 빌드되어 초기 렌더링 시간 단축</li>
+            <li><strong>CachedNetworkImage 활용</strong>: 프로필 이미지·게시글 첨부 이미지에 캐시 적용 → 동일 이미지 재요청 제거, 스크롤 시 깜빡임 방지</li>
+            <li><strong>무한 스크롤 페이지네이션</strong>: 전체 데이터를 한 번에 불러오지 않고 필요한 만큼만 로드하여 초기 API 응답 속도 개선</li>
+        </ul>
+
+        <div class="perf-sub-title">공통 컴포넌트 설계</div>
+        <p style="font-size:0.85em; color:var(--text-secondary); line-height:1.6; margin-bottom:16px;">
+            화면마다 중복되던 버튼·입력창·앱바를 <strong>shared/widgets</strong>로 분리해
+            디자인 변경 시 한 곳만 수정하면 전체 화면에 반영되도록 설계했습니다.
+            각 위젯은 상태(로딩·비활성·에러)와 스타일 변형을 파라미터로 제어해
+            여러 화면에서 그대로 재사용할 수 있습니다.
+        </p>
+        <div class="component-grid">
+            <div class="component-card">
+                <div class="comp-name">Button</div>
+                <div class="comp-desc">
+                    <code>PrimaryButton</code> · <code>OutlineButton</code> · <code>TextOnlyButton</code><br>
+                    로딩·비활성·아이콘 상태를 파라미터 하나로 제어
+                </div>
+            </div>
+            <div class="component-card">
+                <div class="comp-name">TextField</div>
+                <div class="comp-desc">
+                    <code>CustomTextField</code> · <code>PasswordTextField</code> · <code>FloatingLabelTextField</code><br>
+                    유효성 검사·힌트·비밀번호 토글을 공통으로 처리
+                </div>
+            </div>
+            <div class="component-card">
+                <div class="comp-name">AppBar</div>
+                <div class="comp-desc">
+                    <code>CustomAppBar</code> · <code>SearchAppBar</code> · <code>TabbedAppBar</code> · <code>TransparentAppBar</code><br>
+                    화면 유형에 맞는 4가지 변형으로 일관된 상단 바 제공
+                </div>
+            </div>
+            <div class="component-card">
+                <div class="comp-name">Navigation</div>
+                <div class="comp-desc">
+                    <code>MainNavigationBar</code><br>
+                    하단 탭 전환을 단일 컴포넌트로 관리
+                </div>
+            </div>
+            <div class="component-card">
+                <div class="comp-name">TripleShuffleCarousel</div>
+                <div class="comp-desc">
+                    중앙 카드 강조 + 무한 루프 자동 슬라이드<br>
+                    홈 추천 섹션에 덱(deck) 스타일 UX 구현
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 아키텍처 -->
+    <section>
+        <h2>아키텍처</h2>
+        <img src="images/erd.png" alt="ERD" style="width:100%; border-radius:16px; margin-bottom:12px;">
+        <div style="font-size:0.8em; color:var(--text-hint); text-align:center; margin-bottom:20px;">ERD (Entity Relationship Diagram)</div>
+        <img src="images/architecture.png" alt="시스템 아키텍처" style="width:100%; border-radius:16px; margin-bottom:20px;">
+        <div style="font-size:0.88em; font-weight:600; color:var(--text-secondary); margin-bottom:12px;">
+            프론트엔드 Clean Architecture
+        </div>
+        <div class="arch-tree"><span class="folder">lib/</span>
+├── <span class="folder">core/</span>                    <span class="comment"># 공통 모듈</span>
+│   ├── <span class="folder">auth/</span>                <span class="comment"># 인증 상태 관리</span>
+│   ├── <span class="folder">deeplink/</span>            <span class="comment"># 딥링크 처리</span>
+│   ├── <span class="folder">error/</span>               <span class="comment"># 에러 핸들링</span>
+│   ├── <span class="folder">providers/</span>           <span class="comment"># Dio HTTP 클라이언트</span>
+│   ├── <span class="folder">services/</span>            <span class="comment"># FCM 서비스</span>
+│   ├── <span class="folder">theme/</span>               <span class="comment"># 앱 테마 / 컬러 / 폰트</span>
+│   └── <span class="folder">websocket/</span>           <span class="comment"># WebSocket 연결</span>
+│
+├── <span class="folder">features/</span>                <span class="comment"># 기능별 모듈</span>
+│   ├── <span class="folder">auth/</span>                <span class="comment"># 로그인 / 회원가입</span>
+│   │   ├── data/            <span class="comment"># DTO, DataSource, Mapper</span>
+│   │   ├── domain/          <span class="comment"># Entity, UseCase</span>
+│   │   └── presentation/    <span class="comment"># Screen, Provider, Widget</span>
+│   ├── <span class="folder">dutchpay/</span>            <span class="comment"># 더치페이</span>
+│   ├── <span class="folder">community/</span>           <span class="comment"># 커뮤니티</span>
+│   ├── <span class="folder">menu/</span>                <span class="comment"># 메뉴 / 프로필</span>
+│   └── ...
+│
+└── <span class="folder">shared/</span>                  <span class="comment"># 공용 위젯</span>
+    └── <span class="folder">widgets/</span></div>
+
+        <div class="principles">
+            <div class="principle">
+                <strong>Clean Architecture</strong>
+                <span>data / domain / presentation 계층 분리</span>
+            </div>
+            <div class="principle">
+                <strong>Feature-based</strong>
+                <span>기능 단위 모듈화</span>
+            </div>
+            <div class="principle">
+                <strong>Riverpod</strong>
+                <span>선언적 반응형 상태 관리</span>
+            </div>
+            <div class="principle">
+                <strong>Repository</strong>
+                <span>데이터 접근 추상화</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 주요 성과 -->
+    <section>
+        <h2>주요 성과 및 배운 점</h2>
+
+        <div class="result-card">
+            <h4>기술적 성과</h4>
+            <ul>
+                <li>OAuth + Deep Link + JWT 모바일 소셜 로그인 파이프라인 구축</li>
+                <li>토스페이먼츠 연동 실제 결제 플로우 구현</li>
+                <li>Clean Architecture 기반 확장 가능한 프론트엔드 설계</li>
+                <li>Riverpod 효율적 상태 관리 패턴 적용</li>
+            </ul>
+        </div>
+
+        <div class="result-card">
+            <h4>협업 경험</h4>
+            <ul>
+                <li>백엔드 팀과 Swagger/OpenAPI 기반 API 협업</li>
+                <li>Git Flow 브랜치 전략 체계적 버전 관리</li>
+                <li>기능 단위 분담 병렬 개발</li>
+            </ul>
+        </div>
+
+        <div class="result-card">
+            <h4>배운 점</h4>
+            <ul>
+                <li>결제 시스템 안정성 확보를 위한 에러 핸들링의 중요성</li>
+                <li>실시간 기능(WebSocket, FCM)과 REST API의 적절한 사용 구분</li>
+                <li>로딩/에러/빈 상태를 고려한 UX 설계</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 연락처 -->
+    <section>
+        <h2>연락처</h2>
+        <div class="contact-item">
+            <div class="contact-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            </div>
+            <div class="contact-info">
+                <div class="contact-label">이름</div>
+                <div class="contact-value">김수연</div>
+            </div>
+        </div>
+        <div class="contact-item">
+            <div class="contact-icon">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </div>
+            <div class="contact-info">
+                <div class="contact-label">이메일</div>
+                <div class="contact-value">bc.redblume@gmail.com</div>
+            </div>
+        </div>
+        <div class="contact-item">
+            <div class="contact-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.08 1.85 1.24 1.85 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 016.02 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            </div>
+            <div class="contact-info">
+                <div class="contact-label">GitHub</div>
+                <div class="contact-value">(GitHub 주소를 입력하세요)</div>
+            </div>
+        </div>
+    </section>
+
+
+</div>
+
+</body>
+</html>
