@@ -21,7 +21,7 @@ export default function Navbar() {
   return (
     <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.inner}>
-        <span className={styles.logo}>수연.dev</span>
+        <span className={styles.logo}>sooya.dev</span>
         <ul className={`${styles.links} ${menuOpen ? styles.open : ''}`}>
           {NAV_ITEMS.map(({ label, href }) => (
             <li key={label}>
