@@ -1,29 +1,16 @@
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Skills from './components/Skills'
-import Projects from './components/Projects'
-import Contact from './components/Contact'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import HomePage from './pages/HomePage'
+import ProjectsPage from './pages/ProjectsPage'
+import BallBallBallDetail from './pages/BallBallBallDetail'
 
 export default function App() {
   return (
-    <>
-      <Navbar />
-      <main>
-        <Hero />
-        <Skills />
-        <Projects />
-        <Contact />
-      </main>
-      <footer style={{
-        textAlign: 'center',
-        padding: '24px',
-        color: '#A8A9A9',
-        fontSize: '0.82rem',
-        background: 'white',
-        borderTop: '1px solid #E8EAED'
-      }}>
-        © 2024 김수연. All rights reserved.
-      </footer>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/projects/ballballball" element={<BallBallBallDetail />} />
+      </Routes>
+    </BrowserRouter>
   )
 }

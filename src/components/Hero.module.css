@@ -240,21 +240,45 @@
   50% { opacity: 0.3; transform: scaleY(0.5); }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   .inner {
-    flex-direction: column;
     gap: 40px;
+  }
+  .avatarCircle {
+    width: 180px;
+    height: 180px;
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero {
+    padding: 80px 20px 60px;
+  }
+  .inner {
+    flex-direction: column-reverse;
+    gap: 32px;
     text-align: center;
   }
   .tags, .ctas {
     justify-content: center;
   }
-  .avatarCircle {
-    width: 160px;
-    height: 160px;
-    font-size: 3.5rem;
+  .ctas {
+    flex-direction: column;
+    align-items: center;
   }
-  .floatBadge1 { right: -10px; }
-  .floatBadge2 { right: -15px; }
-  .floatBadge3 { left: -10px; }
+  .btnPrimary, .btnSecondary {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
+  .avatarCircle {
+    width: 140px;
+    height: 140px;
+    font-size: 3rem;
+  }
+  .floatBadge1 { right: -10px; top: -5px; }
+  .floatBadge2 { right: -15px; bottom: 10px; }
+  .floatBadge3 { left: -10px; bottom: -5px; }
+  .desc br { display: none; }
 }
