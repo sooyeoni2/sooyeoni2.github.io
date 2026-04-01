@@ -20,7 +20,6 @@ export default function ProjectsPreview() {
     <section id="projects" className={styles.section}>
       <div className={styles.inner}>
         <h2 className={styles.title}><RansomTitle text="Projects" /></h2>
-        <p className={styles.sub}>참여한 프로젝트를 소개합니다</p>
         <div className={styles.grid}>
           {PROJECTS.map(p => (
             <div key={p.id} className={styles.card} onClick={() => navigate(`/projects/${p.id}`)}>

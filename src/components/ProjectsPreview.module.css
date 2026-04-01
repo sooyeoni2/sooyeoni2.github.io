@@ -1,28 +1,20 @@
 .section {
   padding: 80px 24px;
-  background: white;
+  background: #fafafa;
+  border-bottom: 1.5px solid #111;
 }
 
 .inner {
   max-width: 900px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .title {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 900;
-  text-align: center;
-  margin-bottom: 8px;
-}
-
-.sub {
-  text-align: center;
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  margin-bottom: 48px;
+  letter-spacing: -0.5px;
+  color: #111;
+  margin-bottom: 40px;
 }
 
 .grid {
@@ -34,20 +26,20 @@
 }
 
 .card {
-  background: linear-gradient(135deg, #F0F9FF 0%, #FAFBFF 100%);
-  border: 1.5px solid #BFE6FF;
-  border-radius: var(--radius);
-  padding: 24px;
+  background: #fff;
+  border: 1.5px solid #111;
+  padding: 28px 32px;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: box-shadow 0.15s, transform 0.15s;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  box-shadow: 4px 4px 0 #111;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 152, 233, 0.15);
+  box-shadow: 6px 6px 0 #111;
+  transform: translate(-1px, -1px);
 }
 
 .cardTop {
@@ -64,68 +56,50 @@
 .name {
   font-size: 1.05rem;
   font-weight: 800;
-  color: var(--text);
+  color: #111;
   margin-bottom: 3px;
 }
 
 .period {
   font-size: 0.8rem;
-  color: var(--primary);
+  color: #555;
   font-weight: 600;
 }
 
 .desc {
   font-size: 0.9rem;
-  color: var(--text-sub);
+  color: #444;
   line-height: 1.6;
-}
-
-.stack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.tag {
-  background: white;
-  color: var(--primary);
-  border: 1.5px solid #BFE6FF;
-  padding: 3px 10px;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 600;
 }
 
 .more {
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--primary);
+  color: #111;
   align-self: flex-end;
 }
 
 .allBtn {
   background: none;
-  border: 1.5px solid var(--border);
-  color: var(--text-sub);
-  padding: 10px 28px;
-  border-radius: 10px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  border: 1.5px solid #111;
+  color: #111;
+  padding: 8px 24px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: border-color 0.2s, color 0.2s;
+  transition: background 0.15s, color 0.15s;
+  font-family: inherit;
 }
 
 .allBtn:hover {
-  border-color: var(--primary);
-  color: var(--primary);
+  background: #111;
+  color: #fff;
 }
 
 @media (max-width: 700px) {
   .section {
     padding: 60px 16px;
-  }
-  .title {
-    font-size: 1.6rem;
   }
   .grid {
     grid-template-columns: 1fr;

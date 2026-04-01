@@ -27,7 +27,6 @@ export default function ProjectsPage() {
   return (
     <div className={styles.page}>
       <div className={styles.header}>
-        <button className={styles.back} onClick={() => navigate('/')}>← 홈으로</button>
         <h1 className={styles.title}>Projects</h1>
         <p className={styles.sub}>참여한 프로젝트 전체 목록입니다</p>
       </div>

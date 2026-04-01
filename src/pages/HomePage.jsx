@@ -1,4 +1,3 @@
-import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import Skills from '../components/Skills'
 import ProjectsPreview from '../components/ProjectsPreview'
@@ -7,7 +6,6 @@ import Contact from '../components/Contact'
 export default function HomePage() {
   return (
     <>
-      <Navbar />
       <main>
         <Hero />
         <Skills />

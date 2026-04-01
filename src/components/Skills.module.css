@@ -1,7 +1,7 @@
 .section {
   padding: 80px 24px;
-  background: #fafafa;
-  border-bottom: 1.5px solid #e8e8e8;
+  background: #fff;
+  border-bottom: 1.5px solid #111;
 }
 
 .inner {
@@ -18,7 +18,7 @@
 }
 
 .title {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 900;
   letter-spacing: -0.5px;
   color: #111;
@@ -59,10 +59,10 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1px;
-  background: #e8e8e8;
-  border: 1.5px solid #e8e8e8;
-  border-radius: 16px;
+  background: #111;
+  border: 1.5px solid #111;
   overflow: hidden;
+  box-shadow: 4px 4px 0 #111;
 }
 
 .item {
