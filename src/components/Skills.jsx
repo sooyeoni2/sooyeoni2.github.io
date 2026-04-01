@@ -1,43 +1,62 @@
+import { useState } from 'react'
 import styles from './Skills.module.css'
+import RansomTitle from './RansomTitle'
 
-const SKILLS = [
+const TABS = [
   {
-    category: '📱 Mobile',
-    items: ['Flutter', 'Dart', 'Android', 'iOS'],
-    color: 'blue',
+    label: 'Language',
+    items: [
+      { name: 'Dart' },
+      { name: 'Java' },
+      { name: 'JavaScript' },
+      { name: 'Python' },
+      { name: 'SQL' },
+    ],
   },
   {
-    category: '🔧 상태관리 & 아키텍처',
-    items: ['Provider', 'Riverpod', 'GetX', 'MVC', 'MVVM'],
-    color: 'purple',
+    label: 'Framework',
+    items: [
+      { name: 'Flutter' },
+      { name: 'React' },
+      { name: 'Spring Boot' },
+    ],
   },
   {
-    category: '🌐 네트워크 & 통신',
-    items: ['REST API', 'WebSocket', 'FCM', 'Dio', 'http'],
-    color: 'teal',
-  },
-  {
-    category: '🛠 도구 & 협업',
-    items: ['Git', 'GitHub', 'Figma', 'Jira', 'GitLab'],
-    color: 'orange',
+    label: 'Tools',
+    items: [
+      { name: 'Git' },
+      { name: 'Docker' },
+      { name: 'Figma' },
+      { name: 'Jira' },
+    ],
   },
 ]
 
 export default function Skills() {
+  const [active, setActive] = useState(0)
+
   return (
     <section id="skills" className={styles.section}>
       <div className={styles.inner}>
-        <h2 className={styles.title}>Skills</h2>
-        <p className={styles.sub}>사용할 수 있는 기술 스택입니다</p>
-        <div className={styles.grid}>
-          {SKILLS.map(({ category, items, color }) => (
-            <div key={category} className={`${styles.card} ${styles[color]}`}>
-              <h3 className={styles.cardTitle}>{category}</h3>
-              <div className={styles.tags}>
-                {items.map(item => (
-                  <span key={item} className={styles.tag}>{item}</span>
-                ))}
-              </div>
+        <div className={styles.header}>
+          <h2 className={styles.title}><RansomTitle text="Skills" /></h2>
+          <div className={styles.tabs}>
+            {TABS.map((tab, i) => (
+              <button
+                key={tab.label}
+                className={`${styles.tab} ${active === i ? styles.activeTab : ''}`}
+                onClick={() => setActive(i)}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.content}>
+          {TABS[active].items.map(item => (
+            <div key={item.name} className={styles.item}>
+              <span className={styles.itemName}>{item.name}</span>
             </div>
           ))}
         </div>

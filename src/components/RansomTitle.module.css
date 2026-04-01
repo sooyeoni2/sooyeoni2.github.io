@@ -1,0 +1,17 @@
+.ransom {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 1px;
+}
+
+.letter {
+  display: inline-block;
+  font-weight: 900;
+  color: #111;
+  line-height: 1;
+}
+
+.space {
+  display: inline-block;
+  width: 0.4em;
+}

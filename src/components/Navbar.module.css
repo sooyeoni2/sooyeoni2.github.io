@@ -4,48 +4,59 @@
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 16px 0;
-  transition: background 0.3s, box-shadow 0.3s;
-}
-
-.nav.scrolled {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 1px 16px rgba(0,0,0,0.08);
+  background: #fff;
+  border-bottom: 1.5px solid #111;
 }
 
 .inner {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 24px;
+  max-width: 100%;
+  padding: 0 32px;
+  height: 56px;
   display: flex;
   align-items: center;
+  gap: 24px;
   justify-content: space-between;
 }
 
 .logo {
-  font-size: 1.1rem;
-  font-weight: 800;
-  color: var(--primary);
-  letter-spacing: -0.5px;
-}
-
-.links {
-  display: flex;
-  gap: 32px;
-  list-style: none;
-}
-
-.links a {
+  font-size: 1rem;
+  font-weight: 900;
+  color: #111;
   text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-sub);
-  transition: color 0.2s;
+  letter-spacing: -0.5px;
+  flex-shrink: 0;
+  margin-right: 8px;
 }
 
-.links a:hover {
-  color: var(--primary);
+.tabs {
+  display: flex;
+  list-style: none;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.tab {
+  display: block;
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #111;
+  border: 1.5px solid #111;
+  border-radius: 999px;
+  padding: 5px 16px;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.tab:hover {
+  background: #111;
+  color: #fff;
+}
+
+.activeTab {
+  background: #111;
+  color: #fff;
 }
 
 .hamburger {
@@ -56,13 +67,14 @@
   border: none;
   cursor: pointer;
   padding: 4px;
+  margin-left: auto;
 }
 
 .hamburger span {
   display: block;
   width: 22px;
   height: 2px;
-  background: var(--text);
+  background: #111;
   border-radius: 2px;
 }
 
@@ -71,26 +83,20 @@
     display: flex;
   }
 
-  .links {
+  .tabs {
     display: none;
     position: absolute;
-    top: 100%;
+    top: 56px;
     left: 0;
     right: 0;
-    background: white;
+    background: #fff;
     flex-direction: column;
-    gap: 0;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-    padding: 8px 0;
+    border-bottom: 1.5px solid #111;
+    padding: 12px 24px 16px;
+    gap: 8px;
   }
 
-  .links.open {
+  .tabs.open {
     display: flex;
-  }
-
-  .links li a {
-    display: block;
-    padding: 14px 24px;
-    font-size: 1rem;
   }
 }

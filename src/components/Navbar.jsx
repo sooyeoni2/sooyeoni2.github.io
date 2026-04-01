@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import styles from './Navbar.module.css'
 
-const NAV_ITEMS = [
+const TABS = [
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', to: '/projects' },
@@ -10,26 +10,42 @@ const NAV_ITEMS = [
 ]
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  const isHome = location.pathname === '/'
 
   return (
-    <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
+    <nav className={styles.nav}>
       <div className={styles.inner}>
         <Link to="/" className={styles.logo}>sooya.dev</Link>
-        <ul className={`${styles.links} ${menuOpen ? styles.open : ''}`}>
-          {NAV_ITEMS.map(({ label, href, to }) => (
+        <ul className={`${styles.tabs} ${menuOpen ? styles.open : ''}`}>
+          {TABS.map(({ label, href, to }) => (
             <li key={label}>
-              {to
-                ? <Link to={to} onClick={() => setMenuOpen(false)}>{label}</Link>
-                : <a href={href} onClick={() => setMenuOpen(false)}>{label}</a>
-              }
+              {to ? (
+                <Link
+                  to={to}
+                  className={`${styles.tab} ${location.pathname === to ? styles.activeTab : ''}`}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {label}
+                </Link>
+              ) : (
+                <a
+                  href={isHome ? href : '/'}
+                  className={styles.tab}
+                  onClick={(e) => {
+                    setMenuOpen(false)
+                    if (!isHome) {
+                      e.preventDefault()
+                      navigate('/' + href)
+                    }
+                  }}
+                >
+                  {label}
+                </a>
+              )}
             </li>
           ))}
         </ul>
