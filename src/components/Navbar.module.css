@@ -4,14 +4,22 @@
   left: 0;
   right: 0;
   z-index: 100;
-  background: #fff;
-  border-bottom: 1.5px solid #111;
+  background: transparent;
+  transition: background 0.3s, border-color 0.3s, backdrop-filter 0.3s;
+  border-bottom: 1.5px solid transparent;
+}
+
+.scrolled {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1.5px solid rgba(17,17,17,0.12);
 }
 
 .inner {
   max-width: 100%;
-  padding: 0 32px;
-  height: 56px;
+  padding: 0 40px;
+  height: 72px;
   display: flex;
   align-items: center;
   gap: 24px;
@@ -38,25 +46,28 @@
 .tab {
   display: block;
   text-decoration: none;
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: #111;
-  border: 1.5px solid #111;
+  border: 1.5px solid rgba(17,17,17,0.35);
   border-radius: 999px;
-  padding: 5px 16px;
-  transition: background 0.15s, color 0.15s;
+  padding: 6px 18px;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
   white-space: nowrap;
   cursor: pointer;
+  background: rgba(255,255,255,0.3);
 }
 
 .tab:hover {
   background: #111;
   color: #fff;
+  border-color: #111;
 }
 
 .activeTab {
   background: #111;
   color: #fff;
+  border-color: #111;
 }
 
 .hamburger {

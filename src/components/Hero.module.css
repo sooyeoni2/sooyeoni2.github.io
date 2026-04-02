@@ -1,23 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap');
 
 .hero {
-  min-height: 100vh;
+  position: relative;
   background: #dce8ff;
   display: flex;
   align-items: center;
-  padding: 80px 48px 60px;
+  padding: 120px 80px 100px;
   border-bottom: 1.5px solid #111;
   overflow: hidden;
 }
 
 .inner {
-  max-width: 1000px;
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
   margin: 0 auto;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 320px;
+  grid-template-columns: 1fr 360px;
   align-items: center;
-  gap: 60px;
+  gap: 80px;
 }
 
 /* ── Left ── */
@@ -74,6 +76,7 @@
   );
   background-size: 100% 32px;
   box-shadow: 3px 4px 0px #111;
+  transform: rotate(-1.2deg);
 }
 
 .name {
@@ -94,10 +97,15 @@
 }
 
 .desc {
-  font-size: 1rem;
+  font-size: 1.15rem;
   color: #333;
   line-height: 1.9;
   margin-bottom: 32px;
+}
+
+.desc strong {
+  font-weight: 900;
+  color: #111;
 }
 
 .pills {
@@ -137,8 +145,8 @@
 }
 
 .photoBox {
-  width: 280px;
-  height: 340px;
+  width: 320px;
+  height: 400px;
   background: #111;
   border-radius: 20px;
   border: 2px solid #111;
@@ -148,6 +156,7 @@
   justify-content: center;
   font-size: 7rem;
 }
+
 
 .photo {
   width: 100%;

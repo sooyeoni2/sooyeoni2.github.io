@@ -1,0 +1,115 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(10, 10, 30, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.overlayOut {
+  animation: overlayOut 0.5s ease forwards;
+}
+
+@keyframes overlayOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+.ballWrap {
+  transform: rotate(-1.5deg);
+}
+
+.ballWrapOut {
+  animation: paperOut 0.5s ease forwards;
+}
+
+@keyframes paperOut {
+  from { opacity: 1; transform: rotate(-1.5deg) translateY(0); }
+  to   { opacity: 0; transform: rotate(-1.5deg) translateY(40px); }
+}
+
+.paper {
+  position: relative;
+  background: #fff;
+  padding: 52px 102px 44px;
+  max-width: 540px;
+  width: 90%;
+  box-shadow: 8px 8px 0 #111;
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 31px,
+    #b8d0f5 31px,
+    #b8d0f5 32px
+  );
+  background-size: 100% 32px;
+}
+
+.tape {
+  position: absolute;
+  top: -14px;
+  left: 40px;
+  width: 80px;
+  height: 26px;
+  background: rgba(160, 160, 160, 0.4);
+  border-radius: 3px;
+  transform: rotate(-1.5deg);
+}
+
+.tapeRight {
+  position: absolute;
+  top: -10px;
+  right: 36px;
+  width: 70px;
+  height: 26px;
+  background: rgba(160, 160, 160, 0.35);
+  border-radius: 3px;
+  transform: rotate(1deg);
+}
+
+.label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #888;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  white-space: nowrap;
+}
+
+.name {
+  font-size: clamp(2.4rem, 7vw, 4.8rem);
+  font-weight: 900;
+  letter-spacing: -2px;
+  color: #111;
+  line-height: 1;
+  margin-bottom: 6px;
+  white-space: nowrap;
+}
+
+.nameEn {
+  font-size: 0.85rem;
+  color: #999;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+}
+
+.desc {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+.hint {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #bbb;
+  letter-spacing: 0.5px;
+}

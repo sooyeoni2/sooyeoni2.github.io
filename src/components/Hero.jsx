@@ -19,9 +19,9 @@ export default function Hero() {
           <p className={styles.nameEn}>Kim Sooyeon</p>
 
           <p className={styles.desc}>
-            사용자 흐름이 자연스럽게 이어지는 걸 중요하게 생각합니다.<br />
-            웹과 앱을 가리지 않고, 서비스 전반을<br />
-            직접 만들어가는 풀스택 개발자입니다.
+            <strong>사용자 흐름이 자연스럽게 이어지는 걸</strong> 중요하게 생각합니다.<br />
+            웹과 앱을 가리지 않고, <strong>서비스 전반을<br />
+            직접 만들어가는 풀스택 개발자</strong>입니다.
           </p>
 
           <div className={styles.pills}>

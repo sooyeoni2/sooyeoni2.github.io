@@ -44,7 +44,7 @@
   font-family: inherit;
 }
 
-.tab:hover {
+.tab:not(.activeTab):hover {
   border-color: #111;
   color: #111;
 }
@@ -55,30 +55,45 @@
   color: #fff;
 }
 
-.content {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
+.activeTab:hover {
   background: #111;
-  border: 1.5px solid #111;
-  overflow: hidden;
-  box-shadow: 4px 4px 0 #111;
+  color: #fff;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .item {
+  display: inline-block;
+  border: 1.5px solid #111;
+  border-radius: 999px;
+  padding: 10px 24px;
   background: #fff;
-  padding: 24px 32px;
-  display: flex;
-  align-items: center;
-  transition: background 0.15s;
+  box-shadow: 3px 3px 0 #111;
+  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+  cursor: default;
 }
 
+.item:nth-child(4n+1) { transform: rotate(-2deg); }
+.item:nth-child(4n+2) { transform: rotate(1.5deg); }
+.item:nth-child(4n+3) { transform: rotate(-1deg); }
+.item:nth-child(4n+4) { transform: rotate(2.5deg); }
+
 .item:hover {
-  background: #f5f5f5;
+  background: #111;
+  transform: rotate(0deg) translate(-1px, -1px) !important;
+  box-shadow: 4px 4px 0 #111;
+}
+
+.item:hover .itemName {
+  color: #fff;
 }
 
 .itemName {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 800;
   color: #111;
   letter-spacing: -0.3px;

@@ -23,6 +23,9 @@ export default function ProjectsPreview() {
         <div className={styles.grid}>
           {PROJECTS.map(p => (
             <div key={p.id} className={styles.card} onClick={() => navigate(`/projects/${p.id}`)}>
+              <div className={styles.tape} />
+              <div className={styles.tapeRight} />
+              <div className={styles.sticker}>★</div>
               <div className={styles.cardTop}>
                 <span className={styles.emoji}>{p.emoji}</span>
                 <div>
