@@ -4,8 +4,8 @@ import styles from './Navbar.module.css'
 
 const TABS = [
   { label: 'About', href: '#about' },
+  { label: 'Skills', href: '#skills' },
   { label: 'Projects', to: '/projects' },
-  { label: 'Contact', href: '#contact' },
 ]
 
 export default function Navbar() {

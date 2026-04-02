@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import styles from './RansomTitle.module.css'
 
 const FONTS = [
@@ -15,10 +16,28 @@ const CUTOUT_BG =    ['#111', '#111', '#fff', '#111', '#fff', '#fff', '#111', '#
 const CUTOUT_COLOR = ['#fff', '#fff', '#111', '#fff', '#111', '#111', '#fff', '#111', '#fff', '#fff', '#111', '#fff']
 
 export default function RansomTitle({ text, cutout = false, seed = 0 }) {
+  const ref = useRef(null)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect() } },
+      { threshold: 0.3 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  let charIdx = -1
+
   return (
-    <span className={styles.ransom}>
+    <span className={styles.ransom} ref={ref}>
       {text.split('').map((char, i) => {
         if (char === ' ') return <span key={i} className={styles.space} />
+        charIdx++
+        const ci = charIdx
         const idx = (i + seed) % CUTOUT_BG.length
         const bg = cutout ? CUTOUT_BG[idx] : 'transparent'
         const color = cutout ? CUTOUT_COLOR[idx] : '#111'
@@ -34,6 +53,8 @@ export default function RansomTitle({ text, cutout = false, seed = 0 }) {
               background: bg,
               color,
               padding,
+              opacity: visible ? 1 : 0,
+              transition: `opacity 0.05s ${ci * 0.08}s`,
             }}
           >
             {char}
