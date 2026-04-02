@@ -5,10 +5,9 @@
   background: #FFF8F0;
   background-image: radial-gradient(circle, #e0c9b0 1px, transparent 1px);
   background-size: 24px 24px;
-  border-bottom: 2px solid #111;
   display: flex;
   align-items: center;
-  padding: 180px 80px 140px;
+  padding: 140px 80px 60px;
   overflow: visible;
 }
 
@@ -20,7 +19,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 360px;
-  align-items: stretch;
+  align-items: center;
   gap: 80px;
 }
 
@@ -36,7 +35,7 @@
   color: #555;
   letter-spacing: 1px;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 32px;
 }
 
 .nameRow {
@@ -109,6 +108,7 @@
   color: #555;
   font-weight: 500;
   letter-spacing: 1px;
+  margin-top: 12px;
   margin-bottom: 24px;
 }
 
@@ -139,6 +139,22 @@
   gap: 12px;
   flex-wrap: wrap;
   margin-top: 16px;
+}
+
+.contactLabel {
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: #888;
+  border-right: 1.5px solid #ccc;
+  padding-right: 10px;
+  margin-right: 4px;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.contactLink:hover .contactLabel {
+  color: #fff;
+  border-color: rgba(255,255,255,0.4);
 }
 
 .contactLink {

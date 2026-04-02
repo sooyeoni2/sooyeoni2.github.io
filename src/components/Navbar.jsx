@@ -45,7 +45,7 @@ export default function Navbar() {
                     setMenuOpen(false)
                     if (!isHome) {
                       e.preventDefault()
-                      navigate('/' + href)
+                      navigate('/', { state: { scrollTo: href.replace('#', '') } })
                     }
                   }}
                 >
