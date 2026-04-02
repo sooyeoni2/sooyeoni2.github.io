@@ -20,7 +20,7 @@ export default function IntroScreen({ onEnter }) {
       <div className={`${styles.paper} ${leaving ? styles.paperOut : ''}`}>
         <div className={styles.tape} />
         <div className={styles.tapeRight} />
-        <p className={styles.label}>FRONTEND · BACKEND · MOBILE</p>
+        <p className={styles.label}>FRONTEND · BACKEND · MOBILE · WEB</p>
         <h1 className={styles.name}>김수연</h1>
         <p className={styles.nameEn}>Kim Sooyeon</p>
         <p className={styles.desc}>

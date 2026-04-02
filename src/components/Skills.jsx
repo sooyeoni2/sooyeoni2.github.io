@@ -39,7 +39,7 @@ export default function Skills() {
     <section id="skills" className={styles.section}>
       <div className={styles.inner}>
         <div className={styles.header}>
-          <h2 className={styles.title}><RansomTitle text="Skills" /></h2>
+          <h2 className={styles.title}><RansomTitle text="Skills" cutout seed={0} /></h2>
           <div className={styles.tabs}>
             {TABS.map((tab, i) => (
               <button

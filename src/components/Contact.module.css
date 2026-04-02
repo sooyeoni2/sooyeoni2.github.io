@@ -1,12 +1,15 @@
 .section {
-  padding: 80px 24px;
-  background: #dce8ff;
-  border-bottom: 1.5px solid #111;
+  padding: 80px 80px;
+  background: #FFF8F0;
+  background-image: radial-gradient(circle, #e0c9b0 1px, transparent 1px);
+  background-size: 24px 24px;
+  border-bottom: 2px solid #111;
 }
 
 .inner {
   max-width: 700px;
   margin: 0 auto;
+  text-align: center;
 }
 
 .title {
@@ -25,8 +28,9 @@
 
 .cards {
   display: flex;
-  gap: 16px;
+  gap: 32px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card {

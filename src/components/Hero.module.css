@@ -2,12 +2,14 @@
 
 .hero {
   position: relative;
-  background: #dce8ff;
+  background: #FFF8F0;
+  background-image: radial-gradient(circle, #e0c9b0 1px, transparent 1px);
+  background-size: 24px 24px;
+  border-bottom: 2px solid #111;
   display: flex;
   align-items: center;
   padding: 120px 80px 100px;
-  border-bottom: 1.5px solid #111;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .inner {
@@ -67,7 +69,7 @@
   z-index: 1;
   background: #fff;
   padding: 20px 40px 26px;
-  border: 1px solid #ccc;
+  border: 2px solid #111;
   background-image: repeating-linear-gradient(
     transparent,
     transparent 31px,
@@ -75,7 +77,7 @@
     #b8d0f5 32px
   );
   background-size: 100% 32px;
-  box-shadow: 3px 4px 0px #111;
+  box-shadow: 5px 5px 0px #111;
   transform: rotate(-1.2deg);
 }
 
@@ -90,7 +92,7 @@
 
 .nameEn {
   font-size: 0.9rem;
-  color: #777;
+  color: #555;
   font-weight: 500;
   letter-spacing: 1px;
   margin-bottom: 24px;
@@ -98,7 +100,7 @@
 
 .desc {
   font-size: 1.15rem;
-  color: #333;
+  color: #222;
   line-height: 1.9;
   margin-bottom: 32px;
 }
@@ -106,23 +108,52 @@
 .desc strong {
   font-weight: 900;
   color: #111;
+  background: #FFE566;
+  padding: 0 3px;
 }
 
 .pills {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  margin-bottom: 16px;
 }
 
 .pill {
   display: inline-block;
-  border: 1.5px solid #111;
+  border: 2px solid #111;
   border-radius: 999px;
   padding: 6px 18px;
   font-size: 0.8rem;
   font-weight: 700;
   color: #111;
   background: #fff;
+  box-shadow: 2px 2px 0 #111;
+}
+
+/* 스티커들 */
+.stickerA {
+  display: inline-block;
+  background: #FF6B6B;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  padding: 5px 10px;
+  border: 2px solid #111;
+  box-shadow: 2px 2px 0 #111;
+  transform: rotate(-4deg);
+  margin-top: 12px;
+}
+
+.stickerB {
+  position: absolute;
+  bottom: -40px;
+  left: -30px;
+  font-size: 2.4rem;
+  transform: rotate(10deg);
+  filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.2));
+  z-index: 0;
 }
 
 /* ── Right ── */
@@ -157,13 +188,55 @@
   font-size: 7rem;
 }
 
-
 .photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top;
   border-radius: 18px;
+}
+
+.speechBubble {
+  position: absolute;
+  bottom: -24px;
+  left: -40px;
+  background: #fff;
+  border: 2px solid #111;
+  border-radius: 16px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  box-shadow: 3px 3px 0 #111;
+  transform: rotate(-3deg);
+  white-space: nowrap;
+  z-index: 3;
+}
+
+.speechBubble::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  border: 5px solid transparent;
+  border-bottom-color: #111;
+}
+
+.stickerC {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 44px;
+  height: 44px;
+  background: #96E6A1;
+  border: 2px solid #111;
+  border-radius: 50%;
+  box-shadow: 2px 2px 0 #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  transform: rotate(-15deg);
+  z-index: 3;
 }
 
 /* ── Responsive ── */
@@ -190,5 +263,8 @@
   }
   .name {
     white-space: normal;
+  }
+  .stickerB {
+    display: none;
   }
 }

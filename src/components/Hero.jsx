@@ -6,7 +6,7 @@ export default function Hero() {
       <div className={styles.inner}>
 
         <div className={styles.left}>
-          <p className={styles.sub}>Frontend · Backend · Mobile</p>
+          <p className={styles.sub}>Frontend · Backend · Mobile · Web</p>
 
           <div className={styles.paperWrap}>
             <div className={styles.tape} />
@@ -27,6 +27,7 @@ export default function Hero() {
           <div className={styles.pills}>
             <span className={styles.pill}>풀스택 개발자</span>
           </div>
+
         </div>
 
         <div className={styles.right}>
@@ -34,6 +35,7 @@ export default function Hero() {
           <div className={styles.photoBox}>
             <img src="/profile.jpg" alt="김수연" className={styles.photo} />
           </div>
+          <div className={styles.speechBubble}>Hello, World! 👋</div>
         </div>
 
       </div>

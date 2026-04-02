@@ -5,7 +5,7 @@ export default function Contact() {
   return (
     <section id="contact" className={styles.section}>
       <div className={styles.inner}>
-        <h2 className={styles.title}><RansomTitle text="Contact" /></h2>
+        <h2 className={styles.title}><RansomTitle text="Contact" cutout seed={7} /></h2>
         <p className={styles.sub}>언제든지 연락해 주세요!</p>
         <div className={styles.cards}>
           <a href="mailto:bc.redblume@gmail.com" className={styles.card}>
