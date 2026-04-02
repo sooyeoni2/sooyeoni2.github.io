@@ -1,12 +1,10 @@
 import { useState } from 'react'
 import Hero from '../components/Hero'
-
-let introDone = false
-
 import Skills from '../components/Skills'
 import ProjectsPreview from '../components/ProjectsPreview'
-import Contact from '../components/Contact'
 import IntroScreen from '../components/IntroScreen'
+
+let introDone = false
 
 export default function HomePage() {
   const [showIntro, setShowIntro] = useState(() => {
@@ -23,7 +21,6 @@ export default function HomePage() {
         <Hero />
         <Skills />
         <ProjectsPreview />
-        <Contact />
       </main>
       <footer style={{
         textAlign: 'center',

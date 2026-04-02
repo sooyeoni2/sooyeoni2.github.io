@@ -8,24 +8,26 @@ export default function Hero() {
         <div className={styles.left}>
           <p className={styles.sub}>Frontend · Backend · Mobile · Web</p>
 
-          <div className={styles.paperWrap}>
-            <div className={styles.tape} />
-            <div className={styles.tapeRight} />
-            <div className={styles.paper}>
-              <h1 className={styles.name}>김수연</h1>
+          <div className={styles.nameRow}>
+            <div className={styles.paperWrap}>
+              <div className={styles.tape} />
+              <div className={styles.tapeRight} />
+              <div className={styles.paper}>
+                <h1 className={styles.name}>김수연</h1>
+              </div>
             </div>
+            <span className={styles.pill}>풀스택 개발자</span>
           </div>
 
           <p className={styles.nameEn}>Kim Sooyeon</p>
 
           <p className={styles.desc}>
-            <strong>사용자 흐름이 자연스럽게 이어지는 걸</strong> 중요하게 생각합니다.<br />
-            웹과 앱을 가리지 않고, <strong>서비스 전반을<br />
-            직접 만들어가는 풀스택 개발자</strong>입니다.
+            웹과 앱을 가리지 않고 <strong>서비스 전반을 직접 만드는 풀스택 개발자</strong>입니다.
           </p>
 
-          <div className={styles.pills}>
-            <span className={styles.pill}>풀스택 개발자</span>
+          <div className={styles.contacts}>
+            <a href="mailto:bc.redblume@gmail.com" className={styles.contactLink}>✉️ bc.redblume@gmail.com</a>
+            <a href="https://github.com/sooyeoni2" className={styles.contactLink} target="_blank" rel="noopener noreferrer">🐙 github.com/sooyeoni2</a>
           </div>
 
         </div>
