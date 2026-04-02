@@ -73,7 +73,7 @@
 .grid {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   gap: 24px;
   margin-bottom: 32px;
 }
@@ -82,6 +82,7 @@
   position: relative;
   background: #FFFDF5;
   border: 1.5px solid #111;
+  max-width: 480px;
   padding: 40px 36px 30px;
   cursor: pointer;
   transition: box-shadow 0.15s, transform 0.15s;
