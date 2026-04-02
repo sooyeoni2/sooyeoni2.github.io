@@ -5,10 +5,10 @@ import RansomTitle from './RansomTitle'
 const PROJECTS = [
   {
     id: 'ballballball',
-    emoji: '⚾',
+    emoji: null,
     name: '뽈뽈뽈 (BallBallBall)',
     period: '2025.01 ~ 2025.02',
-    desc: '야구 동행 매칭 앱. 직관 메이트를 찾고 더치페이를 관리하는 플랫폼.',
+    desc: '야구 동행 매칭 앱. 직관 메이트를 찾고 더치페이를 관리하는 플랫폼',
     role: 'Flutter 프론트엔드',
   },
 ]
@@ -28,7 +28,10 @@ export default function ProjectsPreview() {
               <div className={styles.tape} />
               <div className={styles.tapeRight} />
               <div className={styles.cardTop}>
-                <span className={styles.emoji}>{p.emoji}</span>
+                {p.emoji
+                  ? <span className={styles.emoji}>{p.emoji}</span>
+                  : <img src="/ball_kung.png" alt="뽈뽈뽈" className={styles.emoji} style={{width:'4rem', height:'4rem', objectFit:'contain'}} />
+                }
                 <div>
                   <h3 className={styles.name}>{p.name}</h3>
                   <p className={styles.period}>{p.period} · {p.role}</p>

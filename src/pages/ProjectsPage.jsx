@@ -4,7 +4,7 @@ import styles from './ProjectsPage.module.css'
 const PROJECTS = [
   {
     id: 'ballballball',
-    emoji: '⚾',
+    emoji: null,
     name: '뽈뽈뽈 (BallBallBall)',
     period: '2025.01 ~ 2025.02 (6주)',
     team: '6명 (FE 2 / BE 4)',
@@ -33,8 +33,12 @@ export default function ProjectsPage() {
       <div className={styles.list}>
         {PROJECTS.map(p => (
           <div key={p.id} className={styles.card} onClick={() => navigate(`/projects/${p.id}`)}>
+            <div className={styles.tape} />
             <div className={styles.cardHeader}>
-              <span className={styles.emoji}>{p.emoji}</span>
+              {p.emoji
+              ? <span className={styles.emoji}>{p.emoji}</span>
+              : <img src="/ball_kung.png" alt="뽈뽈뽈" className={styles.emoji} style={{width:'4rem', height:'4rem', objectFit:'contain'}} />
+            }
               <div>
                 <h2 className={styles.name}>{p.name}</h2>
                 <p className={styles.meta}>{p.period} · {p.team} · {p.role}</p>
