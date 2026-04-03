@@ -11,16 +11,26 @@ function ScrollToTop() {
   return null
 }
 
-export default function App() {
+function Layout() {
+  const { pathname } = useLocation()
+  const hideNav = pathname.startsWith('/projects/')
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <Navbar />
+    <>
+      {!hideNav && <Navbar />}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/projects/ballballball" element={<BallBallBallDetail />} />
       </Routes>
+    </>
+  )
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <ScrollToTop />
+      <Layout />
     </BrowserRouter>
   )
 }
