@@ -35,23 +35,6 @@ export default function BallBallBallDetail() {
             <p className={styles.subtitle}>언제 어디서나 야구 팬을 연결하는 지속 가능한 커뮤니티 플랫폼</p>
           </div>
 
-          {/* Overview 개인 서술 */}
-          <section className={styles.section}>
-            <h2>Overview</h2>
-            <p style={{ fontSize: '0.95em', color: 'var(--text-secondary)', lineHeight: '1.85', marginBottom: '16px' }}>
-              야구장에 같이 갈 사람을 구하는 방법이 생각보다 번거롭다는 걸 팀원들과 이야기하다가 시작된 프로젝트입니다.
-              오픈채팅방을 뒤지거나 커뮤니티 글을 올리는 게 아니라, 야구 앱 안에서 바로 동행을 구하고 더치페이까지 할 수 있으면 어떨까 했습니다.
-            </p>
-            <p style={{ fontSize: '0.95em', color: 'var(--text-secondary)', lineHeight: '1.85', marginBottom: '16px' }}>
-              저는 <strong style={{ color: 'var(--primary-100)' }}>로그인, 커뮤니티, 프로필, 더치페이</strong> 파트를 담당했습니다.
-              OAuth 소셜 로그인부터 토스페이먼츠 실결제 연동까지, 사용자가 앱에 처음 들어오는 순간부터 결제를 완료하는 순간까지의 흐름을 직접 구현했습니다.
-            </p>
-            <p style={{ fontSize: '0.95em', color: 'var(--text-secondary)', lineHeight: '1.85' }}>
-              기능 하나하나보다 <strong>사용자 흐름이 자연스럽게 이어지는 것</strong>에 집중했고,
-              그 과정에서 WebView 딥링크 콜백, Riverpod 상태 생명주기, 낙관적 업데이트 롤백 같은 문제들을 실제로 만나고 해결했습니다.
-            </p>
-          </section>
-
           {/* 프로젝트 개요 */}
           <section className={styles.section}>
             <h2>프로젝트 개요</h2>
@@ -133,39 +116,26 @@ export default function BallBallBallDetail() {
               <span className={styles.techTag}>WebView</span>
               <span className={styles.techTag}>Secure Storage</span>
             </div>
+          </section>
 
-            <div className={styles.techSectionTitle}>Backend (협업)</div>
-            <div className={styles.techTags}>
-              <span className={`${styles.techTag} ${styles.backend}`}>Spring Boot 3.5</span>
-              <span className={`${styles.techTag} ${styles.backend}`}>Java 17</span>
-              <span className={`${styles.techTag} ${styles.backend}`}>Apache Maven</span>
-              <span className={`${styles.techTag} ${styles.backend}`}>Spring Data JPA</span>
-              <span className={`${styles.techTag} ${styles.backend}`}>Hibernate 6</span>
-              <span className={`${styles.techTag} ${styles.backend}`}>Spring Security</span>
-              <span className={`${styles.techTag} ${styles.backend}`}>JWT 0.13.0</span>
-              <span className={`${styles.techTag} ${styles.backend}`}>Springdoc OpenAPI 2.6.0</span>
-              <span className={`${styles.techTag} ${styles.backend}`}>Kafka</span>
-            </div>
-
-            <div className={styles.techSectionTitle}>AI 추천 서비스 (협업)</div>
-            <div className={styles.techTags}>
-              <span className={styles.techTag} style={{ background: 'var(--warning-light)', color: 'var(--warning)', borderColor: '#f9a8b0' }}>Flask</span>
-              <span className={styles.techTag} style={{ background: 'var(--warning-light)', color: 'var(--warning)', borderColor: '#f9a8b0' }}>Python 3.12.3</span>
-              <span className={styles.techTag} style={{ background: 'var(--warning-light)', color: 'var(--warning)', borderColor: '#f9a8b0' }}>LightGBM</span>
-              <span className={styles.techTag} style={{ background: 'var(--warning-light)', color: 'var(--warning)', borderColor: '#f9a8b0' }}>pgvector</span>
-              <span className={styles.techTag} style={{ background: 'var(--warning-light)', color: 'var(--warning)', borderColor: '#f9a8b0' }}>OpenAI Embedding</span>
-            </div>
-
-            <div className={styles.techSectionTitle}>인프라</div>
-            <div className={styles.techTags}>
-              <span className={`${styles.techTag} ${styles.infra}`}>Docker</span>
-              <span className={`${styles.techTag} ${styles.infra}`}>Docker Compose</span>
-              <span className={`${styles.techTag} ${styles.infra}`}>Jenkins</span>
-              <span className={`${styles.techTag} ${styles.infra}`}>PostgreSQL 15</span>
-              <span className={`${styles.techTag} ${styles.infra}`}>Redis 7</span>
-              <span className={`${styles.techTag} ${styles.infra}`}>AWS EC2</span>
-              <span className={`${styles.techTag} ${styles.infra}`}>AWS RDS</span>
-              <span className={`${styles.techTag} ${styles.infra}`}>AWS S3</span>
+          {/* 주요 기능 */}
+          <section className={styles.section}>
+            <h2>주요 기능</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '10px', marginTop: '12px' }}>
+              {[
+                { icon: '🤖', title: 'AI 동행 추천', desc: '성향 기반 유사도 분석으로 맞춤 동행 매칭' },
+                { icon: '📍', title: 'AR 길찾기', desc: '야구장 내부 시설 AR 경로 안내' },
+                { icon: '👥', title: '동행 찾기', desc: '경기 전·후 이동 동행 매칭 및 채팅' },
+                { icon: '💬', title: '커뮤니티', desc: '자유게시판, 식당 추천, 관람 후기 공유' },
+                { icon: '💰', title: '더치페이', desc: '동행과 비용을 간편하게 정산' },
+                { icon: '🔔', title: '실시간 알림', desc: 'FCM 기반 채팅 및 매칭 알림' },
+              ].map(({ icon, title, desc }) => (
+                <div key={title} style={{ background: 'var(--primary-20)', borderRadius: '14px', padding: '16px' }}>
+                  <div style={{ fontSize: '1.4em', marginBottom: '6px' }}>{icon}</div>
+                  <div style={{ fontWeight: '700', fontSize: '0.9em', color: 'var(--text-primary)', marginBottom: '4px' }}>{title}</div>
+                  <div style={{ fontSize: '0.78em', color: 'var(--text-secondary)', lineHeight: '1.5' }}>{desc}</div>
+                </div>
+              ))}
             </div>
           </section>
 

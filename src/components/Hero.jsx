@@ -19,7 +19,7 @@ export default function Hero() {
           <p className={styles.nameEn}>Kim Sooyeon</p>
 
           <p className={styles.desc}>
-            서비스 전체 흐름을 이해하고, <strong>아이디어를 실제 기능으로 구현하는</strong> 풀스택 개발자입니다.
+            서비스 전체 흐름을 이해하고,<br /><strong>아이디어를 실제 기능으로 구현하는</strong> 풀스택 개발자입니다.
           </p>
 
           <div className={styles.pills}>
