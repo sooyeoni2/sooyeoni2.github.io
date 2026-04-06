@@ -1,12 +1,20 @@
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from './BallBallBallDetail.module.css'
 
 export default function BallBallBallDetail() {
   const navigate = useNavigate()
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
     <div className={styles.page}>
-      <div className={styles.topBar}>
+      <div className={`${styles.topBar} ${scrolled ? styles.scrolled : ''}`}>
         <button className={styles.back} onClick={() => navigate('/projects')}>
           ← 프로젝트 목록
         </button>
@@ -121,19 +129,21 @@ export default function BallBallBallDetail() {
           {/* 주요 기능 */}
           <section className={styles.section}>
             <h2>주요 기능</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '10px', marginTop: '12px' }}>
+            <div className={styles.featureList}>
               {[
-                { icon: '🤖', title: 'AI 동행 추천', desc: '성향 기반 유사도 분석으로 맞춤 동행 매칭' },
-                { icon: '📍', title: 'AR 길찾기', desc: '야구장 내부 시설 AR 경로 안내' },
-                { icon: '👥', title: '동행 찾기', desc: '경기 전·후 이동 동행 매칭 및 채팅' },
-                { icon: '💬', title: '커뮤니티', desc: '자유게시판, 식당 추천, 관람 후기 공유' },
-                { icon: '💰', title: '더치페이', desc: '동행과 비용을 간편하게 정산' },
-                { icon: '🔔', title: '실시간 알림', desc: 'FCM 기반 채팅 및 매칭 알림' },
-              ].map(({ icon, title, desc }) => (
-                <div key={title} style={{ background: 'var(--primary-20)', borderRadius: '14px', padding: '16px' }}>
-                  <div style={{ fontSize: '1.4em', marginBottom: '6px' }}>{icon}</div>
-                  <div style={{ fontWeight: '700', fontSize: '0.9em', color: 'var(--text-primary)', marginBottom: '4px' }}>{title}</div>
-                  <div style={{ fontSize: '0.78em', color: 'var(--text-secondary)', lineHeight: '1.5' }}>{desc}</div>
+                { title: 'AI 동행 추천', desc: '성향 기반 유사도 분석으로 맞춤 동행 매칭' },
+                { title: 'AR 길찾기', desc: '야구장 내부 시설 AR 경로 안내' },
+                { title: '동행 찾기', desc: '경기 전·후 이동 동행 매칭 및 채팅' },
+                { title: '커뮤니티', desc: '자유게시판, 식당 추천, 관람 후기 공유' },
+                { title: '더치페이', desc: '동행과 비용을 간편하게 정산' },
+                { title: '실시간 알림', desc: 'FCM 기반 채팅 및 매칭 알림' },
+              ].map(({ title, desc }, i) => (
+                <div key={title} className={styles.featureListItem}>
+                  <span className={styles.featureNum}>{String(i + 1).padStart(2, '0')}</span>
+                  <div className={styles.featureListText}>
+                    <span className={styles.featureListTitle}>{title}</span>
+                    <span className={styles.featureListDesc}>{desc}</span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -484,51 +494,55 @@ export default function BallBallBallDetail() {
                 <span className={styles.troubleTag}>로그인</span>
                 <span className={styles.troubleTitle}>OAuth 콜백 구조 변경 — 토큰·신규 유저 정보 미수신</span>
               </div>
-              <div className={styles.troubleRow}>
-                <span className={`${styles.troubleLabel} ${styles.problem}`}>문제</span>
-                <span className={styles.troubleText}>초기 구현은 OAuth 표준 방식(인가 코드)으로 Deep Link를 수신했으나, 백엔드가 서버 사이드에서 토큰 교환까지 처리 후 accessToken·isNewUser를 Deep Link로 직접 내려주는 구조로 변경되어 앱이 콜백 파라미터를 받지 못함</span>
-              </div>
-              <div className={styles.troubleRow}>
-                <span className={`${styles.troubleLabel} ${styles.cause}`}>원인</span>
-                <span className={styles.troubleText}>Deep Link 핸들러가 code·state만 파싱하도록 되어 있어, 백엔드가 변경된 후 accessToken / refreshToken / isNewUser / signupCompleted 파라미터를 인식하지 못함</span>
-              </div>
-              <div className={styles.troubleRow}>
-                <span className={`${styles.troubleLabel} ${styles.solve}`}>해결</span>
-                <span className={styles.troubleText}>Deep Link 핸들러를 토큰 직접 수신 방식으로 수정하고, isNewUser 문자열을 Boolean으로 파싱해 AuthState에 저장 → Go Router가 신규/기존 유저를 분기 처리</span>
-              </div>
-              <div className={styles.troubleRow}>
-                <span className={`${styles.troubleLabel} ${styles.learn}`}>배운 점</span>
-                <span className={styles.troubleText}>프론트-백엔드 간 OAuth 콜백 구조는 초기 설계 단계에서 명확히 합의해야 하며, 백엔드 구조 변경 시 앱 측 핸들러도 함께 업데이트해야 함</span>
-              </div>
-              <div className={styles.codeCompare}>
-                <div className={styles.codeBlock}>
-                  <div className={`${styles.codeBlockHeader} ${styles.before}`}>✕ Before</div>
-                  <pre>
-                    <span className={styles.cm}>{'// OAuth 인가 코드 방식'}</span>{'\n'}
-                    <span className={styles.cm}>{'// callback?code=xxx&state=xxx'}</span>{'\n'}
-                    <span className={styles.kw}>{'final'}</span>{' code =\n  uri.queryParameters['}
-                    <span className={styles.str}>{"'code'"}</span>{'];\n'}
-                    <span className={styles.kw}>{'final'}</span>{' state =\n  uri.queryParameters['}
-                    <span className={styles.str}>{"'state'"}</span>{'];\n\n'}
-                    <span className={styles.kw}>{'if'}</span>{' (code != '}
-                    <span className={styles.kw}>{'null'}</span>{' && state != '}
-                    <span className={styles.kw}>{'null'}</span>{'} {\n  NaverAuthCallback(\n    code: code, state: state);\n}'}
-                  </pre>
+              <div className={styles.troubleBody}>
+                <div className={styles.troubleLeft}>
+                  <div className={styles.troubleRow}>
+                    <span className={`${styles.troubleLabel} ${styles.problem}`}>문제</span>
+                    <span className={styles.troubleText}>초기 구현은 OAuth 표준 방식(인가 코드)으로 Deep Link를 수신했으나, 백엔드가 서버 사이드에서 토큰 교환까지 처리 후 accessToken·isNewUser를 Deep Link로 직접 내려주는 구조로 변경되어 앱이 콜백 파라미터를 받지 못함</span>
+                  </div>
+                  <div className={styles.troubleRow}>
+                    <span className={`${styles.troubleLabel} ${styles.cause}`}>원인</span>
+                    <span className={styles.troubleText}>Deep Link 핸들러가 code·state만 파싱하도록 되어 있어, 백엔드가 변경된 후 accessToken / refreshToken / isNewUser / signupCompleted 파라미터를 인식하지 못함</span>
+                  </div>
+                  <div className={styles.troubleRow}>
+                    <span className={`${styles.troubleLabel} ${styles.solve}`}>해결</span>
+                    <span className={styles.troubleText}>Deep Link 핸들러를 토큰 직접 수신 방식으로 수정하고, isNewUser 문자열을 Boolean으로 파싱해 AuthState에 저장 → Go Router가 신규/기존 유저를 분기 처리</span>
+                  </div>
+                  <div className={styles.troubleRow}>
+                    <span className={`${styles.troubleLabel} ${styles.learn}`}>배운 점</span>
+                    <span className={styles.troubleText}>프론트-백엔드 간 OAuth 콜백 구조는 초기 설계 단계에서 명확히 합의해야 하며, 백엔드 구조 변경 시 앱 측 핸들러도 함께 업데이트해야 함</span>
+                  </div>
                 </div>
-                <div className={styles.codeBlock}>
-                  <div className={`${styles.codeBlockHeader} ${styles.after}`}>✓ After</div>
-                  <pre>
-                    <span className={styles.cm}>{'// 토큰 직접 수신 방식'}</span>{'\n'}
-                    <span className={styles.cm}>{'// callback?accessToken=xxx&isNewUser=true'}</span>{'\n'}
-                    <span className={styles.kw}>{'final'}</span>{' accessToken =\n  uri.queryParameters['}
-                    <span className={styles.str}>{"'accessToken'"}</span>{'];\n'}
-                    <span className={styles.kw}>{'final'}</span>{' isNewUserStr =\n  uri.queryParameters['}
-                    <span className={styles.str}>{"'isNewUser'"}</span>{'];\n'}
-                    <span className={styles.kw}>{'bool'}</span>{'? isNewUser;\n'}
-                    <span className={styles.kw}>{'if'}</span>{' (isNewUserStr != '}
-                    <span className={styles.kw}>{'null'}</span>{'} {\n  isNewUser = isNewUserStr\n    .toLowerCase() == '}
-                    <span className={styles.str}>{"'true'"}</span>{';\n}'}
-                  </pre>
+                <div className={styles.troubleRight}>
+                  <div className={styles.codeBlock}>
+                    <div className={`${styles.codeBlockHeader} ${styles.before}`}>✕ Before</div>
+                    <pre>
+                      <span className={styles.cm}>{'// OAuth 인가 코드 방식'}</span>{'\n'}
+                      <span className={styles.cm}>{'// callback?code=xxx&state=xxx'}</span>{'\n'}
+                      <span className={styles.kw}>{'final'}</span>{' code =\n  uri.queryParameters['}
+                      <span className={styles.str}>{"'code'"}</span>{'];\n'}
+                      <span className={styles.kw}>{'final'}</span>{' state =\n  uri.queryParameters['}
+                      <span className={styles.str}>{"'state'"}</span>{'];\n\n'}
+                      <span className={styles.kw}>{'if'}</span>{' (code != '}
+                      <span className={styles.kw}>{'null'}</span>{' && state != '}
+                      <span className={styles.kw}>{'null'}</span>{'} {\n  NaverAuthCallback(\n    code: code, state: state);\n}'}
+                    </pre>
+                  </div>
+                  <div className={styles.codeBlock}>
+                    <div className={`${styles.codeBlockHeader} ${styles.after}`}>✓ After</div>
+                    <pre>
+                      <span className={styles.cm}>{'// 토큰 직접 수신 방식'}</span>{'\n'}
+                      <span className={styles.cm}>{'// callback?accessToken=xxx&isNewUser=true'}</span>{'\n'}
+                      <span className={styles.kw}>{'final'}</span>{' accessToken =\n  uri.queryParameters['}
+                      <span className={styles.str}>{"'accessToken'"}</span>{'];\n'}
+                      <span className={styles.kw}>{'final'}</span>{' isNewUserStr =\n  uri.queryParameters['}
+                      <span className={styles.str}>{"'isNewUser'"}</span>{'];\n'}
+                      <span className={styles.kw}>{'bool'}</span>{'? isNewUser;\n'}
+                      <span className={styles.kw}>{'if'}</span>{' (isNewUserStr != '}
+                      <span className={styles.kw}>{'null'}</span>{'} {\n  isNewUser = isNewUserStr\n    .toLowerCase() == '}
+                      <span className={styles.str}>{"'true'"}</span>{';\n}'}
+                    </pre>
+                  </div>
                 </div>
               </div>
             </div>
@@ -563,37 +577,40 @@ export default function BallBallBallDetail() {
                 <span className={styles.troubleTag}>더치페이</span>
                 <span className={styles.troubleTitle}>토스페이먼츠 WebView 결제 결과 처리 — 임시 버튼 의존</span>
               </div>
-              <div className={styles.troubleRow}>
-                <span className={`${styles.troubleLabel} ${styles.problem}`}>문제</span>
-                <span className={styles.troubleText}>WebView 내 결제 완료 후 성공/실패 결과를 Flutter로 전달받지 못해, AppBar에 '테스트 완료' 버튼을 임시로 두고 수동으로 완료 처리하는 상태였음</span>
-              </div>
-              <div className={styles.troubleRow}>
-                <span className={`${styles.troubleLabel} ${styles.cause}`}>원인</span>
-                <span className={styles.troubleText}>토스페이먼츠 결제 후 successUrl·failUrl로 리다이렉트될 때 WebView가 해당 URL을 그대로 열려 해서, 앱 커스텀 스킴(ballballball://payment/...)을 Flutter에서 가로채지 못함</span>
-              </div>
-              <div className={styles.troubleRow}>
-                <span className={`${styles.troubleLabel} ${styles.solve}`}>해결</span>
-                <span className={styles.troubleText}>WebViewController의 navigationDelegate에서 ballballball:// 스킴 URL을 감지해 NavigationDecision.prevent 반환, Flutter 측에서 결제 파라미터를 파싱해 백엔드 confirm API를 호출하고 더치페이 상태 업데이트</span>
-              </div>
-              <div className={styles.troubleRow}>
-                <span className={`${styles.troubleLabel} ${styles.learn}`}>배운 점</span>
-                <span className={styles.troubleText}>WebView와 네이티브 앱 간 통신 방식(커스텀 URL 스킴, JavascriptChannel 등)은 외부 SDK 연동 전 사전에 설계해야 하며, 임시 코드가 실제 릴리즈에 포함되지 않도록 주의가 필요</span>
-              </div>
-              <div className={styles.codeCompare}>
-                <div className={styles.codeBlock}>
-                  <div className={`${styles.codeBlockHeader} ${styles.before}`}>✕ Before</div>
-                  <pre>
-                    <span className={styles.cm}>{"// 임시 '테스트 완료' 버튼으로 결제 처리"}</span>{'\n'}
-                    {'actions: [\n  TextButton(\n    onPressed: _handleTestComplete,\n    child: Text('}
-                    <span className={styles.str}>{"'테스트 완료'"}</span>{'),\n  ),\n],\n\n'}
-                    <span className={styles.kw}>{'void'}</span>{' _handleTestComplete() {\n  ScaffoldMessenger.of(context)\n    .showSnackBar(SnackBar(\n      content: Text('}
-                    <span className={styles.str}>{"'결제 완료! (테스트)'"}</span>{')));\n  Navigator.of(context).pop('}
-                    <span className={styles.kw}>{'true'}</span>{');\n}'}
-                  </pre>
+              <div className={styles.troubleBody}>
+                <div className={styles.troubleLeft}>
+                  <div className={styles.troubleRow}>
+                    <span className={`${styles.troubleLabel} ${styles.problem}`}>문제</span>
+                    <span className={styles.troubleText}>WebView 내 결제 완료 후 성공/실패 결과를 Flutter로 전달받지 못해, AppBar에 '테스트 완료' 버튼을 임시로 두고 수동으로 완료 처리하는 상태였음</span>
+                  </div>
+                  <div className={styles.troubleRow}>
+                    <span className={`${styles.troubleLabel} ${styles.cause}`}>원인</span>
+                    <span className={styles.troubleText}>토스페이먼츠 결제 후 successUrl·failUrl로 리다이렉트될 때 WebView가 해당 URL을 그대로 열려 해서, 앱 커스텀 스킴(ballballball://payment/...)을 Flutter에서 가로채지 못함</span>
+                  </div>
+                  <div className={styles.troubleRow}>
+                    <span className={`${styles.troubleLabel} ${styles.solve}`}>해결</span>
+                    <span className={styles.troubleText}>WebViewController의 navigationDelegate에서 ballballball:// 스킴 URL을 감지해 NavigationDecision.prevent 반환, Flutter 측에서 결제 파라미터를 파싱해 백엔드 confirm API를 호출하고 더치페이 상태 업데이트</span>
+                  </div>
+                  <div className={styles.troubleRow}>
+                    <span className={`${styles.troubleLabel} ${styles.learn}`}>배운 점</span>
+                    <span className={styles.troubleText}>WebView와 네이티브 앱 간 통신 방식(커스텀 URL 스킴, JavascriptChannel 등)은 외부 SDK 연동 전 사전에 설계해야 하며, 임시 코드가 실제 릴리즈에 포함되지 않도록 주의가 필요</span>
+                  </div>
                 </div>
-                <div className={styles.codeBlock}>
-                  <div className={`${styles.codeBlockHeader} ${styles.after}`}>✓ After</div>
-                  <pre>
+                <div className={styles.troubleRight}>
+                  <div className={styles.codeBlock}>
+                    <div className={`${styles.codeBlockHeader} ${styles.before}`}>✕ Before</div>
+                    <pre>
+                      <span className={styles.cm}>{"// 임시 '테스트 완료' 버튼으로 결제 처리"}</span>{'\n'}
+                      {'actions: [\n  TextButton(\n    onPressed: _handleTestComplete,\n    child: Text('}
+                      <span className={styles.str}>{"'테스트 완료'"}</span>{'),\n  ),\n],\n\n'}
+                      <span className={styles.kw}>{'void'}</span>{' _handleTestComplete() {\n  ScaffoldMessenger.of(context)\n    .showSnackBar(SnackBar(\n      content: Text('}
+                      <span className={styles.str}>{"'결제 완료! (테스트)'"}</span>{')));\n  Navigator.of(context).pop('}
+                      <span className={styles.kw}>{'true'}</span>{');\n}'}
+                    </pre>
+                  </div>
+                  <div className={styles.codeBlock}>
+                    <div className={`${styles.codeBlockHeader} ${styles.after}`}>✓ After</div>
+                    <pre>
                     <span className={styles.cm}>{'// navigationDelegate로 콜백 URL 감지'}</span>{'\n'}
                     {'_webController =\n  WebViewController()\n  ..setJavaScriptMode(\n    JavaScriptMode.unrestricted)\n  ..setNavigationDelegate(\n    NavigationDelegate(\n      onNavigationRequest:\n        _handleNavigation))\n  ..loadHtmlString(html);\n\n'}
                     <span className={styles.cm}>{'// ballballball:// 스킴 가로채기'}</span>{'\n'}
@@ -602,6 +619,7 @@ export default function BallBallBallDetail() {
                     <span className={styles.kw}>{'return'}</span>{' NavigationDecision.prevent;\n  }\n  '}
                     <span className={styles.kw}>{'return'}</span>{' NavigationDecision.navigate;\n}'}
                   </pre>
+                </div>
                 </div>
               </div>
             </div>
@@ -612,51 +630,55 @@ export default function BallBallBallDetail() {
                 <span className={styles.troubleTag}>커뮤니티</span>
                 <span className={styles.troubleTitle}>리액션 토글 후 화면 이탈 시 선택 상태 초기화</span>
               </div>
-              <div className={styles.troubleRow}>
-                <span className={`${styles.troubleLabel} ${styles.problem}`}>문제</span>
-                <span className={styles.troubleText}>리액션 버튼을 눌러 선택 상태를 바꿔도, 게시글 상세에서 목록으로 돌아오거나 목록이 새로고침되면 토글 상태가 원래대로 돌아감</span>
-              </div>
-              <div className={styles.troubleRow}>
-                <span className={`${styles.troubleLabel} ${styles.cause}`}>원인</span>
-                <span className={styles.troubleText}>로컬 리액션 상태를 담는 CommunityReactionOverrides Provider에 keepAlive가 없어 화면 이탈 시 소멸되고, 목록 갱신 시에도 _applyOverridesToPosts() 없이 서버 원본 데이터를 그대로 사용해 로컬 토글이 덮어씌워짐</span>
-              </div>
-              <div className={styles.troubleRow}>
-                <span className={`${styles.troubleLabel} ${styles.solve}`}>해결</span>
-                <span className={styles.troubleText}>@Riverpod(keepAlive: true)로 앱 생애주기 동안 Provider를 유지하고, 목록 갱신 시 _applyOverridesToPosts()로 로컬 override를 서버 데이터에 합성해 UI와 실제 상태를 항상 일치시킴</span>
-              </div>
-              <div className={styles.troubleRow}>
-                <span className={`${styles.troubleLabel} ${styles.learn}`}>배운 점</span>
-                <span className={styles.troubleText}>낙관적 업데이트(optimistic update)를 적용할 때는 서버 데이터 재조회 시 로컬 상태를 merge하는 로직을 반드시 함께 설계해야 하며, Provider의 생명주기도 UX 관점에서 의도적으로 제어해야 함</span>
-              </div>
-              <div className={styles.codeCompare}>
-                <div className={styles.codeBlock}>
-                  <div className={`${styles.codeBlockHeader} ${styles.before}`}>✕ Before</div>
-                  <pre>
-                    <span className={styles.cm}>{'// keepAlive 없음 — 화면 이탈 시 Provider 소멸'}</span>{'\n'}
-                    <span className={styles.hl}>{'@riverpod'}</span>{'\n'}
-                    <span className={styles.kw}>{'class'}</span>{' '}
-                    <span className={styles.fn}>{'CommunityReactionOverrides'}</span>{'\n  '}
-                    <span className={styles.kw}>{'extends'}</span>{' _$CommunityReactionOverrides {\n  '}
-                    <span className={styles.kw}>{'@override'}</span>{'\n  Map<'}
-                    <span className={styles.kw}>{'int'}</span>{', CommunityReactionEntity>\n      build() => {};\n}\n\n'}
-                    <span className={styles.cm}>{'// 게시글 목록 갱신 시 override 미적용'}</span>{'\n'}
-                    {'state = state.copyWith(\n  posts: posts,  '}
-                    <span className={styles.cm}>{'// raw 서버 데이터'}</span>{'\n);'}
-                  </pre>
+              <div className={styles.troubleBody}>
+                <div className={styles.troubleLeft}>
+                  <div className={styles.troubleRow}>
+                    <span className={`${styles.troubleLabel} ${styles.problem}`}>문제</span>
+                    <span className={styles.troubleText}>리액션 버튼을 눌러 선택 상태를 바꿔도, 게시글 상세에서 목록으로 돌아오거나 목록이 새로고침되면 토글 상태가 원래대로 돌아감</span>
+                  </div>
+                  <div className={styles.troubleRow}>
+                    <span className={`${styles.troubleLabel} ${styles.cause}`}>원인</span>
+                    <span className={styles.troubleText}>로컬 리액션 상태를 담는 CommunityReactionOverrides Provider에 keepAlive가 없어 화면 이탈 시 소멸되고, 목록 갱신 시에도 _applyOverridesToPosts() 없이 서버 원본 데이터를 그대로 사용해 로컬 토글이 덮어씌워짐</span>
+                  </div>
+                  <div className={styles.troubleRow}>
+                    <span className={`${styles.troubleLabel} ${styles.solve}`}>해결</span>
+                    <span className={styles.troubleText}>@Riverpod(keepAlive: true)로 앱 생애주기 동안 Provider를 유지하고, 목록 갱신 시 _applyOverridesToPosts()로 로컬 override를 서버 데이터에 합성해 UI와 실제 상태를 항상 일치시킴</span>
+                  </div>
+                  <div className={styles.troubleRow}>
+                    <span className={`${styles.troubleLabel} ${styles.learn}`}>배운 점</span>
+                    <span className={styles.troubleText}>낙관적 업데이트(optimistic update)를 적용할 때는 서버 데이터 재조회 시 로컬 상태를 merge하는 로직을 반드시 함께 설계해야 하며, Provider의 생명주기도 UX 관점에서 의도적으로 제어해야 함</span>
+                  </div>
                 </div>
-                <div className={styles.codeBlock}>
-                  <div className={`${styles.codeBlockHeader} ${styles.after}`}>✓ After</div>
-                  <pre>
-                    <span className={styles.cm}>{'// keepAlive — 앱 생애주기 동안 상태 유지'}</span>{'\n'}
-                    <span className={styles.hl}>{'@Riverpod(keepAlive: true)'}</span>{'\n'}
-                    <span className={styles.kw}>{'class'}</span>{' '}
-                    <span className={styles.fn}>{'CommunityReactionOverrides'}</span>{'\n  '}
-                    <span className={styles.kw}>{'extends'}</span>{' _$CommunityReactionOverrides {\n  '}
-                    <span className={styles.kw}>{'@override'}</span>{'\n  Map<'}
-                    <span className={styles.kw}>{'int'}</span>{', CommunityReactionEntity>\n      build() => {};\n}\n\n'}
-                    <span className={styles.cm}>{'// 목록 갱신 시 로컬 override 합성'}</span>{'\n'}
-                    <span className={styles.kw}>{'final'}</span>{' effectivePosts =\n  _applyOverridesToPosts(posts);\nstate = state.copyWith(\n  posts: effectivePosts,\n);'}
-                  </pre>
+                <div className={styles.troubleRight}>
+                  <div className={styles.codeBlock}>
+                    <div className={`${styles.codeBlockHeader} ${styles.before}`}>✕ Before</div>
+                    <pre>
+                      <span className={styles.cm}>{'// keepAlive 없음 — 화면 이탈 시 Provider 소멸'}</span>{'\n'}
+                      <span className={styles.hl}>{'@riverpod'}</span>{'\n'}
+                      <span className={styles.kw}>{'class'}</span>{' '}
+                      <span className={styles.fn}>{'CommunityReactionOverrides'}</span>{'\n  '}
+                      <span className={styles.kw}>{'extends'}</span>{' _$CommunityReactionOverrides {\n  '}
+                      <span className={styles.kw}>{'@override'}</span>{'\n  Map<'}
+                      <span className={styles.kw}>{'int'}</span>{', CommunityReactionEntity>\n      build() => {};\n}\n\n'}
+                      <span className={styles.cm}>{'// 게시글 목록 갱신 시 override 미적용'}</span>{'\n'}
+                      {'state = state.copyWith(\n  posts: posts,  '}
+                      <span className={styles.cm}>{'// raw 서버 데이터'}</span>{'\n);'}
+                    </pre>
+                  </div>
+                  <div className={styles.codeBlock}>
+                    <div className={`${styles.codeBlockHeader} ${styles.after}`}>✓ After</div>
+                    <pre>
+                      <span className={styles.cm}>{'// keepAlive — 앱 생애주기 동안 상태 유지'}</span>{'\n'}
+                      <span className={styles.hl}>{'@Riverpod(keepAlive: true)'}</span>{'\n'}
+                      <span className={styles.kw}>{'class'}</span>{' '}
+                      <span className={styles.fn}>{'CommunityReactionOverrides'}</span>{'\n  '}
+                      <span className={styles.kw}>{'extends'}</span>{' _$CommunityReactionOverrides {\n  '}
+                      <span className={styles.kw}>{'@override'}</span>{'\n  Map<'}
+                      <span className={styles.kw}>{'int'}</span>{', CommunityReactionEntity>\n      build() => {};\n}\n\n'}
+                      <span className={styles.cm}>{'// 목록 갱신 시 로컬 override 합성'}</span>{'\n'}
+                      <span className={styles.kw}>{'final'}</span>{' effectivePosts =\n  _applyOverridesToPosts(posts);\nstate = state.copyWith(\n  posts: effectivePosts,\n);'}
+                    </pre>
+                  </div>
                 </div>
               </div>
             </div>
@@ -667,52 +689,56 @@ export default function BallBallBallDetail() {
                 <span className={styles.troubleTag}>인증</span>
                 <span className={styles.troubleTitle}>로그아웃 후 서버 세션 미삭제 — FCM 알림 지속 수신</span>
               </div>
-              <div className={styles.troubleRow}>
-                <span className={`${styles.troubleLabel} ${styles.problem}`}>문제</span>
-                <span className={styles.troubleText}>로그아웃 후에도 FCM 푸시 알림이 계속 수신되고, 서버 세션이 유지된 채로 남아 보안상 문제 발생</span>
-              </div>
-              <div className={styles.troubleRow}>
-                <span className={`${styles.troubleLabel} ${styles.cause}`}>원인</span>
-                <span className={styles.troubleText}>AuthNotifier에 logout() 메서드가 없어 메뉴 화면에서 clear()만 직접 호출 — 로컬 토큰은 삭제되지만 백엔드 로그아웃 API가 호출되지 않아 서버 세션과 FCM 토큰이 그대로 유지됨</span>
-              </div>
-              <div className={styles.troubleRow}>
-                <span className={`${styles.troubleLabel} ${styles.solve}`}>해결</span>
-                <span className={styles.troubleText}>auth_provider에 logout() 메서드 추가 — 백엔드 /api/v1/logout 호출 후 FCM 토큰·로컬 토큰 삭제 순서 보장. API 실패 시에도 로컬은 항상 초기화되도록 try-catch로 처리</span>
-              </div>
-              <div className={styles.troubleRow}>
-                <span className={`${styles.troubleLabel} ${styles.learn}`}>배운 점</span>
-                <span className={styles.troubleText}>로그아웃은 단순한 로컬 상태 초기화가 아닌 서버 세션 만료, FCM 토큰 해제, 로컬 토큰 삭제를 포함하는 복합 작업이며, 인증 관련 동작은 AuthNotifier 한 곳에 집중시켜야 함</span>
-              </div>
-              <div className={styles.codeCompare}>
-                <div className={styles.codeBlock}>
-                  <div className={`${styles.codeBlockHeader} ${styles.before}`}>✕ Before</div>
-                  <pre>
-                    <span className={styles.cm}>{'// auth_provider에 logout() 없음'}</span>{'\n'}
-                    <span className={styles.cm}>{'// 메뉴 화면에서 직접 clear() 호출'}</span>{'\n'}
-                    <span className={styles.kw}>{'await'}</span>{' ref\n  .read(authNotifierProvider.notifier)\n  .clear(); '}
-                    <span className={styles.cm}>{'// API 호출 없이 로컬만 삭제'}</span>{'\n\n'}
-                    <span className={styles.cm}>{'// → 서버 세션·FCM 토큰 미삭제'}</span>{'\n'}
-                    <span className={styles.cm}>{'// → 로그아웃 후에도 push 알림 수신'}</span>
-                  </pre>
+              <div className={styles.troubleBody}>
+                <div className={styles.troubleLeft}>
+                  <div className={styles.troubleRow}>
+                    <span className={`${styles.troubleLabel} ${styles.problem}`}>문제</span>
+                    <span className={styles.troubleText}>로그아웃 후에도 FCM 푸시 알림이 계속 수신되고, 서버 세션이 유지된 채로 남아 보안상 문제 발생</span>
+                  </div>
+                  <div className={styles.troubleRow}>
+                    <span className={`${styles.troubleLabel} ${styles.cause}`}>원인</span>
+                    <span className={styles.troubleText}>AuthNotifier에 logout() 메서드가 없어 메뉴 화면에서 clear()만 직접 호출 — 로컬 토큰은 삭제되지만 백엔드 로그아웃 API가 호출되지 않아 서버 세션과 FCM 토큰이 그대로 유지됨</span>
+                  </div>
+                  <div className={styles.troubleRow}>
+                    <span className={`${styles.troubleLabel} ${styles.solve}`}>해결</span>
+                    <span className={styles.troubleText}>auth_provider에 logout() 메서드 추가 — 백엔드 /api/v1/logout 호출 후 FCM 토큰·로컬 토큰 삭제 순서 보장. API 실패 시에도 로컬은 항상 초기화되도록 try-catch로 처리</span>
+                  </div>
+                  <div className={styles.troubleRow}>
+                    <span className={`${styles.troubleLabel} ${styles.learn}`}>배운 점</span>
+                    <span className={styles.troubleText}>로그아웃은 단순한 로컬 상태 초기화가 아닌 서버 세션 만료, FCM 토큰 해제, 로컬 토큰 삭제를 포함하는 복합 작업이며, 인증 관련 동작은 AuthNotifier 한 곳에 집중시켜야 함</span>
+                  </div>
                 </div>
-                <div className={styles.codeBlock}>
-                  <div className={`${styles.codeBlockHeader} ${styles.after}`}>✓ After</div>
-                  <pre>
-                    <span className={styles.cm}>{'// auth_provider에 logout() 추가'}</span>{'\n'}
-                    <span className={styles.cm}>{'// API 호출 → FCM + 토큰 삭제 순서 보장'}</span>{'\n'}
-                    <span className={styles.kw}>{'Future'}</span>{'<'}
-                    <span className={styles.kw}>{'void'}</span>{'> '}
-                    <span className={styles.fn}>{'logout'}</span>{'() '}
-                    <span className={styles.kw}>{'async'}</span>{' {\n  '}
-                    <span className={styles.kw}>{'try'}</span>{' {\n    '}
-                    <span className={styles.kw}>{'final'}</span>{' dio = ref.read(dioProvider);\n    '}
-                    <span className={styles.kw}>{'await'}</span>{' dio.post(\n      '}
-                    <span className={styles.str}>{"'/api/v1/logout'"}</span>{');\n  } '}
-                    <span className={styles.kw}>{'catch'}</span>{' (_) {}\n  '}
-                    <span className={styles.kw}>{'await'}</span>{' '}
-                    <span className={styles.fn}>{'clear'}</span>{'(); '}
-                    <span className={styles.cm}>{'// FCM + token'}</span>{'\n}'}
-                  </pre>
+                <div className={styles.troubleRight}>
+                  <div className={styles.codeBlock}>
+                    <div className={`${styles.codeBlockHeader} ${styles.before}`}>✕ Before</div>
+                    <pre>
+                      <span className={styles.cm}>{'// auth_provider에 logout() 없음'}</span>{'\n'}
+                      <span className={styles.cm}>{'// 메뉴 화면에서 직접 clear() 호출'}</span>{'\n'}
+                      <span className={styles.kw}>{'await'}</span>{' ref\n  .read(authNotifierProvider.notifier)\n  .clear(); '}
+                      <span className={styles.cm}>{'// API 호출 없이 로컬만 삭제'}</span>{'\n\n'}
+                      <span className={styles.cm}>{'// → 서버 세션·FCM 토큰 미삭제'}</span>{'\n'}
+                      <span className={styles.cm}>{'// → 로그아웃 후에도 push 알림 수신'}</span>
+                    </pre>
+                  </div>
+                  <div className={styles.codeBlock}>
+                    <div className={`${styles.codeBlockHeader} ${styles.after}`}>✓ After</div>
+                    <pre>
+                      <span className={styles.cm}>{'// auth_provider에 logout() 추가'}</span>{'\n'}
+                      <span className={styles.cm}>{'// API 호출 → FCM + 토큰 삭제 순서 보장'}</span>{'\n'}
+                      <span className={styles.kw}>{'Future'}</span>{'<'}
+                      <span className={styles.kw}>{'void'}</span>{'> '}
+                      <span className={styles.fn}>{'logout'}</span>{'() '}
+                      <span className={styles.kw}>{'async'}</span>{' {\n  '}
+                      <span className={styles.kw}>{'try'}</span>{' {\n    '}
+                      <span className={styles.kw}>{'final'}</span>{' dio = ref.read(dioProvider);\n    '}
+                      <span className={styles.kw}>{'await'}</span>{' dio.post(\n      '}
+                      <span className={styles.str}>{"'/api/v1/logout'"}</span>{');\n  } '}
+                      <span className={styles.kw}>{'catch'}</span>{' (_) {}\n  '}
+                      <span className={styles.kw}>{'await'}</span>{' '}
+                      <span className={styles.fn}>{'clear'}</span>{'(); '}
+                      <span className={styles.cm}>{'// FCM + token'}</span>{'\n}'}
+                    </pre>
+                  </div>
                 </div>
               </div>
             </div>

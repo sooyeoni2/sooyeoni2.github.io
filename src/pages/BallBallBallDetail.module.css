@@ -1,31 +1,38 @@
 /* ===== Page layout ===== */
 .page {
   min-height: 100vh;
+  background: #EEF4FB;
+  background-image: radial-gradient(circle, #c2d8ef 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 .topBar {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 0 40px;
+  gap: 19px;
+  padding: 0 48px;
   height: 72px;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1.5px solid rgba(17,17,17,0.12);
+  background: transparent;
+  transition: background 0.3s, backdrop-filter 0.3s;
   position: sticky;
   top: 0;
   z-index: 100;
+}
+
+.scrolled {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .back {
   background: rgba(255,255,255,0.3);
   border: 1.5px solid rgba(17,17,17,0.35);
   color: #111;
-  font-size: 0.85rem;
+  font-size: 1.02rem;
   font-weight: 700;
   cursor: pointer;
-  padding: 6px 18px;
+  padding: 7px 22px;
   border-radius: 999px;
   transition: background 0.15s, color 0.15s, border-color 0.15s;
   white-space: nowrap;
@@ -38,12 +45,13 @@
 }
 
 .label {
-  font-size: 0.95rem;
+  font-size: 1.14rem;
   font-weight: 700;
   color: #111;
   display: flex;
   align-items: center;
   gap: 8px;
+  margin-left: auto;
 }
 
 .content {
@@ -77,7 +85,7 @@
   --gray-4: #D9D9D9;
   --gray-5: #F2F2F2;
   --white: #FFFFFF;
-  --bg: #F5F5F5;
+  --bg: transparent;
   --card: #FFFFFF;
   --text-primary: #000000;
   --text-secondary: #4B4B48;
@@ -261,6 +269,57 @@
   background: #E8F5E9;
   color: #2E7D32;
   border-color: #A5D6A7;
+}
+
+/* ===== Feature List ===== */
+.featureList {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+}
+
+.featureListItem {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 24px;
+  border-bottom: 1.5px solid rgba(17,17,17,0.1);
+  background: rgba(255,255,255,0.6);
+  transition: background 0.15s;
+}
+
+.featureListItem:last-child {
+  border-bottom: none;
+}
+
+.featureListItem:hover {
+  background: rgba(255,255,255,0.9);
+}
+
+.featureNum {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--primary-100);
+  min-width: 32px;
+  letter-spacing: -1px;
+}
+
+.featureListText {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.featureListTitle {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.featureListDesc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
 }
 
 /* ===== Feature Card ===== */
@@ -722,11 +781,10 @@
 }
 
 .troubleRow {
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 8px 16px;
-  margin-bottom: 10px;
-  align-items: baseline;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
 }
 
 .troubleRow:last-child {
@@ -734,34 +792,42 @@
 }
 
 .troubleLabel {
-  font-size: 0.95em;
-  font-weight: 700;
+  font-size: 0.75em;
+  font-weight: 800;
   white-space: nowrap;
-  text-align: right;
-  justify-self: end;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
-.troubleLabel.problem {
-  color: #F47A84;
-}
-
-.troubleLabel.cause {
-  color: var(--orange-100);
-}
-
-.troubleLabel.solve {
-  color: #5DCBA0;
-}
-
-.troubleLabel.learn {
-  color: var(--primary-100);
-}
+.troubleLabel.problem { color: #F47A84; }
+.troubleLabel.cause   { color: var(--orange-100); }
+.troubleLabel.solve   { color: #5DCBA0; }
+.troubleLabel.learn   { color: var(--primary-100); }
 
 .troubleText {
-  font-size: 0.88em;
+  font-size: 0.87em;
   color: var(--text-secondary);
-  line-height: 1.6;
-  padding-top: 3px;
+  line-height: 1.65;
+}
+
+/* ===== Trouble Body (2-col layout) ===== */
+.troubleBody {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.troubleLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.troubleRight {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 /* ===== Code Compare ===== */
@@ -815,6 +881,7 @@
 
 @media (max-width: 700px) {
   .codeCompare { grid-template-columns: 1fr; }
+  .troubleBody { grid-template-columns: 1fr; }
 }
 
 /* ===== Footer Nav ===== */
