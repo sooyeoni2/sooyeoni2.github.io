@@ -60,6 +60,7 @@
   color: var(--text-primary);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  font-size: 1.25rem;
 }
 
 /* ===== CSS Variables ===== */
@@ -631,7 +632,7 @@
 .resultCard h4 {
   font-weight: 700;
   font-size: 0.95em;
-  color: var(--text-primary);
+  color: var(--primary-100);
   margin-bottom: 12px;
 }
 
@@ -704,6 +705,19 @@
   font-weight: 500;
 }
 
+.gifWrap {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+}
+
+.gifWrap img {
+  width: 260px;
+  border-radius: 18px;
+  border: 1px solid var(--gray-4);
+  display: block;
+}
+
 /* ===== Contact ===== */
 .contactItem {
   display: flex;
@@ -750,8 +764,8 @@
 .troubleCard {
   background: var(--white);
   border-radius: 20px;
-  padding: 24px 20px;
-  margin-bottom: 16px;
+  padding: 28px 24px;
+  margin-bottom: 24px;
   border: 1px solid var(--gray-5);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
@@ -760,7 +774,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 28px;
 }
 
 .troubleTag {
@@ -819,6 +833,10 @@
 }
 
 .troubleLeft {
+  padding-top: 24px;
+}
+
+.troubleLeft {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -827,7 +845,8 @@
 .troubleRight {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px;
+  align-self: start;
 }
 
 /* ===== Code Compare ===== */
@@ -836,6 +855,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 10px;
   margin-top: 16px;
+  align-items: start;
 }
 
 .codeBlock {
@@ -865,12 +885,16 @@
 .codeBlock pre {
   background: #1e1e2e;
   margin: 0;
-  padding: 14px;
+  padding: 14px 14px 14px 20px;
   font-family: 'Consolas', 'Courier New', monospace;
   font-size: 0.78em;
-  line-height: 1.7;
+  line-height: 1.5;
   overflow-x: auto;
   color: #cdd6f4;
+  white-space: pre-wrap;
+  word-break: break-all;
+  height: auto;
+  display: block;
 }
 
 .codeBlock pre .kw  { color: #cba6f7; }

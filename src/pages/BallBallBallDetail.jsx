@@ -151,7 +151,7 @@ export default function BallBallBallDetail() {
 
           {/* 담당 기능 상세 */}
           <section className={styles.section}>
-            <h2>담당 기능 <span className={styles.badge}>6개</span></h2>
+            <h2>담당 기능 <span className={styles.badge}>7개</span></h2>
 
             {/* 1. 로그인/로그아웃 */}
             <div className={styles.featureCard}>
@@ -263,40 +263,8 @@ export default function BallBallBallDetail() {
               <div className={styles.featureLabel}>주요 화면</div>
               <div className={styles.screenshotRow}>
                 <div className={styles.screenshotItem}>
-                  <img src="/images/dutchpay9.png" alt="상태별 목록" />
-                  <div className={styles.scLabel}>상태별 목록</div>
-                </div>
-                <div className={styles.screenshotItem}>
-                  <img src="/images/dutchpay1.png" alt="인원선택" />
-                  <div className={styles.scLabel}>인원선택</div>
-                </div>
-                <div className={styles.screenshotItem}>
-                  <img src="/images/dutchpay2.png" alt="금액입력" />
-                  <div className={styles.scLabel}>금액입력</div>
-                </div>
-                <div className={styles.screenshotItem}>
-                  <img src="/images/dutchpay3.png" alt="더치페이 생성" />
-                  <div className={styles.scLabel}>더치페이 생성</div>
-                </div>
-                <div className={styles.screenshotItem}>
-                  <img src="/images/dutchpay4.png" alt="더치페이 생성 요청알림" />
-                  <div className={styles.scLabel}>더치페이 생성 요청알림</div>
-                </div>
-                <div className={styles.screenshotItem}>
-                  <img src="/images/dutchpay5.png" alt="상세" />
-                  <div className={styles.scLabel}>상세</div>
-                </div>
-                <div className={styles.screenshotItem}>
-                  <img src="/images/dutchpay6.png" alt="결제 화면" />
-                  <div className={styles.scLabel}>결제</div>
-                </div>
-                <div className={styles.screenshotItem}>
-                  <img src="/images/dutchpay7.png" alt="결제" />
-                  <div className={styles.scLabel}>결제</div>
-                </div>
-                <div className={styles.screenshotItem}>
-                  <img src="/images/dutchpay8.png" alt="결제 완료" />
-                  <div className={styles.scLabel}>결제완료</div>
+                  <img src="/images/dutchpay.gif" alt="더치페이 주요 화면" />
+                  <div className={styles.scLabel}>더치페이 흐름</div>
                 </div>
               </div>
 
@@ -482,6 +450,75 @@ export default function BallBallBallDetail() {
                 </ul>
               </div>
             </div>
+
+            {/* 7. AR 실내 길찾기 */}
+            <div className={styles.featureCard}>
+              <div className={styles.featureHeader}>
+                <div>
+                  <div className={styles.featureTitle}>AR 실내 길찾기</div>
+                  <div className={styles.featureSubtitle}>카메라 인식 기반 실내 AR 네비게이션</div>
+                </div>
+              </div>
+
+              <div className={styles.featureLabel}>구현 내용</div>
+              <ul>
+                <li>카메라로 주변 표지판 OCR 인식 → 현재 위치 자동 측위</li>
+                <li>목적지 POI 선택 후 경로 탐색 API 호출 → 경유점 배열 수신</li>
+                <li>AR 공간에 3D 화살표 모델(GLB) 배치하여 이동 방향 안내</li>
+                <li>카메라 포즈 0.5초 주기 추적 → 진행된 경로만큼 화살표 슬라이딩</li>
+                <li>위치 인식 모호 시 후보 다이얼로그 표시 / 수동 위치 선택 지원</li>
+              </ul>
+
+              <div className={styles.featureLabel}>주요 흐름</div>
+              <div className={styles.flowSteps}>
+                <div className={styles.flowStep}>
+                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div><div className={styles.flowLine}></div></div>
+                  <div className={styles.flowText}>목적지 선택 → POI 목록 API 호출</div>
+                </div>
+                <div className={styles.flowStep}>
+                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div><div className={styles.flowLine}></div></div>
+                  <div className={styles.flowText}>카메라 ON → 표지판 OCR 인식 → 현재 위치 측위(Localize API)</div>
+                </div>
+                <div className={styles.flowStep}>
+                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div><div className={styles.flowLine}></div></div>
+                  <div className={styles.flowText}>위치 확인 → 경로 탐색(Route API) → 경유점 수신</div>
+                </div>
+                <div className={styles.flowStep}>
+                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div><div className={styles.flowLine}></div></div>
+                  <div className={styles.flowText}>AR 뷰에 화살표 렌더링 → 카메라 이동에 따라 경유점 슬라이딩</div>
+                </div>
+                <div className={styles.flowStep}>
+                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div></div>
+                  <div className={styles.flowText}>목적지 도착 → 도착 패널 표시</div>
+                </div>
+              </div>
+
+              <div className={styles.featureLabel}>주요 화면</div>
+              <div className={styles.screenshotRow}>
+                <div className={styles.screenshotItem}>
+                  <img src="/images/ar1.jpg" alt="목적지 선택" />
+                  <div className={styles.scLabel}>목적지 선택</div>
+                </div>
+                <div className={styles.screenshotItem}>
+                  <img src="/images/ar2.jpg" alt="현위치 인식" />
+                  <div className={styles.scLabel}>현위치 인식</div>
+                </div>
+                <div className={styles.screenshotItem}>
+                  <img src="/images/ar.png" alt="AR 길찾기" />
+                  <div className={styles.scLabel}>AR 길안내</div>
+                </div>
+              </div>
+
+              <div className={styles.challenge}>
+                <div className={styles.challengeTitle}>기술적 챌린지</div>
+                <ul>
+                  <li>AR 좌표계(x,z)와 실내 지도 좌표계(x,y) 변환 매핑</li>
+                  <li>카메라 Yaw 각도 기반 화살표 방향 보정 및 앵커 재설정</li>
+                  <li>OCR 결과 모호 시 후보 다이얼로그 → 수동 위치 선택 폴백 처리</li>
+                  <li>Riverpod IndoorArNotifier로 측위·경로·POI 상태 통합 관리</li>
+                </ul>
+              </div>
+            </div>
           </section>
 
           {/* 트러블슈팅 */}
@@ -502,7 +539,7 @@ export default function BallBallBallDetail() {
                   </div>
                   <div className={styles.troubleRow}>
                     <span className={`${styles.troubleLabel} ${styles.cause}`}>원인</span>
-                    <span className={styles.troubleText}>Deep Link 핸들러가 code·state만 파싱하도록 되어 있어, 백엔드가 변경된 후 accessToken / refreshToken / isNewUser / signupCompleted 파라미터를 인식하지 못함</span>
+                    <span className={styles.troubleText}>Deep Link 핸들러가 code·state만 파싱하도록 되어 있어, 백엔드 변경 후 accessToken / isNewUser 파라미터를 인식하지 못함</span>
                   </div>
                   <div className={styles.troubleRow}>
                     <span className={`${styles.troubleLabel} ${styles.solve}`}>해결</span>
@@ -510,7 +547,7 @@ export default function BallBallBallDetail() {
                   </div>
                   <div className={styles.troubleRow}>
                     <span className={`${styles.troubleLabel} ${styles.learn}`}>배운 점</span>
-                    <span className={styles.troubleText}>프론트-백엔드 간 OAuth 콜백 구조는 초기 설계 단계에서 명확히 합의해야 하며, 백엔드 구조 변경 시 앱 측 핸들러도 함께 업데이트해야 함</span>
+                    <span className={styles.troubleText}>OAuth 콜백 구조는 초기 설계 단계에서 명확히 합의해야 하며, 백엔드 구조 변경 시 앱 측 핸들러도 함께 업데이트해야 함</span>
                   </div>
                 </div>
                 <div className={styles.troubleRight}>
@@ -555,19 +592,19 @@ export default function BallBallBallDetail() {
               </div>
               <div className={styles.troubleRow}>
                 <span className={`${styles.troubleLabel} ${styles.problem}`}>문제</span>
-                <span className={styles.troubleText}>신규 유저임에도 프로필 설정 화면이 아닌 메인 화면으로 바로 이동하거나, 반대로 기존 유저가 매번 프로필 설정으로 이동</span>
+                <span className={styles.troubleText}>신규 유저임에도 메인 화면으로 바로 이동하거나, 기존 유저가 매번 프로필 설정으로 이동</span>
               </div>
               <div className={styles.troubleRow}>
                 <span className={`${styles.troubleLabel} ${styles.cause}`}>원인</span>
-                <span className={styles.troubleText}>Deep Link 콜백 파라미터 구조 변경(위 이슈) 이후 isNewUser 값이 AuthState에 전달되지 않아 Go Router의 redirect 분기 조건이 항상 동일하게 평가됨</span>
+                <span className={styles.troubleText}>isNewUser 값이 AuthState에 전달되지 않아 Go Router의 redirect 분기 조건이 항상 동일하게 평가됨</span>
               </div>
               <div className={styles.troubleRow}>
                 <span className={`${styles.troubleLabel} ${styles.solve}`}>해결</span>
-                <span className={styles.troubleText}>isNewUser를 Boolean으로 파싱해 AuthState에 저장하고, Go Router redirect에서 isNewUser·signupCompleted 값을 조합해 프로필 설정 / 메인 화면 분기 처리</span>
+                <span className={styles.troubleText}>isNewUser를 Boolean으로 파싱해 AuthState에 저장하고, Go Router redirect에서 isNewUser·signupCompleted 값을 조합해 분기 처리</span>
               </div>
               <div className={styles.troubleRow}>
                 <span className={`${styles.troubleLabel} ${styles.learn}`}>배운 점</span>
-                <span className={styles.troubleText}>인증 상태값이 라우팅 로직과 직결되어 있으므로, 상태 모델 변경 시 라우터 분기 조건도 함께 검토하는 습관이 필요</span>
+                <span className={styles.troubleText}>인증 상태값이 라우팅 로직과 직결되므로, 상태 모델 변경 시 라우터 분기 조건도 함께 검토해야 함</span>
               </div>
             </div>
 
@@ -581,45 +618,40 @@ export default function BallBallBallDetail() {
                 <div className={styles.troubleLeft}>
                   <div className={styles.troubleRow}>
                     <span className={`${styles.troubleLabel} ${styles.problem}`}>문제</span>
-                    <span className={styles.troubleText}>WebView 내 결제 완료 후 성공/실패 결과를 Flutter로 전달받지 못해, AppBar에 '테스트 완료' 버튼을 임시로 두고 수동으로 완료 처리하는 상태였음</span>
+                    <span className={styles.troubleText}>WebView 내 결제 완료 후 성공/실패 결과를 Flutter로 전달받지 못해, '테스트 완료' 버튼을 임시로 두고 수동 처리하는 상태였음</span>
                   </div>
                   <div className={styles.troubleRow}>
                     <span className={`${styles.troubleLabel} ${styles.cause}`}>원인</span>
-                    <span className={styles.troubleText}>토스페이먼츠 결제 후 successUrl·failUrl로 리다이렉트될 때 WebView가 해당 URL을 그대로 열려 해서, 앱 커스텀 스킴(ballballball://payment/...)을 Flutter에서 가로채지 못함</span>
+                    <span className={styles.troubleText}>결제 후 successUrl로 리다이렉트될 때 WebView가 URL을 그대로 열려 해서, 앱 커스텀 스킴을 Flutter에서 가로채지 못함</span>
                   </div>
                   <div className={styles.troubleRow}>
                     <span className={`${styles.troubleLabel} ${styles.solve}`}>해결</span>
-                    <span className={styles.troubleText}>WebViewController의 navigationDelegate에서 ballballball:// 스킴 URL을 감지해 NavigationDecision.prevent 반환, Flutter 측에서 결제 파라미터를 파싱해 백엔드 confirm API를 호출하고 더치페이 상태 업데이트</span>
+                    <span className={styles.troubleText}>navigationDelegate에서 ballballball:// 스킴 URL을 감지해 NavigationDecision.prevent 반환, 결제 파라미터를 파싱해 백엔드 confirm API 호출 후 상태 업데이트</span>
                   </div>
                   <div className={styles.troubleRow}>
                     <span className={`${styles.troubleLabel} ${styles.learn}`}>배운 점</span>
-                    <span className={styles.troubleText}>WebView와 네이티브 앱 간 통신 방식(커스텀 URL 스킴, JavascriptChannel 등)은 외부 SDK 연동 전 사전에 설계해야 하며, 임시 코드가 실제 릴리즈에 포함되지 않도록 주의가 필요</span>
+                    <span className={styles.troubleText}>WebView와 네이티브 앱 간 통신 방식은 외부 SDK 연동 전 사전에 설계해야 함</span>
                   </div>
                 </div>
                 <div className={styles.troubleRight}>
                   <div className={styles.codeBlock}>
                     <div className={`${styles.codeBlockHeader} ${styles.before}`}>✕ Before</div>
                     <pre>
-                      <span className={styles.cm}>{"// 임시 '테스트 완료' 버튼으로 결제 처리"}</span>{'\n'}
+                      <span className={styles.cm}>{"// 임시 '테스트 완료' 버튼"}</span>{'\n'}
                       {'actions: [\n  TextButton(\n    onPressed: _handleTestComplete,\n    child: Text('}
-                      <span className={styles.str}>{"'테스트 완료'"}</span>{'),\n  ),\n],\n\n'}
-                      <span className={styles.kw}>{'void'}</span>{' _handleTestComplete() {\n  ScaffoldMessenger.of(context)\n    .showSnackBar(SnackBar(\n      content: Text('}
-                      <span className={styles.str}>{"'결제 완료! (테스트)'"}</span>{')));\n  Navigator.of(context).pop('}
-                      <span className={styles.kw}>{'true'}</span>{');\n}'}
+                      <span className={styles.str}>{"'테스트 완료'"}</span>{'),\n  ),\n],'}
                     </pre>
                   </div>
                   <div className={styles.codeBlock}>
                     <div className={`${styles.codeBlockHeader} ${styles.after}`}>✓ After</div>
                     <pre>
-                    <span className={styles.cm}>{'// navigationDelegate로 콜백 URL 감지'}</span>{'\n'}
-                    {'_webController =\n  WebViewController()\n  ..setJavaScriptMode(\n    JavaScriptMode.unrestricted)\n  ..setNavigationDelegate(\n    NavigationDelegate(\n      onNavigationRequest:\n        _handleNavigation))\n  ..loadHtmlString(html);\n\n'}
-                    <span className={styles.cm}>{'// ballballball:// 스킴 가로채기'}</span>{'\n'}
-                    {'NavigationDecision _handleNavigation(\n    NavigationRequest req) {\n  '}
-                    <span className={styles.kw}>{'if'}</span>{' (req.url.startsWith(_successScheme)) {\n    _handleSuccess(Uri.parse(req.url));\n    '}
-                    <span className={styles.kw}>{'return'}</span>{' NavigationDecision.prevent;\n  }\n  '}
-                    <span className={styles.kw}>{'return'}</span>{' NavigationDecision.navigate;\n}'}
-                  </pre>
-                </div>
+                      <span className={styles.cm}>{'// ballballball:// 스킴 가로채기'}</span>{'\n'}
+                      {'NavigationDecision _handleNavigation(\n    NavigationRequest req) {\n  '}
+                      <span className={styles.kw}>{'if'}</span>{' (req.url.startsWith(\n      _successScheme)) {\n    _handleSuccess(\n      Uri.parse(req.url));\n    '}
+                      <span className={styles.kw}>{'return'}</span>{' NavigationDecision.prevent;\n  }\n  '}
+                      <span className={styles.kw}>{'return'}</span>{' NavigationDecision.navigate;\n}'}
+                    </pre>
+                  </div>
                 </div>
               </div>
             </div>
@@ -634,48 +666,45 @@ export default function BallBallBallDetail() {
                 <div className={styles.troubleLeft}>
                   <div className={styles.troubleRow}>
                     <span className={`${styles.troubleLabel} ${styles.problem}`}>문제</span>
-                    <span className={styles.troubleText}>리액션 버튼을 눌러 선택 상태를 바꿔도, 게시글 상세에서 목록으로 돌아오거나 목록이 새로고침되면 토글 상태가 원래대로 돌아감</span>
+                    <span className={styles.troubleText}>리액션을 변경해도 목록으로 돌아오거나 새로고침되면 토글 상태가 원래대로 돌아감</span>
                   </div>
                   <div className={styles.troubleRow}>
                     <span className={`${styles.troubleLabel} ${styles.cause}`}>원인</span>
-                    <span className={styles.troubleText}>로컬 리액션 상태를 담는 CommunityReactionOverrides Provider에 keepAlive가 없어 화면 이탈 시 소멸되고, 목록 갱신 시에도 _applyOverridesToPosts() 없이 서버 원본 데이터를 그대로 사용해 로컬 토글이 덮어씌워짐</span>
+                    <span className={styles.troubleText}>Provider에 keepAlive가 없어 화면 이탈 시 소멸되고, 목록 갱신 시 서버 원본 데이터가 로컬 토글을 덮어씌움</span>
                   </div>
                   <div className={styles.troubleRow}>
                     <span className={`${styles.troubleLabel} ${styles.solve}`}>해결</span>
-                    <span className={styles.troubleText}>@Riverpod(keepAlive: true)로 앱 생애주기 동안 Provider를 유지하고, 목록 갱신 시 _applyOverridesToPosts()로 로컬 override를 서버 데이터에 합성해 UI와 실제 상태를 항상 일치시킴</span>
+                    <span className={styles.troubleText}>@Riverpod(keepAlive: true)로 Provider를 유지하고, 목록 갱신 시 _applyOverridesToPosts()로 로컬 override를 서버 데이터에 합성</span>
                   </div>
                   <div className={styles.troubleRow}>
                     <span className={`${styles.troubleLabel} ${styles.learn}`}>배운 점</span>
-                    <span className={styles.troubleText}>낙관적 업데이트(optimistic update)를 적용할 때는 서버 데이터 재조회 시 로컬 상태를 merge하는 로직을 반드시 함께 설계해야 하며, Provider의 생명주기도 UX 관점에서 의도적으로 제어해야 함</span>
+                    <span className={styles.troubleText}>낙관적 업데이트 적용 시 서버 데이터 재조회 때 로컬 상태를 merge하는 로직을 반드시 함께 설계해야 함</span>
                   </div>
                 </div>
                 <div className={styles.troubleRight}>
                   <div className={styles.codeBlock}>
                     <div className={`${styles.codeBlockHeader} ${styles.before}`}>✕ Before</div>
                     <pre>
-                      <span className={styles.cm}>{'// keepAlive 없음 — 화면 이탈 시 Provider 소멸'}</span>{'\n'}
+                      <span className={styles.cm}>{'// keepAlive 없음'}</span>{'\n'}
                       <span className={styles.hl}>{'@riverpod'}</span>{'\n'}
                       <span className={styles.kw}>{'class'}</span>{' '}
                       <span className={styles.fn}>{'CommunityReactionOverrides'}</span>{'\n  '}
                       <span className={styles.kw}>{'extends'}</span>{' _$CommunityReactionOverrides {\n  '}
                       <span className={styles.kw}>{'@override'}</span>{'\n  Map<'}
                       <span className={styles.kw}>{'int'}</span>{', CommunityReactionEntity>\n      build() => {};\n}\n\n'}
-                      <span className={styles.cm}>{'// 게시글 목록 갱신 시 override 미적용'}</span>{'\n'}
-                      {'state = state.copyWith(\n  posts: posts,  '}
-                      <span className={styles.cm}>{'// raw 서버 데이터'}</span>{'\n);'}
+                      {'state = state.copyWith(\n  posts: posts,\n);'}
                     </pre>
                   </div>
                   <div className={styles.codeBlock}>
                     <div className={`${styles.codeBlockHeader} ${styles.after}`}>✓ After</div>
                     <pre>
-                      <span className={styles.cm}>{'// keepAlive — 앱 생애주기 동안 상태 유지'}</span>{'\n'}
+                      <span className={styles.cm}>{'// keepAlive: true'}</span>{'\n'}
                       <span className={styles.hl}>{'@Riverpod(keepAlive: true)'}</span>{'\n'}
                       <span className={styles.kw}>{'class'}</span>{' '}
                       <span className={styles.fn}>{'CommunityReactionOverrides'}</span>{'\n  '}
                       <span className={styles.kw}>{'extends'}</span>{' _$CommunityReactionOverrides {\n  '}
                       <span className={styles.kw}>{'@override'}</span>{'\n  Map<'}
                       <span className={styles.kw}>{'int'}</span>{', CommunityReactionEntity>\n      build() => {};\n}\n\n'}
-                      <span className={styles.cm}>{'// 목록 갱신 시 로컬 override 합성'}</span>{'\n'}
                       <span className={styles.kw}>{'final'}</span>{' effectivePosts =\n  _applyOverridesToPosts(posts);\nstate = state.copyWith(\n  posts: effectivePosts,\n);'}
                     </pre>
                   </div>
@@ -693,50 +722,43 @@ export default function BallBallBallDetail() {
                 <div className={styles.troubleLeft}>
                   <div className={styles.troubleRow}>
                     <span className={`${styles.troubleLabel} ${styles.problem}`}>문제</span>
-                    <span className={styles.troubleText}>로그아웃 후에도 FCM 푸시 알림이 계속 수신되고, 서버 세션이 유지된 채로 남아 보안상 문제 발생</span>
+                    <span className={styles.troubleText}>로그아웃 후에도 FCM 알림이 계속 수신되고 서버 세션이 유지됨</span>
                   </div>
                   <div className={styles.troubleRow}>
                     <span className={`${styles.troubleLabel} ${styles.cause}`}>원인</span>
-                    <span className={styles.troubleText}>AuthNotifier에 logout() 메서드가 없어 메뉴 화면에서 clear()만 직접 호출 — 로컬 토큰은 삭제되지만 백엔드 로그아웃 API가 호출되지 않아 서버 세션과 FCM 토큰이 그대로 유지됨</span>
+                    <span className={styles.troubleText}>AuthNotifier에 logout() 메서드가 없어 로컬 토큰만 삭제되고, 백엔드 로그아웃 API와 FCM 토큰 해제가 호출되지 않음</span>
                   </div>
                   <div className={styles.troubleRow}>
                     <span className={`${styles.troubleLabel} ${styles.solve}`}>해결</span>
-                    <span className={styles.troubleText}>auth_provider에 logout() 메서드 추가 — 백엔드 /api/v1/logout 호출 후 FCM 토큰·로컬 토큰 삭제 순서 보장. API 실패 시에도 로컬은 항상 초기화되도록 try-catch로 처리</span>
+                    <span className={styles.troubleText}>logout() 메서드 추가 — 서버 /logout API 호출 후 FCM·로컬 토큰 순차 삭제, API 실패 시에도 로컬은 항상 초기화</span>
                   </div>
                   <div className={styles.troubleRow}>
                     <span className={`${styles.troubleLabel} ${styles.learn}`}>배운 점</span>
-                    <span className={styles.troubleText}>로그아웃은 단순한 로컬 상태 초기화가 아닌 서버 세션 만료, FCM 토큰 해제, 로컬 토큰 삭제를 포함하는 복합 작업이며, 인증 관련 동작은 AuthNotifier 한 곳에 집중시켜야 함</span>
+                    <span className={styles.troubleText}>로그아웃은 로컬 상태 초기화가 아닌 서버 세션·FCM·토큰을 포함하는 복합 작업이며, 인증 동작은 AuthNotifier 한 곳에 집중시켜야 함</span>
                   </div>
                 </div>
                 <div className={styles.troubleRight}>
                   <div className={styles.codeBlock}>
                     <div className={`${styles.codeBlockHeader} ${styles.before}`}>✕ Before</div>
                     <pre>
-                      <span className={styles.cm}>{'// auth_provider에 logout() 없음'}</span>{'\n'}
-                      <span className={styles.cm}>{'// 메뉴 화면에서 직접 clear() 호출'}</span>{'\n'}
-                      <span className={styles.kw}>{'await'}</span>{' ref\n  .read(authNotifierProvider.notifier)\n  .clear(); '}
-                      <span className={styles.cm}>{'// API 호출 없이 로컬만 삭제'}</span>{'\n\n'}
-                      <span className={styles.cm}>{'// → 서버 세션·FCM 토큰 미삭제'}</span>{'\n'}
-                      <span className={styles.cm}>{'// → 로그아웃 후에도 push 알림 수신'}</span>
+                      <span className={styles.cm}>{'// 로컬만 삭제, API 호출 없음'}</span>{'\n'}
+                      <span className={styles.kw}>{'await'}</span>{' ref\n  .read(authNotifierProvider\n    .notifier)\n  .clear();'}
                     </pre>
                   </div>
                   <div className={styles.codeBlock}>
                     <div className={`${styles.codeBlockHeader} ${styles.after}`}>✓ After</div>
                     <pre>
-                      <span className={styles.cm}>{'// auth_provider에 logout() 추가'}</span>{'\n'}
-                      <span className={styles.cm}>{'// API 호출 → FCM + 토큰 삭제 순서 보장'}</span>{'\n'}
+                      <span className={styles.cm}>{'// API 호출 → FCM + 토큰 삭제'}</span>{'\n'}
                       <span className={styles.kw}>{'Future'}</span>{'<'}
                       <span className={styles.kw}>{'void'}</span>{'> '}
                       <span className={styles.fn}>{'logout'}</span>{'() '}
                       <span className={styles.kw}>{'async'}</span>{' {\n  '}
                       <span className={styles.kw}>{'try'}</span>{' {\n    '}
-                      <span className={styles.kw}>{'final'}</span>{' dio = ref.read(dioProvider);\n    '}
                       <span className={styles.kw}>{'await'}</span>{' dio.post(\n      '}
                       <span className={styles.str}>{"'/api/v1/logout'"}</span>{');\n  } '}
                       <span className={styles.kw}>{'catch'}</span>{' (_) {}\n  '}
                       <span className={styles.kw}>{'await'}</span>{' '}
-                      <span className={styles.fn}>{'clear'}</span>{'(); '}
-                      <span className={styles.cm}>{'// FCM + token'}</span>{'\n}'}
+                      <span className={styles.fn}>{'clear'}</span>{'();\n}'}
                     </pre>
                   </div>
                 </div>
@@ -748,86 +770,44 @@ export default function BallBallBallDetail() {
           <section className={styles.section}>
             <h2>프론트엔드 성능 최적화 및 컴포넌트 설계</h2>
 
-            <div className={styles.perfSubTitle}>Widget Rebuild 최소화</div>
-            <p style={{ fontSize: '0.85em', color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '10px' }}>
-              Flutter는 상태 변경 시 위젯 트리를 재빌드하므로, 불필요한 rebuild 범위를 줄이는 것이 성능의 핵심입니다.
-            </p>
-            <table className={styles.perfTable}>
-              <thead>
-                <tr>
-                  <th>기법</th>
-                  <th>적용 위치</th>
-                  <th>효과</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>const</code> 생성자</td>
-                  <td>버튼·카드·레이블 등 정적 위젯 전반</td>
-                  <td>상태 무관 위젯의 rebuild 완전 방지</td>
-                </tr>
-                <tr>
-                  <td><code>ref.watch(provider.select())</code></td>
-                  <td>게시글 목록 아이템</td>
-                  <td>구독 필드 변경 시에만 rebuild 트리거</td>
-                </tr>
-                <tr>
-                  <td><code>RepaintBoundary</code></td>
-                  <td>이모지 리액션 통계 위젯</td>
-                  <td>해당 영역만 리페인트 격리</td>
-                </tr>
-              </tbody>
-            </table>
-
-            <div className={styles.perfSubTitle}>리스트 렌더링 최적화</div>
+            <div className={styles.featureLabel}>Widget Rebuild 최소화</div>
             <ul className={styles.perfList}>
-              <li><strong>ListView.builder 적용</strong>: 커뮤니티 게시글 목록에 적용 → 화면에 보이는 아이템만 빌드되어 초기 렌더링 시간 단축</li>
-              <li><strong>CachedNetworkImage 활용</strong>: 프로필 이미지·게시글 첨부 이미지에 캐시 적용 → 동일 이미지 재요청 제거, 스크롤 시 깜빡임 방지</li>
-              <li><strong>무한 스크롤 페이지네이션</strong>: 전체 데이터를 한 번에 불러오지 않고 필요한 만큼만 로드하여 초기 API 응답 속도 개선</li>
+              <li><strong>const 생성자</strong>: 정적 위젯의 불필요한 rebuild 방지</li>
+              <li><strong>ref.watch(provider.select())</strong>: 구독 필드 변경 시에만 rebuild 트리거</li>
+              <li><strong>RepaintBoundary</strong>: 리액션 통계 위젯 리페인트 영역 격리</li>
             </ul>
 
-            <div className={styles.perfSubTitle}>공통 컴포넌트 설계</div>
+            <div className={styles.featureLabel}>리스트 렌더링 최적화</div>
+            <ul className={styles.perfList}>
+              <li><strong>ListView.builder</strong>: 화면에 보이는 아이템만 빌드</li>
+              <li><strong>CachedNetworkImage</strong>: 이미지 캐시로 재요청 제거 및 깜빡임 방지</li>
+              <li><strong>무한 스크롤 페이지네이션</strong>: 필요한 만큼만 로드해 초기 응답 속도 개선</li>
+            </ul>
+
+            <div className={styles.featureLabel}>공통 컴포넌트 설계</div>
             <p style={{ fontSize: '0.85em', color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '16px' }}>
-              화면마다 중복되던 버튼·입력창·앱바를 <strong>shared/widgets</strong>로 분리해
-              디자인 변경 시 한 곳만 수정하면 전체 화면에 반영되도록 설계했습니다.
-              각 위젯은 상태(로딩·비활성·에러)와 스타일 변형을 파라미터로 제어해
-              여러 화면에서 그대로 재사용할 수 있습니다.
+              중복되던 버튼·입력창·앱바를 <strong>shared/widgets</strong>로 분리해 디자인 변경 시 한 곳만 수정하면 전체에 반영되도록 했습니다.
             </p>
             <div className={styles.componentGrid}>
               <div className={styles.componentCard}>
                 <div className={styles.compName}>Button</div>
-                <div className={styles.compDesc}>
-                  <code>PrimaryButton</code> · <code>OutlineButton</code> · <code>TextOnlyButton</code><br />
-                  로딩·비활성·아이콘 상태를 파라미터 하나로 제어
-                </div>
+                <div className={styles.compDesc}>PrimaryButton · OutlineButton · TextOnlyButton</div>
               </div>
               <div className={styles.componentCard}>
                 <div className={styles.compName}>TextField</div>
-                <div className={styles.compDesc}>
-                  <code>CustomTextField</code> · <code>PasswordTextField</code> · <code>FloatingLabelTextField</code><br />
-                  유효성 검사·힌트·비밀번호 토글을 공통으로 처리
-                </div>
+                <div className={styles.compDesc}>CustomTextField · PasswordTextField · FloatingLabelTextField</div>
               </div>
               <div className={styles.componentCard}>
                 <div className={styles.compName}>AppBar</div>
-                <div className={styles.compDesc}>
-                  <code>CustomAppBar</code> · <code>SearchAppBar</code> · <code>TabbedAppBar</code> · <code>TransparentAppBar</code><br />
-                  화면 유형에 맞는 4가지 변형으로 일관된 상단 바 제공
-                </div>
+                <div className={styles.compDesc}>CustomAppBar · SearchAppBar · TabbedAppBar · TransparentAppBar</div>
               </div>
               <div className={styles.componentCard}>
                 <div className={styles.compName}>Navigation</div>
-                <div className={styles.compDesc}>
-                  <code>MainNavigationBar</code><br />
-                  하단 탭 전환을 단일 컴포넌트로 관리
-                </div>
+                <div className={styles.compDesc}>MainNavigationBar — 하단 탭 전환 단일 컴포넌트</div>
               </div>
               <div className={styles.componentCard}>
                 <div className={styles.compName}>TripleShuffleCarousel</div>
-                <div className={styles.compDesc}>
-                  중앙 카드 강조 + 무한 루프 자동 슬라이드<br />
-                  홈 추천 섹션에 덱(deck) 스타일 UX 구현
-                </div>
+                <div className={styles.compDesc}>중앙 카드 강조 + 무한 루프 자동 슬라이드</div>
               </div>
             </div>
           </section>
@@ -835,41 +815,35 @@ export default function BallBallBallDetail() {
           {/* 아키텍처 */}
           <section className={styles.section}>
             <h2>아키텍처</h2>
-            <img src="/images/erd.png" alt="ERD" style={{ width: '100%', borderRadius: '16px', marginBottom: '12px' }} />
-            <div style={{ fontSize: '0.8em', color: 'var(--text-hint)', textAlign: 'center', marginBottom: '20px' }}>ERD (Entity Relationship Diagram)</div>
-            <img src="/images/architecture.png" alt="시스템 아키텍처" style={{ width: '100%', borderRadius: '16px', marginBottom: '20px' }} />
-            <div style={{ fontSize: '0.88em', fontWeight: '600', color: 'var(--text-secondary)', marginBottom: '12px' }}>
-              프론트엔드 Clean Architecture
-            </div>
+
+            <div className={styles.featureLabel}>Clean Architecture</div>
+            <p style={{ fontSize: '0.9em', color: 'var(--text-secondary)', lineHeight: '1.85', marginBottom: '16px' }}>
+              화면·비즈니스 로직·API 호출의 관심사를 분리해 각 레이어가 독립적으로 변경될 수 있도록
+              Data / Domain / Presentation 3계층 구조를 적용했습니다.
+            </p>
+
             <div className={styles.archTree}>
-              <span className={styles.folder}>lib/</span>{'\n'}
-              {'├── '}<span className={styles.folder}>core/</span>{'                    '}<span className={styles.comment}># 공통 모듈</span>{'\n'}
-              {'│   ├── '}<span className={styles.folder}>auth/</span>{'                '}<span className={styles.comment}># 인증 상태 관리</span>{'\n'}
-              {'│   ├── '}<span className={styles.folder}>deeplink/</span>{'            '}<span className={styles.comment}># 딥링크 처리</span>{'\n'}
-              {'│   ├── '}<span className={styles.folder}>error/</span>{'               '}<span className={styles.comment}># 에러 핸들링</span>{'\n'}
-              {'│   ├── '}<span className={styles.folder}>providers/</span>{'           '}<span className={styles.comment}># Dio HTTP 클라이언트</span>{'\n'}
-              {'│   ├── '}<span className={styles.folder}>services/</span>{'            '}<span className={styles.comment}># FCM 서비스</span>{'\n'}
-              {'│   ├── '}<span className={styles.folder}>theme/</span>{'               '}<span className={styles.comment}># 앱 테마 / 컬러 / 폰트</span>{'\n'}
-              {'│   └── '}<span className={styles.folder}>websocket/</span>{'           '}<span className={styles.comment}># WebSocket 연결</span>{'\n'}
-              {'│\n'}
-              {'├── '}<span className={styles.folder}>features/</span>{'                '}<span className={styles.comment}># 기능별 모듈</span>{'\n'}
-              {'│   ├── '}<span className={styles.folder}>auth/</span>{'                '}<span className={styles.comment}># 로그인 / 회원가입</span>{'\n'}
-              {'│   │   ├── data/            '}<span className={styles.comment}># DTO, DataSource, Mapper</span>{'\n'}
-              {'│   │   ├── domain/          '}<span className={styles.comment}># Entity, UseCase</span>{'\n'}
-              {'│   │   └── presentation/    '}<span className={styles.comment}># Screen, Provider, Widget</span>{'\n'}
-              {'│   ├── '}<span className={styles.folder}>dutchpay/</span>{'            '}<span className={styles.comment}># 더치페이</span>{'\n'}
-              {'│   ├── '}<span className={styles.folder}>community/</span>{'           '}<span className={styles.comment}># 커뮤니티</span>{'\n'}
-              {'│   ├── '}<span className={styles.folder}>menu/</span>{'                '}<span className={styles.comment}># 메뉴 / 프로필</span>{'\n'}
-              {'│   └── ...\n'}
-              {'│\n'}
-              {'└── '}<span className={styles.folder}>shared/</span>{'                  '}<span className={styles.comment}># 공용 위젯</span>{'\n'}
-              {'    └── '}<span className={styles.folder}>widgets/</span>
+              {'feature/\n'}
+              {'├── data/\n'}
+              {'│   ├── '}<span className={styles.folder}>data_source/</span>{'   '}<span className={styles.comment}># Dio로 API 호출 (interface + impl)</span>{'\n'}
+              {'│   ├── '}<span className={styles.folder}>dto/</span>{'           '}<span className={styles.comment}># JSON 파싱 (freezed + json_serializable)</span>{'\n'}
+              {'│   ├── '}<span className={styles.folder}>mapper/</span>{'        '}<span className={styles.comment}># DTO → Entity 변환</span>{'\n'}
+              {'│   └── '}<span className={styles.folder}>repository/</span>{'    '}<span className={styles.comment}># Repository 구현체</span>{'\n'}
+              {'├── domain/\n'}
+              {'│   ├── '}<span className={styles.folder}>entity/</span>{'        '}<span className={styles.comment}># 비즈니스 모델</span>{'\n'}
+              {'│   ├── '}<span className={styles.folder}>repository/</span>{'    '}<span className={styles.comment}># Repository 인터페이스</span>{'\n'}
+              {'│   └── '}<span className={styles.folder}>usecase/</span>{'       '}<span className={styles.comment}># 단일 책임 유스케이스</span>{'\n'}
+              {'└── presentation/\n'}
+              {'    ├── '}<span className={styles.folder}>provider/</span>{'      '}<span className={styles.comment}># Riverpod Notifier + State</span>{'\n'}
+              {'    ├── '}<span className={styles.folder}>screen/</span>{'        '}<span className={styles.comment}># UI 화면</span>{'\n'}
+              {'    └── '}<span className={styles.folder}>widgets/</span>{'       '}<span className={styles.comment}># 재사용 위젯</span>
             </div>
 
-            <p style={{ fontSize: '0.9em', color: 'var(--text-secondary)', lineHeight: '1.85', marginTop: '20px' }}>
-              계층을 나눈 게 실제로 도움이 됐던 건 백엔드 API 스펙이 중간에 바뀌었을 때였습니다.
-              응답 필드명이 변경됐는데 DTO와 Mapper만 수정하면 됐고, 화면 코드는 전혀 건드릴 필요가 없었어요.
-              기능이 많아질수록 이 구조의 이점이 더 느껴졌습니다.
+            <div className={styles.featureLabel}>적용 후 좋았던 점</div>
+            <p style={{ fontSize: '0.9em', color: 'var(--text-secondary)', lineHeight: '1.85', marginTop: '8px' }}>
+              서버 응답 필드명이 바뀌었을 때 DTO와 Mapper만 수정하면 됐고 화면 코드는 건드릴 필요가 없었습니다.
+              반대로 UI가 바뀌어도 data 레이어는 영향받지 않았고, 기능이 늘어날수록 각 레이어 역할이 명확해서
+              어디를 고쳐야 할지 바로 찾을 수 있었습니다.
             </p>
           </section>
 
@@ -878,32 +852,32 @@ export default function BallBallBallDetail() {
             <h2>마치며</h2>
 
             <div className={styles.resultCard}>
-              <h4>로그아웃은 생각보다 복잡하다</h4>
+              <h4>로그아웃은 생각보다 복잡</h4>
               <p style={{ fontSize: '0.88em', color: 'var(--text-secondary)', lineHeight: '1.7', marginTop: '8px' }}>
                 로컬 토큰 삭제만으로 끝이라고 생각했는데, 서버 세션·FCM 토큰 해제까지 포함하는 복합 작업이었습니다.
-                인증 관련 동작은 AuthNotifier 한 곳에 모아야 한다는 걸 이 과정에서 배웠어요.
+                인증 관련 동작은 AuthNotifier 한 곳에 모아야 한다는 것을 이 과정에서 배웠습니다.
               </p>
             </div>
 
             <div className={styles.resultCard}>
-              <h4>WebView 연동은 통신 방식부터 설계해야 한다</h4>
+              <h4>WebView 연동은 통신 방식부터 설계</h4>
               <p style={{ fontSize: '0.88em', color: 'var(--text-secondary)', lineHeight: '1.7', marginTop: '8px' }}>
                 토스페이먼츠 WebView에서 결제 결과를 앱으로 전달하는 방법을 처음에 설계하지 않아서
                 임시 버튼으로 때우는 상태가 됐습니다. 커스텀 URL 스킴으로 콜백을 가로채는 방식으로 해결했고,
-                외부 SDK 연동 전에 통신 흐름을 먼저 정해야 한다는 걸 실감했습니다.
+                외부 SDK 연동 전에 통신 흐름을 먼저 정해야 한다는 것을 실감했습니다.
               </p>
             </div>
 
             <div className={styles.resultCard}>
-              <h4>낙관적 업데이트는 롤백까지 설계해야 한다</h4>
+              <h4>낙관적 업데이트는 롤백까지 설계</h4>
               <p style={{ fontSize: '0.88em', color: 'var(--text-secondary)', lineHeight: '1.7', marginTop: '8px' }}>
                 리액션 토글을 서버 응답 전에 UI에 먼저 반영했는데, 목록이 새로고침되면 상태가 원래대로 돌아가는 문제가 있었습니다.
-                keepAlive와 override 합성 로직을 추가해서 해결했고, 낙관적 업데이트는 서버 데이터 재조회 시의 merge 전략도 함께 고려해야 한다는 걸 배웠습니다.
+                keepAlive와 override 합성 로직을 추가해서 해결했고, 낙관적 업데이트는 서버 데이터 재조회 시의 merge 전략도 함께 고려해야 한다는 것을 배웠습니다.
               </p>
             </div>
 
             <div className={styles.resultCard}>
-              <h4>프론트-백 협업에서 가장 중요한 건 초기 스펙 합의</h4>
+              <h4>프론트-백 협업, 초기 스펙 합의</h4>
               <p style={{ fontSize: '0.88em', color: 'var(--text-secondary)', lineHeight: '1.7', marginTop: '8px' }}>
                 OAuth 콜백 구조가 중간에 바뀌면서 Deep Link 핸들러를 전면 수정했습니다.
                 Swagger 기반으로 API를 협의했지만, 인증처럼 흐름이 복잡한 부분은 텍스트 스펙만으로는 부족하고 시퀀스 다이어그램 수준의 합의가 필요하다고 느꼈습니다.
