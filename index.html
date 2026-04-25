@@ -6,9 +6,10 @@
     <title>김수연 | Portfolio</title>
     <script>
       (function() {
-        var p = window.location.search.slice(1);
-        if (p.indexOf('p=') === 0) {
-          window.history.replaceState(null, null, decodeURIComponent(p.slice(2)));
+        var redirect = sessionStorage.getItem('redirect');
+        if (redirect) {
+          sessionStorage.removeItem('redirect');
+          window.history.replaceState(null, null, redirect);
         }
       })();
     </script>
