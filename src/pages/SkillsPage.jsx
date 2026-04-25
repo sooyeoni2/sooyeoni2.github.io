@@ -27,8 +27,150 @@ const ROWS = [
 const PROF_LABELS = { 1: '입문', 2: '기초', 3: '보통', 4: '능숙', 5: '숙련' }
 const TOOLS = ['✦', '⬚', '✏', '⌫', 'A', '◻', '◯', '╲', '꩜', '🖌']
 
+/* ── Floating background pixel art ── */
+const R = ({ x, y, w = 1, h = 1, c }) => <rect x={x} y={y} width={w} height={h} fill={c} />
+const PS = { imageRendering: 'pixelated', display: 'block' }
+
+function PixelFloppy({ size = 28 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 10 10" style={PS}>
+      <R x={0} y={0} w={10} h={10} c="#f7c948" />
+      <R x={0} y={0} w={10} h={1} c="#8a6800" /><R x={0} y={0} w={1} h={10} c="#8a6800" />
+      <R x={9} y={0} w={1} h={10} c="#8a6800" /><R x={0} y={9} w={10} h={1} c="#8a6800" />
+      <R x={1} y={1} w={5} h={3} c="#fff8d0" />
+      <R x={7} y={1} w={2} h={2} c="#c09800" />
+      <R x={3} y={7} w={4} h={1} c="#555" />
+    </svg>
+  )
+}
+
+function PixelStar({ size = 26 }) {
+  const c = '#f04030'
+  return (
+    <svg width={size} height={size} viewBox="0 0 10 10" style={PS}>
+      <R x={4} y={0} w={2} h={10} c={c} /><R x={0} y={4} w={10} h={2} c={c} />
+      <R x={2} y={2} w={2} h={2} c={c} /><R x={6} y={2} w={2} h={2} c={c} />
+      <R x={2} y={6} w={2} h={2} c={c} /><R x={6} y={6} w={2} h={2} c={c} />
+    </svg>
+  )
+}
+
+function PixelHeartDeco({ size = 22, color = '#8844cc' }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 10 10" style={PS}>
+      <g fill={color}>
+        <rect x="1" y="2" width="3" height="1" /><rect x="6" y="2" width="3" height="1" />
+        <rect x="0" y="3" width="4" height="1" /><rect x="6" y="3" width="4" height="1" />
+        <rect x="0" y="4" width="10" height="1" /><rect x="1" y="5" width="8" height="1" />
+        <rect x="2" y="6" width="6" height="1" /><rect x="3" y="7" width="4" height="1" />
+        <rect x="4" y="8" width="2" height="1" />
+      </g>
+    </svg>
+  )
+}
+
+function PixelDiamond({ size = 22 }) {
+  const c = '#40c4ff'
+  return (
+    <svg width={size} height={size} viewBox="0 0 9 9" style={PS}>
+      <R x={3} y={0} w={3} h={1} c={c} /><R x={2} y={1} w={5} h={1} c={c} />
+      <R x={1} y={2} w={7} h={1} c={c} /><R x={0} y={3} w={9} h={2} c={c} />
+      <R x={1} y={5} w={7} h={1} c={c} /><R x={2} y={6} w={5} h={1} c={c} />
+      <R x={3} y={7} w={3} h={1} c={c} /><R x={4} y={8} w={1} h={1} c={c} />
+    </svg>
+  )
+}
+
+function PixelMonitor({ size = 28 }) {
+  const b = '#2a9a94', s = '#c8f4f0'
+  return (
+    <svg width={size} height={size} viewBox="0 0 12 10" style={PS}>
+      <R x={0} y={0} w={12} h={7} c={b} /><R x={1} y={1} w={10} h={5} c={s} />
+      <R x={5} y={7} w={2} h={1} c={b} /><R x={3} y={8} w={6} h={1} c={b} />
+    </svg>
+  )
+}
+
+function PixelFlower({ size = 24 }) {
+  const p = '#f0a820', cc = '#f0d060'
+  return (
+    <svg width={size} height={size} viewBox="0 0 9 9" style={PS}>
+      <R x={3} y={0} w={3} h={2} c={p} /><R x={3} y={7} w={3} h={2} c={p} />
+      <R x={0} y={3} w={2} h={3} c={p} /><R x={7} y={3} w={2} h={3} c={p} />
+      <R x={1} y={1} w={2} h={2} c={p} /><R x={6} y={1} w={2} h={2} c={p} />
+      <R x={1} y={6} w={2} h={2} c={p} /><R x={6} y={6} w={2} h={2} c={p} />
+      <R x={3} y={3} w={3} h={3} c={cc} />
+    </svg>
+  )
+}
+
+function PixelNote({ size = 22 }) {
+  const c = '#f06820'
+  return (
+    <svg width={size} height={size} viewBox="0 0 8 10" style={PS}>
+      <R x={0} y={7} w={4} h={3} c={c} /><R x={3} y={0} w={1} h={8} c={c} />
+      <R x={4} y={0} w={3} h={1} c={c} /><R x={5} y={1} w={2} h={1} c={c} />
+      <R x={6} y={2} w={1} h={1} c={c} />
+    </svg>
+  )
+}
+
+function PixelSmallStar({ size = 18, color = '#3a7a38' }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 8 8" style={PS}>
+      <R x={3} y={0} w={2} h={8} c={color} /><R x={0} y={3} w={8} h={2} c={color} />
+      <R x={2} y={2} w={1} h={1} c={color} /><R x={5} y={2} w={1} h={1} c={color} />
+      <R x={2} y={5} w={1} h={1} c={color} /><R x={5} y={5} w={1} h={1} c={color} />
+    </svg>
+  )
+}
+
+function PixelCherry({ size = 28 }) {
+  const r = '#cc2020', dr = '#991010', g = '#228020'
+  return (
+    <svg width={size} height={size} viewBox="0 0 12 11" style={PS}>
+      <R x={3} y={0} w={1} h={4} c={g} /><R x={4} y={1} w={1} h={1} c={g} />
+      <R x={5} y={1} w={3} h={1} c={g} /><R x={7} y={2} w={1} h={3} c={g} />
+      <R x={2} y={3} w={2} h={1} c={r} /><R x={1} y={4} w={4} h={3} c={r} />
+      <R x={2} y={7} w={2} h={1} c={dr} />
+      <R x={7} y={4} w={2} h={1} c={r} /><R x={6} y={5} w={4} h={3} c={r} />
+      <R x={7} y={8} w={2} h={1} c={dr} />
+    </svg>
+  )
+}
+
+const DECO_LIST = [
+  { id:1,  el:<PixelFloppy size={26}/>,                    left:'8%',  top:'14%', delay:0,   dur:7   },
+  { id:11, el:<PixelNote size={22}/>,                      left:'14%', top:'30%', delay:1.2, dur:7.5 },
+  { id:2,  el:<PixelMonitor size={26}/>,                   left:'3%',  top:'44%', delay:0.5, dur:7.5 },
+  { id:3,  el:<PixelHeartDeco size={22}/>,                 left:'15%', top:'68%', delay:2,   dur:6.5 },
+  { id:4,  el:<PixelSmallStar size={18} color="#3a7a38"/>, left:'6%',  top:'85%', delay:4,   dur:9   },
+  { id:5,  el:<PixelCherry size={24}/>,                    left:'82%', top:'12%', delay:0.8, dur:7   },
+  { id:6,  el:<PixelStar size={24}/>,                      left:'93%', top:'28%', delay:1.5, dur:8   },
+  { id:7,  el:<PixelFlower size={22}/>,                    left:'86%', top:'55%', delay:2.5, dur:8.5 },
+  { id:8,  el:<PixelSmallStar size={16} color="#4040a0"/>, left:'78%', top:'42%', delay:2,   dur:7   },
+  { id:9,  el:<PixelDiamond size={22}/>,                   left:'94%', top:'72%', delay:3,   dur:8   },
+  { id:10, el:<PixelNote size={22}/>,                      left:'80%', top:'88%', delay:1,   dur:6.5 },
+]
+
+function FloatingDecos() {
+  return (
+    <div className={styles.floatingBg} aria-hidden="true">
+      {DECO_LIST.map(d => (
+        <div
+          key={d.id}
+          className={styles.floatDeco}
+          style={{ left: d.left, top: d.top, animationDelay: `${d.delay}s`, animationDuration: `${d.dur}s` }}
+        >
+          {d.el}
+        </div>
+      ))}
+    </div>
+  )
+}
+
 function PixelHeart({ filled, size = 18 }) {
-  const c = filled ? '#4A6741' : '#C4DCC0'
+  const c = filled ? '#ff8fab' : '#C4DCC0'
   return (
     <svg width={size} height={size} viewBox="0 0 10 10" style={{ imageRendering: 'pixelated', display: 'block' }}>
       <g fill={c}>
@@ -107,6 +249,7 @@ export default function SkillsPage() {
 
   return (
     <div className={styles.page}>
+      <FloatingDecos />
       <div className={styles.inner}>
 
         <div className={styles.header}>

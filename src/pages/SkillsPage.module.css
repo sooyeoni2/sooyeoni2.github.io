@@ -32,6 +32,29 @@
   gap: 0;
 }
 
+/* ── Floating decos ── */
+.floatingBg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.floatDeco {
+  position: absolute;
+  opacity: 0.55;
+  animation: floatDrift 7s ease-in-out infinite;
+}
+
+@keyframes floatDrift {
+  0%   { transform: translateY(0px)   rotate(0deg); }
+  25%  { transform: translateY(-12px) rotate(4deg); }
+  50%  { transform: translateY(-5px)  rotate(-2deg); }
+  75%  { transform: translateY(-16px) rotate(2deg); }
+  100% { transform: translateY(0px)   rotate(0deg); }
+}
+
 /* ── Header ── */
 .header {
   display: flex;
@@ -156,7 +179,7 @@
 
 .win98Body {
   display: flex;
-  height: 240px;
+  height: 320px;
 }
 
 /* Left toolbar */
@@ -539,7 +562,7 @@
   }
 
   .win98Body {
-    height: 200px;
+    height: 260px;
   }
 
   .techDisplay {
