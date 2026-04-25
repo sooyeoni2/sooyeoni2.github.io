@@ -29,11 +29,13 @@ export default function Hero() {
         </div>
 
         <div className={styles.right}>
-          <span className={styles.annotation}>That's me!</span>
-          <div className={styles.photoBox}>
-            <img src="/profile.jpg" alt="김수연" className={styles.photo} />
+          <div className={styles.photoWrap}>
+            <span className={styles.annotation}>That's me!</span>
+            <div className={styles.photoBox}>
+              <img src="/profile.jpg" alt="김수연" className={styles.photo} />
+            </div>
+            <div className={styles.speechBubble}>Hello, World! 👋</div>
           </div>
-          <div className={styles.speechBubble}>Hello, World! 👋</div>
         </div>
 
       </div>

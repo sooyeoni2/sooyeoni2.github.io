@@ -227,11 +227,15 @@
 
 /* ── Right ── */
 .right {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   align-self: center;
+}
+
+.photoWrap {
+  position: relative;
+  display: inline-block;
 }
 
 .annotation {
@@ -313,24 +317,33 @@
 /* ── Responsive ── */
 @media (max-width: 800px) {
   .hero {
-    padding: 80px 24px 60px;
+    padding: 80px 24px 80px;
   }
   .inner {
     grid-template-columns: 1fr;
     gap: 40px;
   }
   .right {
-    justify-content: flex-start;
+    justify-content: center;
+  }
+  .photoWrap {
+    margin: 20px 60px 40px;
   }
   .annotation {
     top: -40px;
-    right: auto;
-    left: 180px;
+    right: -12px;
+    left: auto;
   }
   .photoBox {
     width: 200px;
     height: 240px;
     font-size: 5rem;
+  }
+  .speechBubble {
+    left: -48px;
+    bottom: -29px;
+    font-size: 0.9rem;
+    padding: 8px 14px;
   }
   .name {
     white-space: normal;

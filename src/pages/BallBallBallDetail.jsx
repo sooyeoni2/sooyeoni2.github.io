@@ -19,7 +19,7 @@ export default function BallBallBallDetail() {
           ← 프로젝트 목록
         </button>
         <span className={styles.label}>
-          <img src="/ball_kung.png" alt="뽈뽈뽈" style={{ width: '1.4rem', height: '1.4rem', objectFit: 'contain', verticalAlign: 'middle', marginRight: '6px' }} />
+          <img src="/ball_kung.png" alt="뽈뽈뽈" style={{ width: '2.4rem', height: '2.4rem', objectFit: 'contain', verticalAlign: 'middle', marginRight: '6px' }} />
           뽈뽈뽈 (BallBallBall)
         </span>
       </div>
@@ -64,7 +64,7 @@ export default function BallBallBallDetail() {
             </div>
             <div className={styles.overviewItem}>
               <span className={styles.overviewLabel}>GitHub</span>
-              <span className={styles.overviewValue}><a href="#">GitHub 링크</a></span>
+              <span className={styles.overviewValue}><a href="https://github.com/sooyeoni2/ballballball" target="_blank" rel="noopener noreferrer">GitHub 링크</a></span>
             </div>
           </section>
 
