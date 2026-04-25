@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>김수연 | Portfolio</title>
+    <script>
+      (function() {
+        var p = window.location.search.slice(1);
+        if (p.indexOf('p=') === 0) {
+          window.history.replaceState(null, null, decodeURIComponent(p.slice(2)));
+        }
+      })();
+    </script>
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   </head>
