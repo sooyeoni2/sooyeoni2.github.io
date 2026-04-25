@@ -1,0 +1,589 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+.page {
+  min-height: 100vh;
+  background: #F0F7EE;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 24px 72px;
+}
+
+.page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, #C4DCC0 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  width: min(720px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* ── Header ── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.deco { font-size: 20px; }
+
+.title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 18px;
+  color: #2a4a28;
+  letter-spacing: 0.05em;
+  text-shadow: 2px 2px 0 rgba(255,255,255,0.7), 0 0 20px rgba(100,180,100,0.4);
+  margin: 0;
+}
+
+/* ── Win98 Window ── */
+.monitorOuter {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.win98Window {
+  width: 100%;
+  background: #f0f8ee;
+  border-top: 2px solid #e0f4de;
+  border-left: 2px solid #e0f4de;
+  border-bottom: 3px solid #4A6741;
+  border-right: 3px solid #4A6741;
+  box-shadow: 4px 4px 0 rgba(74,103,65,0.3), 0 12px 40px rgba(0,0,0,0.10);
+}
+
+.win98Titlebar {
+  background: linear-gradient(90deg, #4A6741 0%, #6a8a60 60%, #8aaa78 100%);
+  padding: 5px 6px 5px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.win98Title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  color: #fff;
+  text-shadow: 1px 1px 0 #1e3a1a;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.win98TitleIcon {
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, #8aaa78, #b0cc9a);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+.win98Controls {
+  display: flex;
+  gap: 3px;
+}
+
+.win98Btn {
+  width: 20px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 900;
+  cursor: pointer;
+  border-top: 1px solid #e0f4de;
+  border-left: 1px solid #e0f4de;
+  border-bottom: 2px solid #3a5430;
+  border-right: 2px solid #3a5430;
+  background: #d4e8d0;
+  color: #2a4a28;
+  transition: filter 0.1s;
+}
+
+.win98Btn:hover { filter: brightness(1.05); }
+
+.win98BtnClose {
+  background: #c8e0c0;
+  color: #3a2020;
+}
+
+.win98Menubar {
+  background: #ddeedd;
+  border-bottom: 1px solid #b0c8b0;
+  display: flex;
+  padding: 1px 4px;
+}
+
+.win98MenuItem {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  color: #2a4a28;
+  padding: 4px 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.1s;
+}
+
+.win98MenuItem:hover {
+  background: linear-gradient(90deg, #4A6741, #6a8a60);
+  color: white;
+  border-color: #3a5430;
+}
+
+.win98Body {
+  display: flex;
+  height: 240px;
+}
+
+/* Left toolbar */
+.win98Toolbar {
+  width: 44px;
+  background: #ddeedd;
+  border-right: 1px solid #b0c8b0;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.win98Tool {
+  width: 34px;
+  height: 30px;
+  background: #ecf5ea;
+  border-top: 1px solid #e0f4de;
+  border-left: 1px solid #e0f4de;
+  border-bottom: 1px solid #4A6741;
+  border-right: 1px solid #4A6741;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  cursor: pointer;
+  transition: filter 0.1s;
+  color: #2a4a28;
+}
+
+.win98Tool:hover { filter: brightness(1.05); }
+
+/* Canvas area */
+.win98Canvas {
+  flex: 1;
+  background: #f8fcf7;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.win98Canvas::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(74,103,65,0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74,103,65,0.10) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+/* Right scrollbar */
+.win98Scrollbar {
+  width: 18px;
+  background: #ddeedd;
+  border-left: 1px solid #b0c8b0;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.win98ScrollBtn {
+  width: 18px;
+  height: 18px;
+  background: #ecf5ea;
+  border-top: 1px solid #e0f4de;
+  border-left: 1px solid #e0f4de;
+  border-bottom: 1px solid #4A6741;
+  border-right: 1px solid #4A6741;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  color: #2a4a28;
+  cursor: pointer;
+}
+
+.win98ScrollTrack { flex: 1; }
+
+/* Status bar */
+.win98Statusbar {
+  border-top: 1px solid #b0c8b0;
+  display: flex;
+  gap: 2px;
+  padding: 2px 4px;
+  background: #ddeedd;
+}
+
+.win98StatusItem {
+  flex: 1;
+  background: #d0e8cc;
+  border-top: 1px solid #b0c8b0;
+  border-left: 1px solid #b0c8b0;
+  border-bottom: 1px solid #e0f4de;
+  border-right: 1px solid #e0f4de;
+  padding: 2px 6px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 6px;
+  color: #2a4a28;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.win98StatusWide { flex: 3; }
+
+/* ── Canvas content ── */
+.placeholder {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  animation: canvasFadeIn 0.3s ease both;
+}
+
+.placeholderHearts {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.placeholderText {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  color: #7aaa78;
+  line-height: 2.2;
+  text-align: center;
+}
+
+.placeholderCursor {
+  width: 2px;
+  height: 22px;
+  background: #4A6741;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.techDisplay {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  animation: canvasFadeIn 0.25s ease both;
+}
+
+@keyframes canvasFadeIn {
+  from { opacity: 0; transform: scale(0.97) translateY(6px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0); }
+}
+
+.techIconLarge {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.techIconImg {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.techInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.techNameRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.techName {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 13px;
+  color: #1e3a1a;
+}
+
+.techBadge {
+  background: #d8f0d4;
+  color: #4A6741;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 6px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  border: 1px solid #a8c8a4;
+}
+
+.techHearts {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.profLabel {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 6px;
+  color: #5a8058;
+  margin-left: 4px;
+}
+
+.techDesc {
+  font-size: 13px;
+  font-weight: 600;
+  color: #3a5a38;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── Monitor stand ── */
+.monitorStand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.monitorNeck {
+  width: 44px;
+  height: 18px;
+  background: linear-gradient(to bottom, #8aaa78, #6a8a60);
+}
+
+.monitorBase {
+  width: 130px;
+  height: 14px;
+  background: linear-gradient(to bottom, #7a9a68, #5a7a50);
+  border-radius: 0 0 10px 10px;
+}
+
+/* ── Keyboard ── */
+.keyboardSection {
+  position: relative;
+  z-index: 2;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.keyboardHint {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  color: #4A6741;
+  text-align: center;
+  margin-bottom: 10px;
+  letter-spacing: 0.08em;
+}
+
+.keyboardBody {
+  background: linear-gradient(to bottom, #ffffff, #f4f8f2);
+  border-radius: 16px;
+  padding: 18px 20px 22px;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-bottom: 5px solid #8aaa78;
+  border-right: 5px solid #8aaa78;
+  box-shadow: 0 10px 36px rgba(0,0,0,0.14);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.keyboardRow {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* ── Keycap ── */
+.keycap {
+  position: relative;
+  width: 82px;
+  height: 74px;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  box-shadow:
+    0 6px 0 rgba(0,0,0,0.35),
+    0 8px 16px rgba(0,0,0,0.18);
+  border-top: 2px solid rgba(255,255,255,0.45);
+  border-left: 2px solid rgba(255,255,255,0.3);
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+  border-right: 1px solid rgba(0,0,0,0.12);
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+  background: transparent;
+  font-family: inherit;
+  padding: 0;
+}
+
+.keycap::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 7px;
+  background: rgba(255,255,255,0.12);
+  pointer-events: none;
+}
+
+.keycap:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 0 rgba(0,0,0,0.35),
+    0 12px 20px rgba(0,0,0,0.18);
+}
+
+.keycapPressed {
+  transform: translateY(5px) !important;
+  box-shadow:
+    0 1px 0 rgba(0,0,0,0.35),
+    0 2px 4px rgba(0,0,0,0.12) !important;
+}
+
+.keycapSelected {
+  transform: translateY(5px);
+  box-shadow:
+    0 1px 0 rgba(0,0,0,0.35),
+    0 2px 6px rgba(0,0,0,0.12);
+  outline: 3px solid #4A6741;
+  outline-offset: 1px;
+  filter: brightness(0.92);
+}
+
+.keycapSelected:hover {
+  transform: translateY(5px);
+  box-shadow:
+    0 1px 0 rgba(0,0,0,0.35),
+    0 2px 6px rgba(0,0,0,0.12);
+}
+
+.keycapIcon {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.5));
+  position: relative;
+  z-index: 1;
+}
+
+.keycapName {
+  font-weight: 800;
+  font-size: 10px;
+  color: rgba(255,255,255,0.88);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .page {
+    padding: 80px 12px 60px;
+  }
+
+  .title {
+    font-size: 13px;
+  }
+
+  .win98Body {
+    height: 200px;
+  }
+
+  .techDisplay {
+    padding: 14px 16px;
+    gap: 14px;
+  }
+
+  .techIconLarge {
+    width: 60px;
+    height: 60px;
+  }
+
+  .techIconText {
+    font-size: 9px;
+  }
+
+  .techName {
+    font-size: 10px;
+  }
+
+  .techDesc {
+    font-size: 11.5px;
+  }
+
+  .keyboardBody {
+    padding: 12px 14px 16px;
+    gap: 7px;
+  }
+
+  .keyboardRow {
+    gap: 6px;
+  }
+
+  .keycap {
+    width: 58px;
+    height: 58px;
+  }
+
+  .keycapIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .keycapName {
+    font-size: 8px;
+  }
+}

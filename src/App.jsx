@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import HomePage from './pages/HomePage'
 import ProjectsPage from './pages/ProjectsPage'
 import BallBallBallDetail from './pages/BallBallBallDetail'
+import SkillsPage from './pages/SkillsPage'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -13,7 +14,7 @@ function ScrollToTop() {
 
 function Layout() {
   const { pathname } = useLocation()
-  const hideNav = pathname.startsWith('/projects/')
+  const hideNav = pathname.startsWith('/projects/') && pathname !== '/projects'
   return (
     <>
       {!hideNav && <Navbar />}
@@ -21,6 +22,7 @@ function Layout() {
         <Route path="/" element={<HomePage />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/projects/ballballball" element={<BallBallBallDetail />} />
+        <Route path="/skills" element={<SkillsPage />} />
       </Routes>
     </>
   )

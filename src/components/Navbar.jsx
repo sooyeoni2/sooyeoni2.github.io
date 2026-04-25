@@ -4,7 +4,7 @@ import styles from './Navbar.module.css'
 
 const TABS = [
   { label: 'Home', href: '#about', section: 'about' },
-  { label: 'Skills', href: '#skills', section: 'skills' },
+  { label: 'Skills', to: '/skills' },
   { label: 'Projects', to: '/projects' },
 ]
 

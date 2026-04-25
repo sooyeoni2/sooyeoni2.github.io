@@ -35,32 +35,21 @@
   letter-spacing: 1px;
   padding: 5px 17px;
   border: 2px solid #111;
-  box-shadow: 3px 3px 0 #111;
   transform: rotate(-2deg);
   display: inline-block;
 }
 
 .speechBubble {
   background: #fff9e6;
-  border: 1.5px solid #111;
   border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
   padding: 12px 14px;
   font-size: 1.06rem;
   color: #333;
   line-height: 1.6;
   position: relative;
-  box-shadow: 2px 2px 0 #111;
   white-space: nowrap;
   width: fit-content;
-}
-
-.speechBubble::before {
-  content: '';
-  position: absolute;
-  top: -9px;
-  left: 20px;
-  border: 5px solid transparent;
-  border-bottom-color: #111;
 }
 
 .speechBubble::after {
@@ -138,7 +127,6 @@
   background: #FFD600;
   border: 2px solid #111;
   border-radius: 50%;
-  box-shadow: 2px 2px 0 #111;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -74,7 +74,6 @@
   border-radius: 999px;
   padding: 12px 29px;
   background: #fff;
-  box-shadow: 3px 3px 0 #111;
   transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
   cursor: default;
 }
@@ -86,7 +85,7 @@
 
 .item:not(.itemActive):hover {
   transform: rotate(0deg) translate(-2px, -2px) !important;
-  box-shadow: 5px 5px 0 #111;
+  box-shadow: 3px 3px 0 #111;
 }
 
 .item:not(.itemActive):hover .itemName {
