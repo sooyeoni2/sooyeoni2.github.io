@@ -33,12 +33,12 @@ export default function BallBallBallDetail() {
           {/* Hero */}
           <div className={styles.hero}>
             <div className={styles.heroLogo}>
-              <img src="/images/ball_login.png" alt="뽈뽈뽈 로고" />
+              <img src="/images/ballballball/ball_login.png" alt="뽈뽈뽈 로고" />
             </div>
           </div>
           <div className={styles.heroCard}>
             <h1>
-              <img src="/images/app_logo.png" alt="뽈뽈뽈 BallBallBall" style={{ height: '1.6em', verticalAlign: 'middle' }} />
+              <img src="/images/ballballball/app_logo.png" alt="뽈뽈뽈 BallBallBall" style={{ height: '1.6em', verticalAlign: 'middle' }} />
             </h1>
             <p className={styles.subtitle}>언제 어디서나 야구 팬을 연결하는 지속 가능한 커뮤니티 플랫폼</p>
           </div>
@@ -199,11 +199,11 @@ export default function BallBallBallDetail() {
               <div className={styles.featureLabel}>주요 화면</div>
               <div className={styles.screenshotRow}>
                 <div className={styles.screenshotItem}>
-                  <img src="/images/login.png" alt="로그인 화면" />
+                  <img src="/images/ballballball/login.png" alt="로그인 화면" />
                   <div className={styles.scLabel}>로그인</div>
                 </div>
                 <div className={styles.screenshotItem}>
-                  <img src="/images/profilesetup.png" alt="프로필 설정" />
+                  <img src="/images/ballballball/profilesetup.png" alt="프로필 설정" />
                   <div className={styles.scLabel}>프로필 설정</div>
                 </div>
               </div>
@@ -263,7 +263,7 @@ export default function BallBallBallDetail() {
               <div className={styles.featureLabel}>주요 화면</div>
               <div className={styles.screenshotRow}>
                 <div className={styles.screenshotItem}>
-                  <img src="/images/dutchpay.gif" alt="더치페이 주요 화면" />
+                  <img src="/images/ballballball/dutchpay.gif" alt="더치페이 주요 화면" />
                   <div className={styles.scLabel}>더치페이 흐름</div>
                 </div>
               </div>
@@ -299,15 +299,15 @@ export default function BallBallBallDetail() {
               <div className={styles.featureLabel}>주요 화면</div>
               <div className={styles.screenshotRow}>
                 <div className={styles.screenshotItem}>
-                  <img src="/images/myprofile.png" alt="마이 프로필" />
+                  <img src="/images/ballballball/myprofile.png" alt="마이 프로필" />
                   <div className={styles.scLabel}>마이 프로필</div>
                 </div>
                 <div className={styles.screenshotItem}>
-                  <img src="/images/otherprofile.png" alt="유저 프로필" />
+                  <img src="/images/ballballball/otherprofile.png" alt="유저 프로필" />
                   <div className={styles.scLabel}>유저 프로필</div>
                 </div>
                 <div className={styles.screenshotItem}>
-                  <img src="/images/profileupdate.png" alt="프로필 수정" />
+                  <img src="/images/ballballball/profileupdate.png" alt="프로필 수정" />
                   <div className={styles.scLabel}>프로필 수정</div>
                 </div>
               </div>
@@ -369,11 +369,11 @@ export default function BallBallBallDetail() {
               <div className={styles.featureLabel}>주요 화면</div>
               <div className={styles.screenshotRow}>
                 <div className={styles.screenshotItem}>
-                  <img src="/images/community.png" alt="게시글 목록" />
+                  <img src="/images/ballballball/community.png" alt="게시글 목록" />
                   <div className={styles.scLabel}>게시글 목록</div>
                 </div>
                 <div className={styles.screenshotItem}>
-                  <img src="/images/community1.png" alt="게시글 상세" />
+                  <img src="/images/ballballball/community1.png" alt="게시글 상세" />
                   <div className={styles.scLabel}>게시글 상세</div>
                 </div>
               </div>
@@ -428,15 +428,15 @@ export default function BallBallBallDetail() {
               <div className={styles.featureLabel}>주요 화면</div>
               <div className={styles.screenshotRow}>
                 <div className={styles.screenshotItem}>
-                  <img src="/images/ondo1.png" alt="동행 평가 화면" />
+                  <img src="/images/ballballball/ondo1.png" alt="동행 평가 화면" />
                   <div className={styles.scLabel}>동행 평가</div>
                 </div>
                 <div className={styles.screenshotItem}>
-                  <img src="/images/ondo2.png" alt="별점 다이얼로그" />
+                  <img src="/images/ballballball/ondo2.png" alt="별점 다이얼로그" />
                   <div className={styles.scLabel}>별점 평가</div>
                 </div>
                 <div className={styles.screenshotItem}>
-                  <img src="/images/ondo3.png" alt="완료 다이얼로그" />
+                  <img src="/images/ballballball/ondo3.png" alt="완료 다이얼로그" />
                   <div className={styles.scLabel}>평가 완료</div>
                 </div>
               </div>
@@ -496,15 +496,15 @@ export default function BallBallBallDetail() {
               <div className={styles.featureLabel}>주요 화면</div>
               <div className={styles.screenshotRow}>
                 <div className={styles.screenshotItem}>
-                  <img src="/images/ar1.jpg" alt="목적지 선택" />
+                  <img src="/images/ballballball/ar1.jpg" alt="목적지 선택" />
                   <div className={styles.scLabel}>목적지 선택</div>
                 </div>
                 <div className={styles.screenshotItem}>
-                  <img src="/images/ar2.jpg" alt="현위치 인식" />
+                  <img src="/images/ballballball/ar2.jpg" alt="현위치 인식" />
                   <div className={styles.scLabel}>현위치 인식</div>
                 </div>
                 <div className={styles.screenshotItem}>
-                  <img src="/images/ar.png" alt="AR 길찾기" />
+                  <img src="/images/ballballball/ar.png" alt="AR 길찾기" />
                   <div className={styles.scLabel}>AR 길안내</div>
                 </div>
               </div>
