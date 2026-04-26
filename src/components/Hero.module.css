@@ -29,13 +29,26 @@
   flex-direction: column;
 }
 
-.sub {
-  font-size: 0.98rem;
-  font-weight: 700;
-  color: #555;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+.subRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   margin-bottom: 38px;
+}
+
+.subDeco {
+  font-size: 16px;
+  color: #7a5c3a;
+}
+
+.sub {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.75rem;
+  color: #5a3e1e;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 rgba(255,255,255,0.7), 0 0 20px rgba(180,140,80,0.3);
+  margin: 0;
 }
 
 .nameRow {
@@ -50,7 +63,8 @@
   position: relative;
   display: inline-block;
   align-self: flex-start;
-  margin-bottom: 10px;
+  margin-bottom: 38px;
+  margin-left: 60px;
 }
 
 .tape {
@@ -110,6 +124,7 @@
   letter-spacing: 1px;
   margin-top: 14px;
   margin-bottom: 29px;
+  margin-left: 60px;
 }
 
 .desc {
