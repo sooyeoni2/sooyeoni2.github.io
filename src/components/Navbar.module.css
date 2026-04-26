@@ -59,15 +59,16 @@
 }
 
 .tab:hover {
-  background: #111;
-  color: #fff;
+  background: rgba(0,0,0,0.07);
+  color: #111;
   border-color: #111;
 }
 
 .activeTab {
-  background: #111;
-  color: #fff;
+  background: rgba(0,0,0,0.07);
+  color: #111;
   border-color: #111;
+  border-width: 2px;
 }
 
 .hamburger {

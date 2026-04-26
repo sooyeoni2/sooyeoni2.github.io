@@ -3,7 +3,7 @@
   background: #FFF8F0;
   background-image: radial-gradient(circle, #e0c9b0 1px, transparent 1px);
   background-size: 24px 24px;
-  border-bottom: 2px solid #111;
+  border-bottom: 1px solid #111;
 }
 
 .inner {
@@ -52,9 +52,9 @@
 }
 
 .activeTab {
-  background: #111;
+  background: transparent;
   border-color: #111;
-  color: #fff;
+  color: #111;
 }
 
 .content {
@@ -64,18 +64,26 @@
 }
 
 .item {
-  display: inline-block;
-  border: 1.5px solid #111;
-  border-radius: 999px;
-  padding: 12px 29px;
-  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   cursor: default;
 }
 
-.item:nth-child(4n+1) { transform: rotate(-2deg); }
-.item:nth-child(4n+2) { transform: rotate(1.5deg); }
-.item:nth-child(4n+3) { transform: rotate(-1deg); }
-.item:nth-child(4n+4) { transform: rotate(2.5deg); }
+.item::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.item:nth-child(5n+1)::before { background: #F5C842; }
+.item:nth-child(5n+2)::before { background: #5DC887; }
+.item:nth-child(5n+3)::before { background: #5EB0F5; }
+.item:nth-child(5n+4)::before { background: #F57EB0; }
+.item:nth-child(5n+5)::before { background: #A87EF5; }
 
 .itemName {
   font-size: 1.14rem;
@@ -90,7 +98,7 @@
   background: none;
   border: 1.5px solid #111;
   color: #111;
-  padding: 10px 29px;
+  padding: 6px 29px;
   border-radius: 999px;
   font-size: 0.98rem;
   font-weight: 700;
