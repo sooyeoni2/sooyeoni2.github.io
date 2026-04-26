@@ -1,73 +1,185 @@
 .page {
   min-height: 100vh;
-  background: #F5F0FF;
-  background-image: radial-gradient(circle, #d8c8f0 1px, transparent 1px);
+  background: #F3F0FF;
+  background-image: radial-gradient(circle, #ccc4f0 1px, transparent 1px);
   background-size: 24px 24px;
-  padding: 120px 80px 80px;
+  padding: 100px 24px 72px;
 }
 
 .header {
-  max-width: 1200px;
-  margin: 0 auto 48px;
+  max-width: 860px;
+  margin: 0 auto 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
 }
+
+.deco { font-size: 20px; }
 
 .title {
-  font-size: 1.8rem;
-  font-weight: 900;
-  letter-spacing: -0.5px;
-  color: #111;
-  margin-bottom: 8px;
-}
-
-.sub {
-  font-size: 0.88rem;
-  color: #777;
-  font-weight: 500;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 18px;
+  color: #1a2a4a;
+  letter-spacing: 0.05em;
+  text-shadow: 2px 2px 0 rgba(255,255,255,0.8), 0 0 20px rgba(80,120,220,0.3);
+  margin: 0;
 }
 
 .list {
-  max-width: 1200px;
+  max-width: 860px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 32px;
 }
 
+/* ── Browser Window Card ── */
 .card {
-  position: relative;
-  background: #FAFCFF;
-  border: 1.5px solid #111;
-  border-radius: 16px;
-  padding: 36px 40px 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  border: 2px solid #d0d0d0;
+  border-radius: 6px;
+  overflow: hidden;
   cursor: pointer;
-  box-shadow: 3px 3px 0 #111;
-  transform: rotate(-0.4deg);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: box-shadow 0.15s, transform 0.15s;
 }
 
-.card:nth-child(even) {
-  transform: rotate(0.3deg);
-}
-
 .card:hover {
-  box-shadow: 5px 5px 0 #111;
-  transform: rotate(0deg) translate(-1px, -1px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.13);
+  transform: translateY(-2px);
 }
 
-.tape {
-  position: absolute;
-  top: -13px;
-  left: 32px;
-  width: 72px;
-  height: 24px;
-  background: rgba(150, 150, 150, 0.3);
-  border-radius: 3px;
-  transform: rotate(-1.5deg);
+/* ── Title Bar ── */
+.titleBar {
+  background: #4a4a4a;
+  padding: 6px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
+.titleBarText {
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.winControls {
+  display: flex;
+  gap: 3px;
+}
+
+.winBtn {
+  width: 22px;
+  height: 18px;
+  background: #666;
+  border: 1px solid #888;
+  color: #fff;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  user-select: none;
+}
+
+/* ── Nav Bar ── */
+.navBar {
+  background: #f5f5f5;
+  border-bottom: 1px solid #d0d0d0;
+  padding: 5px 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navBtns {
+  display: flex;
+  gap: 3px;
+}
+
+.navBtn {
+  width: 26px;
+  height: 22px;
+  background: #fafafa;
+  border: 1px solid #d0d0d0;
+  color: #444;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  user-select: none;
+}
+
+.urlBar {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #d0d0d0;
+  border-radius: 2px;
+  padding: 3px 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.urlIcon { font-size: 12px; }
+
+.urlText {
+  font-size: 0.75rem;
+  color: #555;
+}
+
+/* ── Browser Body ── */
+.browserBody {
+  display: flex;
+  background: #fff;
+}
+
+.content {
+  flex: 1;
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Scrollbar ── */
+.scrollbar {
+  width: 18px;
+  background: #f0f0f0;
+  border-left: 1px solid #d0d0d0;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.scrollBtn {
+  width: 18px;
+  height: 18px;
+  background: #e8e8e8;
+  border: 1px solid #d0d0d0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  color: #555;
+  cursor: default;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.scrollTrack { flex: 1; }
+
+.scrollThumb {
+  width: 12px;
+  height: 44px;
+  margin: 4px auto;
+  background: #c8c8c8;
+  border: 1px solid #b0b0b0;
+}
+
+/* ── Card Content ── */
 .cardHeader {
   display: flex;
   align-items: center;
@@ -77,6 +189,7 @@
 .emoji {
   font-size: 2.4rem;
   line-height: 1;
+  flex-shrink: 0;
 }
 
 .name {
@@ -105,9 +218,9 @@
 }
 
 .tag {
-  background: #f4f4f5;
-  color: #444;
-  border: 1px solid #e4e4e7;
+  background: #f4f4f4;
+  color: #333;
+  border: 1px solid #d8d8d8;
   padding: 4px 14px;
   border-radius: 999px;
   font-size: 0.78rem;
@@ -116,10 +229,12 @@
 
 .highlights {
   list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  border-top: 1px dashed #ccc;
+  border-top: 1px dashed #ddd;
   padding-top: 14px;
 }
 
@@ -133,7 +248,7 @@
 
 .highlights li::before {
   content: '✓';
-  color: #4A6741;
+  color: var(--check, #666);
   font-weight: 900;
   flex-shrink: 0;
 }
@@ -142,14 +257,11 @@
   align-self: flex-end;
   font-size: 0.85rem;
   font-weight: 700;
-  color: #111;
+  color: #444;
 }
 
 @media (max-width: 700px) {
-  .page {
-    padding: 80px 16px 60px;
-  }
-  .card {
-    padding: 28px 20px;
-  }
+  .page { padding: 80px 16px 60px; }
+  .content { padding: 18px 16px; }
+  .name { font-size: 1rem; }
 }

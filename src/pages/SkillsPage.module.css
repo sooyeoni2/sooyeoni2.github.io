@@ -16,8 +16,8 @@
   content: '';
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, #C4DCC0 1.2px, transparent 1.2px);
-  background-size: 22px 22px;
+  background-image: radial-gradient(circle, #C4DCC0 1px, transparent 1px);
+  background-size: 24px 24px;
   opacity: 0.5;
   pointer-events: none;
 }
@@ -60,7 +60,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 28px;
+  margin-bottom: 56px;
 }
 
 .deco { font-size: 20px; }
