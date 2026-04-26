@@ -6,11 +6,11 @@ import RansomTitle from './RansomTitle'
 const TABS = [
   {
     label: 'Language',
-    items: ['Dart', 'Java', 'JavaScript', 'Python', 'SQL'],
+    items: ['Dart', 'Java', 'JavaScript', 'Python', 'SQL', 'TypeScript'],
   },
   {
     label: 'Framework',
-    items: ['Flutter', 'React', 'Spring Boot'],
+    items: ['Flutter', 'React', 'React Native', 'Vue', 'Django', 'Spring Boot'],
   },
   {
     label: 'Tools',

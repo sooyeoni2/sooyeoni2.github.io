@@ -4,23 +4,27 @@ import styles from './SkillsPage.module.css'
 const I = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons'
 
 const TECHS = [
-  { id: 'js',     name: 'JavaScript', icon: `${I}/javascript/javascript-original.svg`, category: 'Language',  hearts: 3, bg: 'linear-gradient(145deg,#f7e020,#d4b800)', shadow: '#a88e00', desc: 'React, Vue 등 프레임워크와 함께 프론트엔드 개발에 활용하였다.' },
-  { id: 'python', name: 'Python',     icon: `${I}/python/python-original.svg`,         category: 'Language',  hearts: 3, bg: 'linear-gradient(145deg,#5a9fd4,#3070a0)', shadow: '#1e5080', desc: '기초 문법부터 자료구조를 강의하였으며, 웹 프레임워크 및 머신러닝 프로젝트에 적용하였다.' },
-  { id: 'java',   name: 'Java',       icon: `${I}/java/java-original.svg`,             category: 'Language',  hearts: 4, bg: 'linear-gradient(145deg,#f09030,#c06010)', shadow: '#904010', desc: '재활용성이 높은 코드 작성에 능숙하며, 대다수의 프로젝트에 적용하였다.' },
-  { id: 'dart',   name: 'Dart',       icon: `${I}/dart/dart-original.svg`,             category: 'Language',  hearts: 4, bg: 'linear-gradient(145deg,#30a0e0,#1068b8)', shadow: '#084888', desc: 'Flutter 앱 개발에 주력 언어로 사용. 비동기 처리와 상태관리에 능숙하다.' },
-  { id: 'sql',    name: 'SQL',        icon: `${I}/mysql/mysql-original.svg`,           category: 'Language',  hearts: 3, bg: 'linear-gradient(145deg,#e83030,#b01010)', shadow: '#880000', desc: '테이블 사이의 관계를 고려해 설계할 수 있으며, 원하는 데이터를 위한 쿼리문을 작성할 수 있다.' },
-  { id: 'flutter',name: 'Flutter',    icon: `${I}/flutter/flutter-original.svg`,       category: 'Framework', hearts: 4, bg: 'linear-gradient(145deg,#54c5f8,#1890d8)', shadow: '#0868a8', desc: 'iOS/Android 크로스플랫폼 앱 개발. 상태관리(Provider, Riverpod) 및 REST API 연동에 능숙하다.' },
-  { id: 'react',  name: 'React',      icon: `${I}/react/react-original.svg`,           category: 'Framework', hearts: 3, bg: 'linear-gradient(145deg,#61dafb,#28b0d8)', shadow: '#1888b0', desc: 'Hook 기반 컴포넌트 설계 및 React Router, CSS Modules를 활용한 SPA 개발 경험이 있다.' },
-  { id: 'spring', name: 'Spring',     icon: `${I}/spring/spring-original.svg`,         category: 'Framework', hearts: 3, bg: 'linear-gradient(145deg,#78c840,#4a9020)', shadow: '#2a6800', desc: 'MVC 구조를 활용한 구조를 설계할 수 있으며, Swagger, JPA 등 효과적인 라이브러리를 능숙하게 사용할 수 있다.' },
-  { id: 'git',    name: 'Git',        icon: `${I}/git/git-original.svg`,               category: 'Tools',     hearts: 4, bg: 'linear-gradient(145deg,#f06050,#c02828)', shadow: '#901010', desc: 'Git Flow 전략을 활용한 브랜치 관리 및 협업 경험이 있다.' },
-  { id: 'docker', name: 'Docker',     icon: `${I}/docker/docker-original.svg`,         category: 'Tools',     hearts: 2, bg: 'linear-gradient(145deg,#2aacf0,#0870c8)', shadow: '#054898', desc: '컨테이너 기반 배포 환경 구성 및 docker-compose를 활용한 서비스 구성 경험이 있다.' },
-  { id: 'figma',  name: 'Figma',      icon: `${I}/figma/figma-original.svg`,           category: 'Tools',     hearts: 3, bg: 'linear-gradient(145deg,#f05828,#a040c0)', shadow: '#802890', desc: '와이어프레임 및 프로토타입 제작, 디자인 시스템 구성 경험이 있다.' },
-  { id: 'jira',   name: 'Jira',       icon: `${I}/jira/jira-original.svg`,             category: 'Tools',     hearts: 3, bg: 'linear-gradient(145deg,#2060d0,#0040a8)', shadow: '#002880', desc: 'Scrum 기반 스프린트 관리 및 이슈 트래킹에 활용하였다.' },
+  { id: 'js',     name: 'JavaScript', icon: `${I}/javascript/javascript-original.svg`, category: 'Language',  hearts: 4,   bg: 'linear-gradient(145deg,#f7e020,#d4b800)', shadow: '#a88e00', desc: 'React, Vue 등 다양한 프레임워크와 함께 프론트엔드 개발에 능숙하게 활용하고 있습니다.' },
+  { id: 'ts',     name: 'TypeScript', icon: `${I}/typescript/typescript-original.svg`, category: 'Language',  hearts: 3,   bg: 'linear-gradient(145deg,#3178c6,#1a5a9a)', shadow: '#0a3870', desc: '기본 타입 시스템을 이해하고 프로젝트에 점진적으로 적용한 경험이 있습니다.' },
+  { id: 'python', name: 'Python',     icon: `${I}/python/python-original.svg`,         category: 'Language',  hearts: 4,   bg: 'linear-gradient(145deg,#5a9fd4,#3070a0)', shadow: '#1e5080', desc: '알고리즘 강의 및 웹 프레임워크, 머신러닝 프로젝트 등 다양한 분야에 능숙하게 활용하였습니다.' },
+  { id: 'java',   name: 'Java',       icon: `${I}/java/java-original.svg`,             category: 'Language',  hearts: 2,   bg: 'linear-gradient(145deg,#f09030,#c06010)', shadow: '#904010', desc: '기본 문법과 객체지향 개념을 이해하고 있으며, 간단한 백엔드 개발에 활용한 경험이 있습니다.' },
+  { id: 'dart',   name: 'Dart',       icon: `${I}/dart/dart-original.svg`,             category: 'Language',  hearts: 3,   bg: 'linear-gradient(145deg,#30a0e0,#1068b8)', shadow: '#084888', desc: 'Flutter 앱 개발의 주력 언어로 사용하며, 비동기 처리와 상태관리를 경험하였습니다.' },
+  { id: 'sql',    name: 'SQL',        icon: `${I}/mysql/mysql-original.svg`,           category: 'Language',  hearts: 2,   bg: 'linear-gradient(145deg,#e83030,#b01010)', shadow: '#880000', desc: '기본적인 CRUD 쿼리 작성과 테이블 관계 설계를 할 수 있습니다.' },
+  { id: 'flutter',name: 'Flutter',    icon: `${I}/flutter/flutter-original.svg`,       category: 'Framework', hearts: 3,   bg: 'linear-gradient(145deg,#54c5f8,#1890d8)', shadow: '#0868a8', desc: '안드로이드 앱 개발 경험이 있으며, 상태관리와 REST API 연동을 다룬 경험이 있습니다.' },
+  { id: 'react',  name: 'React',      icon: `${I}/react/react-original.svg`,           category: 'Framework', hearts: 3,   bg: 'linear-gradient(145deg,#61dafb,#28b0d8)', shadow: '#1888b0', desc: 'Hook 기반 컴포넌트 설계 및 React Router, CSS Modules 등을 활용한 SPA 개발을 할 수 있습니다.' },
+  { id: 'rn',     name: 'React Native',icon: `${I}/react/react-original.svg`,          category: 'Framework', hearts: 3,   bg: 'linear-gradient(145deg,#00d4f5,#0098b8)', shadow: '#006880', desc: 'Expo 환경에서 안드로이드 앱을 개발한 경험이 있습니다.' },
+  { id: 'vue',    name: 'Vue',         icon: `${I}/vuejs/vuejs-original.svg`,          category: 'Framework', hearts: 4,   bg: 'linear-gradient(145deg,#42d392,#35a876)', shadow: '#1a7850', desc: 'Composition API 기반 컴포넌트 설계와 Vuex/Pinia를 활용한 상태관리에 능숙합니다.' },
+  { id: 'django', name: 'Django',      icon: `${I}/django/django-plain.svg`,           category: 'Framework', hearts: 4,   bg: 'linear-gradient(145deg,#2ba977,#0d6e4f)', shadow: '#044030', desc: 'REST API 설계 및 ORM을 활용한 데이터베이스 연동에 능숙하게 활용하고 있습니다.' },
+  { id: 'spring', name: 'Spring',     icon: `${I}/spring/spring-original.svg`,         category: 'Framework', hearts: 2.5, bg: 'linear-gradient(145deg,#78c840,#4a9020)', shadow: '#2a6800', desc: 'MVC 구조와 JPA, Swagger 등을 활용한 백엔드 개발 및 MSA 기반 서비스 개발 경험이 있습니다.' },
+  { id: 'git',    name: 'Git',        icon: `${I}/git/git-original.svg`,               category: 'Tools',     hearts: 5,   bg: 'linear-gradient(145deg,#f06050,#c02828)', shadow: '#901010', desc: 'Git Flow 전략을 기반으로 한 브랜치 관리, 코드 리뷰 및 협업을 능숙하게 수행하고 있습니다.' },
+  { id: 'docker', name: 'Docker',     icon: `${I}/docker/docker-original.svg`,         category: 'Tools',     hearts: 2,   bg: 'linear-gradient(145deg,#2aacf0,#0870c8)', shadow: '#054898', desc: '기본적인 컨테이너 환경 구성과 docker-compose를 활용한 서비스 구성 경험이 있습니다.' },
+  { id: 'figma',  name: 'Figma',      icon: `${I}/figma/figma-original.svg`,           category: 'Tools',     hearts: 4,   bg: 'linear-gradient(145deg,#f05828,#a040c0)', shadow: '#802890', desc: '와이어프레임, 프로토타입 제작과 팀 협업을 위한 디자인 시스템 구성에 능숙합니다.' },
+  { id: 'jira',   name: 'Jira',       icon: `${I}/jira/jira-original.svg`,             category: 'Tools',     hearts: 4,   bg: 'linear-gradient(145deg,#2060d0,#0040a8)', shadow: '#002880', desc: 'Scrum 기반 스프린트 계획, 이슈 트래킹 및 팀 프로젝트 관리에 능숙하게 활용하고 있습니다.' },
 ]
 
 const ROWS = [
-  ['js', 'python', 'java', 'dart', 'sql'],
-  ['flutter', 'react', 'spring'],
+  ['js', 'ts', 'python', 'java', 'dart', 'sql'],
+  ['flutter', 'react', 'rn', 'vue', 'django', 'spring'],
   ['git', 'docker', 'figma', 'jira'],
 ]
 
@@ -169,8 +173,31 @@ function FloatingDecos() {
   )
 }
 
-function PixelHeart({ filled, size = 18 }) {
-  const c = filled ? '#ff8fab' : '#C4DCC0'
+function PixelHeart({ filled, half, size = 18 }) {
+  const fc = '#ff8fab', ec = '#C4DCC0'
+  if (half) return (
+    <svg width={size} height={size} viewBox="0 0 10 10" style={{ imageRendering: 'pixelated', display: 'block' }}>
+      <g fill={fc}>
+        <rect x="1" y="2" width="3" height="1"/>
+        <rect x="0" y="3" width="4" height="1"/>
+        <rect x="0" y="4" width="5" height="1"/>
+        <rect x="1" y="5" width="4" height="1"/>
+        <rect x="2" y="6" width="3" height="1"/>
+        <rect x="3" y="7" width="2" height="1"/>
+        <rect x="4" y="8" width="1" height="1"/>
+      </g>
+      <g fill={ec}>
+        <rect x="6" y="2" width="3" height="1"/>
+        <rect x="6" y="3" width="4" height="1"/>
+        <rect x="5" y="4" width="5" height="1"/>
+        <rect x="5" y="5" width="4" height="1"/>
+        <rect x="5" y="6" width="3" height="1"/>
+        <rect x="5" y="7" width="2" height="1"/>
+        <rect x="5" y="8" width="1" height="1"/>
+      </g>
+    </svg>
+  )
+  const c = filled ? fc : ec
   return (
     <svg width={size} height={size} viewBox="0 0 10 10" style={{ imageRendering: 'pixelated', display: 'block' }}>
       <g fill={c}>
@@ -214,8 +241,7 @@ function CanvasContent({ tech }) {
           <span className={styles.techBadge}>{tech.category}</span>
         </div>
         <div className={styles.techHearts}>
-          {[0,1,2,3,4].map(i => <PixelHeart key={i} filled={i < tech.hearts} size={20} />)}
-          <span className={styles.profLabel}>{PROF_LABELS[tech.hearts]}</span>
+          {[0,1,2,3,4].map(i => <PixelHeart key={i} filled={i < Math.floor(tech.hearts)} half={tech.hearts % 1 !== 0 && i === Math.floor(tech.hearts)} size={20} />)}
         </div>
         <p className={styles.techDesc}>{tech.desc}</p>
       </div>
