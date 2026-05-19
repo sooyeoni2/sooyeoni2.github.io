@@ -2,9 +2,7 @@
   position: fixed;
   inset: 0;
   z-index: 999;
-  background: rgba(10, 10, 30, 0.6);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: #0d0d1a;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,126 +10,142 @@
 }
 
 .overlayOut {
-  animation: overlayOut 0.5s ease forwards;
+  animation: overlayFade 0.6s ease forwards;
 }
 
-@keyframes overlayOut {
-  from { opacity: 1; }
-  to   { opacity: 0; }
+@keyframes overlayFade {
+  to { opacity: 0; }
 }
 
-.ballWrap {
-  transform: rotate(-1.5deg);
+/* ── VSCode-style Editor ── */
+.editor {
+  width: min(820px, 92vw);
+  background: #1e1e1e;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow:
+    0 40px 100px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+  font-family: 'Consolas', 'Courier New', monospace;
+  animation: editorIn 0.5s cubic-bezier(0.34, 1.4, 0.64, 1) forwards;
 }
 
-.ballWrapOut {
-  animation: paperOut 0.5s ease forwards;
+@keyframes editorIn {
+  from { opacity: 0; transform: scale(0.93) translateY(28px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-@keyframes paperOut {
-  from { opacity: 1; transform: rotate(-1.5deg) translateY(0); }
-  to   { opacity: 0; transform: rotate(-1.5deg) translateY(40px); }
+.editorOut {
+  animation: editorOut 0.5s ease forwards;
 }
 
-.paper {
-  position: relative;
-  background: #fff;
-  padding: 52px 102px 44px;
-  max-width: 540px;
-  width: 90%;
-  box-shadow: 8px 8px 0 #111;
-  background-image: repeating-linear-gradient(
-    transparent,
-    transparent 31px,
-    #b8d0f5 31px,
-    #b8d0f5 32px
-  );
-  background-size: 100% 32px;
+@keyframes editorOut {
+  to { opacity: 0; transform: scale(0.95) translateY(14px); }
 }
 
-.tape {
-  position: absolute;
-  top: -14px;
-  left: 40px;
-  width: 80px;
-  height: 26px;
-  background: rgba(160, 160, 160, 0.4);
-  border-radius: 3px;
-  transform: rotate(-1.5deg);
+/* ── Activity Bar (dots) ── */
+.activityBar {
+  background: #323233;
+  padding: 11px 14px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
 }
 
-.tapeRight {
-  position: absolute;
-  top: -10px;
-  right: 36px;
-  width: 70px;
-  height: 26px;
-  background: rgba(160, 160, 160, 0.35);
-  border-radius: 3px;
-  transform: rotate(1deg);
+.actDot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #555;
 }
 
-.label {
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: #888;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-  white-space: nowrap;
+.actDot:nth-child(1) { background: #ff5f57; }
+.actDot:nth-child(2) { background: #ffbd2e; }
+.actDot:nth-child(3) { background: #28ca42; }
+
+/* ── Tab Bar ── */
+.tabBar {
+  background: #252526;
+  border-bottom: 1px solid #1e1e1e;
+  display: flex;
 }
 
-.name {
-  font-size: clamp(2.4rem, 7vw, 4.8rem);
-  font-weight: 900;
-  letter-spacing: -2px;
-  color: #111;
-  line-height: 1;
-  margin-bottom: 6px;
-  white-space: nowrap;
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 20px;
+  font-size: 0.82rem;
+  color: #cccccc;
+  background: #1e1e1e;
+  border-right: 1px solid #252526;
+  border-top: 1px solid #007acc;
 }
 
-.nameEn {
-  font-size: 0.85rem;
-  color: #999;
-  font-weight: 500;
-  letter-spacing: 1px;
-  margin-bottom: 24px;
+.tabIcon {
+  font-size: 0.82rem;
 }
 
-.desc {
-  font-size: 0.95rem;
-  color: #444;
-  line-height: 1.8;
-  margin-bottom: 32px;
+/* ── Code Area ── */
+.codeArea {
+  display: flex;
+  background: #1e1e1e;
+  padding: 20px 0;
+  min-height: 380px;
 }
 
-.highlight {
-  position: relative;
-  display: inline;
-  color: #111;
-  font-weight: 700;
-  border: 2.5px solid #e02020;
-  border-radius: 50% / 40%;
-  padding: 2px 8px;
-  white-space: nowrap;
+.lineNumbers {
+  padding: 0 16px 0 20px;
+  user-select: none;
+  flex-shrink: 0;
+  text-align: right;
 }
 
-.star {
-  position: absolute;
-  top: -22px;
-  right: -4px;
+.lineNum {
+  font-size: 1rem;
+  line-height: 2;
+  min-height: 2rem;
+  transition: color 0.2s;
+}
+
+.codeLines {
+  flex: 1;
+  padding-right: 32px;
+  overflow: hidden;
+}
+
+.codeLine {
   font-size: 1.1rem;
-  color: #e02020;
-  font-style: normal;
-  filter: url(#crayon) drop-shadow(1px 1px 0px #c00);
-  opacity: 0.85;
+  line-height: 2;
+  min-height: 2rem;
+  white-space: pre;
+  color: #d4d4d4;
+}
+
+/* ── Cursor ── */
+.cursor {
+  display: inline-block;
+  color: #aeafad;
+  font-weight: 100;
+  font-size: 1.1rem;
+  transition: opacity 0.1s;
+}
+
+/* ── Status Bar ── */
+.statusBar {
+  background: #007acc;
+  padding: 4px 16px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 0.72rem;
+  color: #fff;
+  font-family: 'Consolas', 'Courier New', monospace;
 }
 
 .hint {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #bbb;
-  letter-spacing: 0.5px;
+  margin-left: auto;
+  font-size: 0.72rem;
+  letter-spacing: 0.8px;
+  transition: opacity 0.3s;
 }

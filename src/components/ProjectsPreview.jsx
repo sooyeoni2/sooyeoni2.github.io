@@ -9,7 +9,7 @@ const PROJECTS = [
     name: '뽈뽈뽈 (BallBallBall)',
     period: '2025.01 ~ 2025.02',
     desc: '야구 동행 매칭 앱. 직관 메이트를 찾고 더치페이를 관리하는 플랫폼',
-    role: 'Flutter 프론트엔드',
+    tags: ['Flutter', '프론트엔드'],
   },
   {
     id: 'movie-archive',
@@ -19,7 +19,7 @@ const PROJECTS = [
     name: 'Movie Archive',
     period: '2025.11 ~ 2025.12',
     desc: '영화 탐색, 커뮤니티, Watchlist 기반 AI 추천을 제공하는 영화 아카이브 서비스',
-    role: 'Django 백엔드 · AI 추천 · 프론트엔드 일부',
+    tags: ['백엔드', 'AI', '프론트엔드'],
   },
 ]
 
@@ -44,7 +44,12 @@ export default function ProjectsPreview() {
                 }
                 <div>
                   <h3 className={styles.name}>{p.name}</h3>
-                  <p className={styles.period}>{p.period} · {p.role}</p>
+                  <div className={styles.periodRow}>
+                    <span className={styles.period}>{p.period}</span>
+                    <div className={styles.tags}>
+                      {p.tags.map(t => <span key={t} className={styles.tag}>{t}</span>)}
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className={styles.speechBubble}>{p.desc}</div>
