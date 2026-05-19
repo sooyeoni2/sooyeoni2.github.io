@@ -37,6 +37,43 @@ const PROJECTS = [
       shadow:      'rgba(45, 74, 136, 0.12)',
     },
   },
+  {
+    id: 'movie-archive',
+    emoji: null,
+    img: '/movie_logo.png',
+    imgAlt: 'Movie Archive',
+    name: 'Movie Archive',
+    period: '2025.11 ~ 2025.12 (1주)',
+    team: '2명 (FE 1 / BE 1)',
+    role: 'Django 백엔드 + AI 추천',
+    desc: '영화 탐색, 커뮤니티, 워치리스트, Watchlist 기반 AI 추천을 제공하는 영화 아카이브 서비스입니다.',
+    stack: ['Vue 3', 'Django', 'TMDB API', 'YouTube API', 'OpenAI API'],
+    highlights: [
+      '영화 검색 및 상세 조회 (TMDB API 연동)',
+      '커뮤니티 게시판 CRUD (댓글 / 좋아요 / 싫어요)',
+      'Watchlist 기반 AI 영화 추천 (GPT-4o-mini)',
+      '영화 취향 DNA 레이더 차트 시각화',
+      '리뷰 영상 검색 및 모달 재생 (YouTube API)',
+    ],
+    accent: {
+      border:      '#60b8c0',
+      titleBar:    '#0f3a40',
+      winBtn:      '#1a5a62',
+      winBtnBorder:'#3a8890',
+      navBg:       '#e8f7f8',
+      navBorder:   '#60b8c0',
+      navBtn:      '#f0fafa',
+      urlText:     '#0f3a40',
+      scrollBg:    '#d0eef0',
+      scrollBtn:   '#a8dce0',
+      scrollThumb: '#60b8c0',
+      tag:         { bg: '#e0f5f6', color: '#0a2a30', border: '#60b8c0' },
+      divider:     '#90d0d4',
+      check:       '#2a9098',
+      detail:      '#0f3a40',
+      shadow:      'rgba(15, 58, 64, 0.12)',
+    },
+  },
 ]
 
 export default function ProjectsPage() {
@@ -87,7 +124,7 @@ export default function ProjectsPage() {
                   <div className={styles.cardHeader}>
                     {p.emoji
                       ? <span className={styles.emoji}>{p.emoji}</span>
-                      : <img src="/ball_kung.png" alt="뽈뽈뽈" className={styles.emoji} style={{ width: '3.6rem', height: '3.6rem', objectFit: 'contain' }} />
+                      : <img src={p.img || '/ball_kung.png'} alt={p.imgAlt || p.name} className={styles.emoji} style={{ width: '3.6rem', height: '3.6rem', objectFit: 'contain' }} />
                     }
                     <div>
                       <h2 className={styles.name}>{p.name}</h2>
