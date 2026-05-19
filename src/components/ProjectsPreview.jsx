@@ -19,7 +19,7 @@ const PROJECTS = [
     name: 'Movie Archive',
     period: '2025.11 ~ 2025.12',
     desc: '영화 탐색, 커뮤니티, Watchlist 기반 AI 추천을 제공하는 영화 아카이브 서비스',
-    role: 'Django 백엔드 + AI 추천',
+    role: 'Django 백엔드 · AI 추천 · 프론트엔드 일부',
   },
 ]
 

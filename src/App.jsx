@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import HomePage from './pages/HomePage'
 import ProjectsPage from './pages/ProjectsPage'
 import BallBallBallDetail from './pages/BallBallBallDetail'
+import MovieArchiveDetail from './pages/MovieArchiveDetail'
 import SkillsPage from './pages/SkillsPage'
 
 function ScrollToTop() {
@@ -22,6 +23,7 @@ function Layout() {
         <Route path="/" element={<HomePage />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/projects/ballballball" element={<BallBallBallDetail />} />
+        <Route path="/projects/movie-archive" element={<MovieArchiveDetail />} />
         <Route path="/skills" element={<SkillsPage />} />
       </Routes>
     </>

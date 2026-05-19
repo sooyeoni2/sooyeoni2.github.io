@@ -64,7 +64,7 @@ export default function BallBallBallDetail() {
             </div>
             <div className={styles.overviewItem}>
               <span className={styles.overviewLabel}>GitHub</span>
-              <span className={styles.overviewValue}><a href="https://github.com/sooyeoni2/ballballball" target="_blank" rel="noopener noreferrer">GitHub 링크</a></span>
+              <span className={styles.overviewValue}><a href="https://github.com/sooyeoni2/ballballball" target="_blank" rel="noopener noreferrer">뽈뽈뽈 보러가기</a></span>
             </div>
           </section>
 

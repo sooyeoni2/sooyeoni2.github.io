@@ -43,9 +43,9 @@ const PROJECTS = [
     img: '/movie_logo.png',
     imgAlt: 'Movie Archive',
     name: 'Movie Archive',
-    period: '2025.11 ~ 2025.12 (1주)',
+    period: '2025.11 ~ 2025.12',
     team: '2명 (FE 1 / BE 1)',
-    role: 'Django 백엔드 + AI 추천',
+    role: 'Django 백엔드 · AI 추천 · 프론트엔드 일부',
     desc: '영화 탐색, 커뮤니티, 워치리스트, Watchlist 기반 AI 추천을 제공하는 영화 아카이브 서비스입니다.',
     stack: ['Vue 3', 'Django', 'TMDB API', 'YouTube API', 'OpenAI API'],
     highlights: [
