@@ -55,7 +55,7 @@ export default function MovieArchiveDetail() {
             </div>
             <div className={styles.overviewItem}>
               <span className={styles.overviewLabel}>담당 역할</span>
-              <span className={styles.overviewValue}>Django 백엔드 · AI 추천 · 커뮤니티 / 평점 프론트엔드 구현</span>
+              <span className={styles.overviewValue}>Django 백엔드 · AI 추천 · 커뮤니티 / 평점 / 취향 DNA 프론트엔드 구현</span>
             </div>
             <div className={styles.overviewItem}>
               <span className={styles.overviewLabel}>GitHub</span>
@@ -152,7 +152,7 @@ export default function MovieArchiveDetail() {
 
           {/* 담당 기능 상세 */}
           <section className={styles.section}>
-            <h2>담당 기능 <span className={styles.badge}>3개 영역</span></h2>
+            <h2>담당 기능 <span className={styles.badge}>4개</span></h2>
 
             {/* 1. Django API 설계 */}
             <div className={styles.featureCard}>
@@ -294,6 +294,64 @@ export default function MovieArchiveDetail() {
                   <li>JSON 형식을 강제하지 않으면 파싱 실패율이 높아 프롬프트를 반복 튜닝</li>
                   <li>TMDB에 없는 AI 추천 영화의 경우 메타데이터 미수신 처리</li>
                   <li>GMS API 응답 지연(3~5초) 동안 프론트에 로딩 상태 전달</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* 4. 취향 DNA */}
+            <div className={styles.featureCard}>
+              <div className={styles.featureHeader}>
+                <div>
+                  <div className={styles.featureTitle}>취향 DNA 레이더 차트</div>
+                  <div className={styles.featureSubtitle}>AI 분석 결과 기반 6축 SVG 레이더 차트 시각화</div>
+                </div>
+              </div>
+
+              <div className={styles.featureLabel}>구현 내용</div>
+              <ul>
+                <li>AI 응답(장르 · 테마 · 분위기 · 감독 스타일)을 파싱해 6개 축 점수 계산</li>
+                <li>6축 레이더 차트를 Vue에서 순수 SVG로 직접 구현 (외부 라이브러리 미사용)</li>
+                <li>배경 격자(pentagon), 축 선, 데이터 영역(polygon), 데이터 포인트(circle) 직접 렌더링</li>
+                <li>파란~보라 그라디언트 채움 영역으로 시각적 완성도 향상</li>
+                <li>화면 너비별 차트 크기 동적 조정 (320px ~ 500px 반응형)</li>
+                <li>점수 정규화 및 최솟값 보정으로 차트가 너무 작게 표시되지 않도록 처리</li>
+              </ul>
+
+              <div className={styles.featureLabel}>6축 항목</div>
+              <ul>
+                <li><strong>감정 몰입</strong> — 드라마 · 가족 · 감동 장르/테마 가중치</li>
+                <li><strong>철학적 호기심</strong> — 스릴러 · 미스터리 · 사회 테마 가중치</li>
+                <li><strong>긴장/자극</strong> — 액션 · 공포 · 서스펜스 가중치</li>
+                <li><strong>유머/재미</strong> — 코미디 · 애니메이션 가중치</li>
+                <li><strong>로맨스/감성</strong> — 로맨스 · 멜로 테마 가중치</li>
+                <li><strong>창의적 상상</strong> — SF · 판타지 · 모험 가중치</li>
+              </ul>
+
+              <div className={styles.featureLabel}>점수 계산 흐름</div>
+              <div className={styles.flowSteps}>
+                {[
+                  'AI 응답에서 genres · themes · mood · director_style 추출',
+                  '장르(+0.35) → 테마(+0.25) → 분위기(+0.2) → 감독 스타일(+0.15) 순으로 각 축 점수 누적',
+                  '전체 축 점수를 최대값 기준으로 정규화 (0~1)',
+                  '0보다 크고 0.2 미만인 값은 0.2로 보정해 차트 표시 보장',
+                  'radarAxes 배열 업데이트 → SVG polygon 재렌더링',
+                ].map((text, i, arr) => (
+                  <div key={i} className={styles.flowStep}>
+                    <div className={styles.flowDotCol}>
+                      <div className={styles.flowDot} />
+                      {i < arr.length - 1 && <div className={styles.flowLine} />}
+                    </div>
+                    <div className={styles.flowText}>{text}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div className={styles.challenge}>
+                <div className={styles.challengeTitle}>기술적 챌린지</div>
+                <ul>
+                  <li>SVG 좌표계에서 6각형 꼭짓점 각도 계산 (-π/2 오프셋으로 정상 방향 정렬)</li>
+                  <li>AI 응답의 자연어를 키워드 매칭으로 수치화하는 점수 산정 로직 설계</li>
+                  <li>정규화 후 극단적으로 작은 값이 시각적으로 사라지는 문제 → 최솟값 보정으로 해결</li>
                 </ul>
               </div>
             </div>
