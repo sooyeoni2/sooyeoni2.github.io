@@ -76,8 +76,8 @@ function sliceSegments(segments, n) {
   return result
 }
 
-const CHAR_DELAY = 30
-const LINE_PAUSE = 200
+const CHAR_DELAY = 22
+const LINE_PAUSE = 160
 
 export default function IntroScreen({ onEnter }) {
   const [leaving, setLeaving]           = useState(false)
