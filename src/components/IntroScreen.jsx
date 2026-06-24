@@ -1,215 +1,124 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import styles from './IntroScreen.module.css'
 
-// Each line is an array of { text, color } segments
-const C = {
-  comment:  '#6c7086',
-  keyword:  '#cba6f7',
-  cls:      '#89dceb',
-  string:   '#a6e3a1',
-  func:     '#89b4fa',
-  var:      '#cdd6f4',
-  prop:     '#89b4fa',
-  fstr:     '#fab387',
-  bracket:  '#cdd6f4',
-  op:       '#89dceb',
-}
+const LETTERS = ['P', 'o', 'r', 't', 'f', 'o', 'l', 'i', 'o']
 
-const LINES = [
-  [{ text: "# sooya's portfolio", color: C.comment }],
-  [],
-  [
-    { text: 'class ',     color: C.keyword },
-    { text: 'Developer',  color: C.cls },
-    { text: ':',          color: C.var },
-  ],
-  [
-    { text: '    name  = ', color: C.var },
-    { text: '"sooya"', color: C.string },
-  ],
-  [
-    { text: '    role  = ', color: C.var },
-    { text: '"Full-stack Developer"', color: C.string },
-  ],
-  [
-    { text: '    stack = [', color: C.var },
-    { text: '"Frontend"', color: C.string },
-    { text: ', ',           color: C.var },
-    { text: '"Backend"',    color: C.string },
-    { text: ', ',           color: C.var },
-    { text: '"Mobile"',     color: C.string },
-    { text: ', ',           color: C.var },
-    { text: '"Web"',        color: C.string },
-    { text: ']',            color: C.bracket },
-  ],
-  [],
-  [
-    { text: 'dev',       color: C.var },
-    { text: ' = ',       color: C.op },
-    { text: 'Developer', color: C.cls },
-    { text: '()',        color: C.bracket },
-  ],
-  [
-    { text: 'print',          color: C.func },
-    { text: '(',              color: C.bracket },
-    { text: 'dev',            color: C.var },
-    { text: '.',              color: C.var },
-    { text: 'introduce',      color: C.func },
-    { text: '())',            color: C.bracket },
-  ],
-  [],
-  [{ text: '# Portfolio ready ✓', color: C.comment }],
+const PAPER_ICONS = [
+  { kind: 'smile', top: '12%', left: '9%', size: 'small', rotate: '-10deg', delay: '0ms' },
+  { kind: 'camera', top: '82%', left: '8%', size: 'small', rotate: '-8deg', delay: '220ms' },
+  { kind: 'star', top: '15%', left: '77%', size: 'tiny', rotate: '9deg', delay: '80ms' },
+  { kind: 'star', top: '22%', left: '83%', size: 'small', rotate: '16deg', delay: '180ms' },
+  { kind: 'plane', top: '31%', left: '90%', size: 'medium', rotate: '14deg', delay: '260ms' },
+  { kind: 'crumpledStar', top: '64%', left: '94%', size: 'small', rotate: '-11deg', delay: '360ms' },
+  { kind: 'crumpledStar', top: '81%', left: '87%', size: 'tiny', rotate: '15deg', delay: '440ms' },
+  { kind: 'crumpledStar', top: '88%', left: '96%', size: 'small', rotate: '8deg', delay: '520ms' },
 ]
 
-function lineText(segments) {
-  return segments.map(s => s.text).join('')
-}
-
-function sliceSegments(segments, n) {
-  const result = []
-  let rem = n
-  for (const seg of segments) {
-    if (rem <= 0) break
-    result.push({ ...seg, text: seg.text.slice(0, rem) })
-    rem -= seg.text.length
+function PaperDoodle({ kind }) {
+  if (kind === 'smile') {
+    return (
+      <svg viewBox="0 0 80 80" aria-hidden="true">
+        <circle cx="40" cy="40" r="27" />
+        <circle cx="30" cy="32" r="3" />
+        <circle cx="50" cy="32" r="3" />
+        <path d="M24 45c7 13 25 15 34 1" />
+      </svg>
+    )
   }
-  return result
-}
 
-const CHAR_DELAY = 22
-const LINE_PAUSE = 160
+  if (kind === 'camera') {
+    return (
+      <svg viewBox="0 0 90 70" aria-hidden="true">
+        <path d="M14 27h15l5-9h20l5 9h17v30H14z" />
+        <circle cx="45" cy="43" r="13" />
+        <circle cx="45" cy="43" r="5" />
+        <path d="M64 32h7M20 24l8-8M14 31l-6-7" />
+      </svg>
+    )
+  }
+
+  if (kind === 'plane') {
+    return (
+      <svg viewBox="0 0 100 78" aria-hidden="true">
+        <path d="M9 35 89 8 63 68 47 45 9 35z" />
+        <path d="M47 45 89 8 34 52 31 68" />
+        <path d="M15 59c11 3 10-12 20-8" />
+      </svg>
+    )
+  }
+
+  return (
+    <svg viewBox="0 0 82 82" aria-hidden="true">
+      <path d="M40 8 49 30 73 27 55 43 62 67 41 54 20 68 27 44 9 29 32 30z" />
+    </svg>
+  )
+}
 
 export default function IntroScreen({ onEnter }) {
-  const [leaving, setLeaving]           = useState(false)
-  const [done, setDone]                 = useState(false)
-  const [lineIdx, setLineIdx]           = useState(0)
-  const [charIdx, setCharIdx]           = useState(0)
-  const [completed, setCompleted]       = useState([])
-  const [cursorOn, setCursorOn]         = useState(true)
+  const [leaving, setLeaving] = useState(false)
+  const paperIcons = useMemo(() => PAPER_ICONS, [])
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
     return () => { document.body.style.overflow = '' }
   }, [])
 
-  useEffect(() => {
-    const t = setInterval(() => setCursorOn(v => !v), 500)
-    return () => clearInterval(t)
-  }, [])
-
-  useEffect(() => {
-    if (lineIdx >= LINES.length) { setDone(true); return }
-    const segs = LINES[lineIdx]
-    const full = lineText(segs)
-
-    if (full === '') {
-      const t = setTimeout(() => {
-        setCompleted(p => [...p, segs])
-        setLineIdx(i => i + 1)
-        setCharIdx(0)
-      }, LINE_PAUSE)
-      return () => clearTimeout(t)
-    }
-
-    if (charIdx < full.length) {
-      const t = setTimeout(() => setCharIdx(c => c + 1), CHAR_DELAY)
-      return () => clearTimeout(t)
-    }
-
-    const t = setTimeout(() => {
-      setCompleted(p => [...p, segs])
-      setLineIdx(i => i + 1)
-      setCharIdx(0)
-    }, LINE_PAUSE)
-    return () => clearTimeout(t)
-  }, [lineIdx, charIdx])
-
-  const handleClick = () => {
+  const handleEnter = () => {
     if (leaving) return
     setLeaving(true)
-    setTimeout(onEnter, 600)
+    setTimeout(onEnter, 620)
   }
 
-  const currentSegs = lineIdx < LINES.length && lineText(LINES[lineIdx]) !== ''
-    ? sliceSegments(LINES[lineIdx], charIdx)
-    : null
-
   return (
-    <div className={`${styles.overlay} ${leaving ? styles.overlayOut : ''}`} onClick={handleClick}>
-      <div className={`${styles.editor} ${leaving ? styles.editorOut : ''}`}>
+    <button
+      className={`${styles.overlay} ${leaving ? styles.overlayOut : ''}`}
+      type="button"
+      onClick={handleEnter}
+      aria-label="Enter portfolio"
+    >
+      <div className={styles.grain} />
 
-        {/* Activity bar */}
-        <div className={styles.activityBar}>
-          <span className={styles.actDot} />
-          <span className={styles.actDot} />
-          <span className={styles.actDot} />
-        </div>
-
-        {/* Tab bar */}
-        <div className={styles.tabBar}>
-          <div className={styles.tab}>
-            <span className={styles.tabIcon}>🐍</span>
-            portfolio.py
-          </div>
-        </div>
-
-        {/* Code area */}
-        <div className={styles.codeArea}>
-          <div className={styles.lineNumbers}>
-            {Array.from({ length: LINES.length }, (_, i) => (
-              <div key={i} className={styles.lineNum}
-                style={{ color: i < completed.length || (i === lineIdx && currentSegs) ? '#858585' : '#404040' }}>
-                {i + 1}
-              </div>
-            ))}
-          </div>
-
-          <div className={styles.codeLines}>
-            {completed.map((segs, i) => (
-              <div key={i} className={styles.codeLine}>
-                {segs.length === 0
-                  ? <span>&nbsp;</span>
-                  : segs.map((s, j) => (
-                      <span key={j} style={{ color: s.color }}>{s.text}</span>
-                    ))
-                }
-              </div>
-            ))}
-
-            {currentSegs && (
-              <div className={styles.codeLine}>
-                {currentSegs.map((s, j) => (
-                  <span key={j} style={{ color: s.color }}>{s.text}</span>
-                ))}
-                <span className={styles.cursor} style={{ opacity: cursorOn ? 1 : 0 }}>|</span>
-              </div>
-            )}
-
-            {done && (
-              <div className={styles.codeLine}>
-                <span className={styles.cursor} style={{ opacity: cursorOn ? 1 : 0, color: '#a6e3a1' }}>|</span>
-              </div>
-            )}
-
-            {/* remaining empty lines */}
-            {Array.from({ length: Math.max(0, LINES.length - completed.length - (currentSegs ? 1 : 0) - (done ? 1 : 0)) }, (_, i) => (
-              <div key={`empty-${i}`} className={styles.codeLine}>&nbsp;</div>
-            ))}
-          </div>
-        </div>
-
-        {/* Status bar */}
-        <div className={styles.statusBar}>
-          <span>Python 3</span>
-          <span>UTF-8</span>
-          {done && (
-            <span className={styles.hint} style={{ opacity: cursorOn ? 1 : 0.4 }}>
-              Click anywhere to enter
-            </span>
-          )}
-        </div>
-
+      <div className={styles.paperDecor} aria-hidden="true">
+        {paperIcons.map(({ kind, top, left, size, rotate, delay }) => (
+          <span
+            key={`${kind}-${top}-${left}`}
+            className={`${styles.paperIcon} ${styles[size]} ${styles[kind]}`}
+            style={{ top, left, '--rotate': rotate, '--delay': delay }}
+          >
+            <PaperDoodle kind={kind} />
+          </span>
+        ))}
       </div>
-    </div>
+
+      <div className={styles.topLabel}>
+        <span>Frontend Dev</span>
+        <span className={styles.dot}>*</span>
+        <strong>KimSooyeon</strong>
+        <span className={styles.dot}>*</span>
+        <span>Web &amp; Mobile</span>
+      </div>
+
+      <div className={styles.wordmark} aria-label="Portfolio">
+        {LETTERS.map((letter, index) => (
+          <span
+            key={`${letter}-${index}`}
+            className={`${styles.letterWrap} ${
+              letter === 'P' || letter === 'f' ? styles.scriptWrap : ''
+            }`}
+          >
+            <span
+              className={`${styles.letter} ${
+                letter === 'P' || letter === 'f' ? styles.scriptLetter : ''
+              }`}
+              style={{ '--letter-delay': `${480 + index * 100}ms` }}
+            >
+              {letter}
+            </span>
+          </span>
+        ))}
+      </div>
+
+      <div className={styles.tagline}>Frontend * Backend * Mobile * Web</div>
+    </button>
   )
 }
