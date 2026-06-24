@@ -228,8 +228,8 @@
 }
 
 .allBtn:hover {
-  background: #111;
-  color: #fff;
+  background: rgba(0, 0, 0, 0.08);
+  color: #111;
 }
 
 @media (max-width: 700px) {
