@@ -97,7 +97,7 @@
 
 /* ===== Container ===== */
 .container {
-  max-width: 100%;
+  max-width: 1300px;
   margin: 0 auto;
   padding: 0 32px;
   min-height: 100%;
@@ -680,7 +680,7 @@
 
 .screenshotItem {
   flex-shrink: 0;
-  width: 130px;
+  width: 180px;
   text-align: center;
 }
 

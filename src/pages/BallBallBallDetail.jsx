@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from './BallBallBallDetail.module.css'
+import DetailContainer from '../components/DetailContainer'
 
 export default function BallBallBallDetail() {
   const navigate = useNavigate()
@@ -28,7 +29,7 @@ export default function BallBallBallDetail() {
         <link rel="preconnect" href="https://cdn.jsdelivr.net" />
         <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet" />
 
-        <div className={styles.container}>
+        <DetailContainer>
 
           {/* Hero */}
           <div className={styles.hero}>
@@ -52,7 +53,7 @@ export default function BallBallBallDetail() {
             </div>
             <div className={styles.overviewItem}>
               <span className={styles.overviewLabel}>개발 기간</span>
-              <span className={styles.overviewValue}>2025.01 ~ 2025.02 (6주)</span>
+              <span className={styles.overviewValue}>2026.01 ~ 2026.02 (6주)</span>
             </div>
             <div className={styles.overviewItem}>
               <span className={styles.overviewLabel}>팀 구성</span>
@@ -153,305 +154,7 @@ export default function BallBallBallDetail() {
           <section className={styles.section}>
             <h2>담당 기능 <span className={styles.badge}>7개</span></h2>
 
-            {/* 1. 로그인/로그아웃 */}
-            <div className={styles.featureCard}>
-              <div className={styles.featureHeader}>
-                <div>
-                  <div className={styles.featureTitle}>로그인 / 로그아웃</div>
-                  <div className={styles.featureSubtitle}>OAuth 소셜 로그인</div>
-                </div>
-              </div>
-
-              <div className={styles.featureLabel}>구현 내용</div>
-              <ul>
-                <li>네이버 OAuth 소셜 로그인 연동</li>
-                <li>Deep Link를 활용한 OAuth 콜백 처리</li>
-                <li>JWT 토큰 기반 인증 (Access + Refresh Token)</li>
-                <li>Flutter Secure Storage 토큰 보안 저장</li>
-                <li>로그인 후 FCM 토큰 자동 등록</li>
-                <li>신규/기존 유저 분기 처리</li>
-              </ul>
-
-              <div className={styles.featureLabel}>주요 흐름</div>
-              <div className={styles.flowSteps}>
-                <div className={styles.flowStep}>
-                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div><div className={styles.flowLine}></div></div>
-                  <div className={styles.flowText}>로그인 버튼 클릭 (네이버)</div>
-                </div>
-                <div className={styles.flowStep}>
-                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div><div className={styles.flowLine}></div></div>
-                  <div className={styles.flowText}>OAuth 서버 리다이렉트 → Deep Link로 앱 복귀</div>
-                </div>
-                <div className={styles.flowStep}>
-                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div><div className={styles.flowLine}></div></div>
-                  <div className={styles.flowText}>백엔드 API로 토큰 교환 → Secure Storage 저장</div>
-                </div>
-                <div className={styles.flowStep}>
-                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div><div className={styles.flowLine}></div></div>
-                  <div className={styles.flowText}>FCM 토큰 등록</div>
-                </div>
-                <div className={styles.flowStep}>
-                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div></div>
-                  <div className={styles.flowText}>신규 유저 → 프로필 설정 / 기존 유저 → 메인 화면</div>
-                </div>
-              </div>
-
-              <div className={styles.featureLabel}>주요 화면</div>
-              <div className={styles.screenshotRow}>
-                <div className={styles.screenshotItem}>
-                  <img src="/images/ballballball/login.png" alt="로그인 화면" />
-                  <div className={styles.scLabel}>로그인</div>
-                </div>
-                <div className={styles.screenshotItem}>
-                  <img src="/images/ballballball/profilesetup.png" alt="프로필 설정" />
-                  <div className={styles.scLabel}>프로필 설정</div>
-                </div>
-              </div>
-
-              <div className={styles.challenge}>
-                <div className={styles.challengeTitle}>기술적 챌린지</div>
-                <ul>
-                  <li>Deep Link 핸들러를 통한 OAuth 콜백 라우팅</li>
-                  <li>Riverpod AuthNotifier로 전역 인증 상태 관리</li>
-                  <li>Dio Interceptor 토큰 자동 갱신 처리</li>
-                </ul>
-              </div>
-            </div>
-
-            {/* 2. 더치페이 */}
-            <div className={styles.featureCard}>
-              <div className={styles.featureHeader}>
-                <div>
-                  <div className={styles.featureTitle}>더치페이</div>
-                  <div className={styles.featureSubtitle}>더치페이 / 결제 시스템</div>
-                </div>
-              </div>
-
-              <div className={styles.featureLabel}>구현 내용</div>
-              <ul>
-                <li>토스페이먼츠 API 모바일 결제 시스템</li>
-                <li>더치페이 목록 생성 → 멤버 선택 → 금액 입력 → 결제 전체 플로우</li>
-                <li>WebView 기반 토스 결제 화면 연동</li>
-                <li>결제 성공/실패 콜백 처리</li>
-                <li>더치페이 취소 시 환불 재시도 메커니즘</li>
-              </ul>
-
-              <div className={styles.featureLabel}>주요 흐름</div>
-              <div className={styles.flowSteps}>
-                <div className={styles.flowStep}>
-                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div><div className={styles.flowLine}></div></div>
-                  <div className={styles.flowText}>더치페이 생성 (금액 입력 + 참여 멤버 선택)</div>
-                </div>
-                <div className={styles.flowStep}>
-                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div><div className={styles.flowLine}></div></div>
-                  <div className={styles.flowText}>토스페이먼츠 결제 HTML 생성 → WebView 로딩</div>
-                </div>
-                <div className={styles.flowStep}>
-                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div><div className={styles.flowLine}></div></div>
-                  <div className={styles.flowText}>결제 성공 / 실패 콜백 수신</div>
-                </div>
-                <div className={styles.flowStep}>
-                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div><div className={styles.flowLine}></div></div>
-                  <div className={styles.flowText}>백엔드 결제 확인 API 호출 → 더치페이 상태 업데이트</div>
-                </div>
-                <div className={styles.flowStep}>
-                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div></div>
-                  <div className={styles.flowText}>취소 시 환불 API 호출 → 실패 시 재시도</div>
-                </div>
-              </div>
-
-              <div className={styles.featureLabel}>주요 화면</div>
-              <div className={styles.screenshotRow}>
-                <div className={styles.screenshotItem}>
-                  <img src="/images/ballballball/dutchpay.gif" alt="더치페이 주요 화면" />
-                  <div className={styles.scLabel}>더치페이 흐름</div>
-                </div>
-              </div>
-
-              <div className={styles.challenge}>
-                <div className={styles.challengeTitle}>기술적 챌린지</div>
-                <ul>
-                  <li>WebView ↔ Flutter 간 결제 콜백 통신</li>
-                  <li>토스페이먼츠 결제 HTML 동적 생성 → WebView 로딩</li>
-                  <li>더치페이 상태별 UI 분기 (대기/완료/취소)</li>
-                </ul>
-              </div>
-            </div>
-
-            {/* 3. 프로필 */}
-            <div className={styles.featureCard}>
-              <div className={styles.featureHeader}>
-                <div>
-                  <div className={styles.featureTitle}>프로필 관리</div>
-                  <div className={styles.featureSubtitle}>마이 프로필 / 유저 프로필</div>
-                </div>
-              </div>
-
-              <div className={styles.featureLabel}>구현 내용</div>
-              <ul>
-                <li>마이 프로필 조회 (닉네임, 자기소개, 프로필 이미지, 동행 온도, 마이팀, 직관기록, 동행목록)</li>
-                <li>프로필 수정 (닉네임, 자기소개)</li>
-                <li>S3 Presigned URL 프로필 이미지 업로드</li>
-                <li>다른 유저 프로필 조회 (동행 히스토리, 온도, 통계)</li>
-                <li>동행 온도(신뢰도) 시각화 위젯</li>
-              </ul>
-
-              <div className={styles.featureLabel}>주요 화면</div>
-              <div className={styles.screenshotRow}>
-                <div className={styles.screenshotItem}>
-                  <img src="/images/ballballball/myprofile.png" alt="마이 프로필" />
-                  <div className={styles.scLabel}>마이 프로필</div>
-                </div>
-                <div className={styles.screenshotItem}>
-                  <img src="/images/ballballball/otherprofile.png" alt="유저 프로필" />
-                  <div className={styles.scLabel}>유저 프로필</div>
-                </div>
-                <div className={styles.screenshotItem}>
-                  <img src="/images/ballballball/profileupdate.png" alt="프로필 수정" />
-                  <div className={styles.scLabel}>프로필 수정</div>
-                </div>
-              </div>
-
-              <div className={styles.challenge}>
-                <div className={styles.challengeTitle}>기술적 챌린지</div>
-                <ul>
-                  <li>S3 Presigned URL로 서버 부하 없이 직접 업로드</li>
-                  <li>동행 온도 커스텀 시각화 위젯 구현</li>
-                </ul>
-              </div>
-            </div>
-
-            {/* 4. 메뉴 */}
-            <div className={styles.featureCard}>
-              <div className={styles.featureHeader}>
-                <div>
-                  <div className={styles.featureTitle}>메뉴 / 설정</div>
-                  <div className={styles.featureSubtitle}>앱 설정 및 정보</div>
-                </div>
-              </div>
-
-              <div className={styles.featureLabel}>구현 내용</div>
-              <ul>
-                <li>이용약관 / 개인정보처리방침</li>
-                <li>오픈소스 라이선스 안내</li>
-                <li>앱 정보 페이지</li>
-                <li>로그아웃 (API 호출 + 토큰 삭제 + 화면 전환)</li>
-              </ul>
-
-              <div className={styles.challenge}>
-                <div className={styles.challengeTitle}>기술적 포인트</div>
-                <ul>
-                  <li>모듈화된 MenuItemTile 위젯 재사용</li>
-                  <li>로그아웃 시 Go Router 자동 리다이렉트</li>
-                </ul>
-              </div>
-            </div>
-
-            {/* 5. 커뮤니티 */}
-            <div className={styles.featureCard}>
-              <div className={styles.featureHeader}>
-                <div>
-                  <div className={styles.featureTitle}>커뮤니티</div>
-                  <div className={styles.featureSubtitle}>게시판 / 댓글 / 리액션</div>
-                </div>
-              </div>
-
-              <div className={styles.featureLabel}>구현 내용</div>
-              <ul>
-                <li>게시판: 자유 게시판, 맛집 추천, 직관 후기</li>
-                <li>게시글 CRUD (작성/조회/수정/삭제)</li>
-                <li>이미지 첨부 (S3 업로드)</li>
-                <li>댓글 작성/수정/삭제</li>
-                <li>이모지 리액션</li>
-                <li>무한 스크롤 페이지네이션</li>
-              </ul>
-
-              <div className={styles.featureLabel}>주요 화면</div>
-              <div className={styles.screenshotRow}>
-                <div className={styles.screenshotItem}>
-                  <img src="/images/ballballball/community.png" alt="게시글 목록" />
-                  <div className={styles.scLabel}>게시글 목록</div>
-                </div>
-                <div className={styles.screenshotItem}>
-                  <img src="/images/ballballball/community1.png" alt="게시글 상세" />
-                  <div className={styles.scLabel}>게시글 상세</div>
-                </div>
-              </div>
-
-              <div className={styles.challenge}>
-                <div className={styles.challengeTitle}>기술적 챌린지</div>
-                <ul>
-                  <li>Riverpod 무한 스크롤 페이지네이션 상태 관리</li>
-                  <li>Firebase Push 실시간 댓글 알림</li>
-                  <li>이모지 리액션 통계 효율적 렌더링</li>
-                </ul>
-              </div>
-            </div>
-
-            {/* 6. 동행 평가 */}
-            <div className={styles.featureCard}>
-              <div className={styles.featureHeader}>
-                <div>
-                  <div className={styles.featureTitle}>동행 평가</div>
-                  <div className={styles.featureSubtitle}>동행 종료 후 동행인 별점 평가</div>
-                </div>
-              </div>
-
-              <div className={styles.featureLabel}>구현 내용</div>
-              <ul>
-                <li>동행 종료 후 함께한 동행인 목록 표시</li>
-                <li>동행인 탭 시 별점 평가 다이얼로그 표시</li>
-                <li>1~5점 별점 평가 후 동행 온도(신뢰도)에 반영</li>
-                <li>평가 완료 후 완료 다이얼로그 표시 및 프로필 갱신</li>
-              </ul>
-
-              <div className={styles.featureLabel}>주요 흐름</div>
-              <div className={styles.flowSteps}>
-                <div className={styles.flowStep}>
-                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div><div className={styles.flowLine}></div></div>
-                  <div className={styles.flowText}>내 프로필 → 동행 목록 탭 진입</div>
-                </div>
-                <div className={styles.flowStep}>
-                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div><div className={styles.flowLine}></div></div>
-                  <div className={styles.flowText}>종료된 동행 선택 → 동행인 목록 화면</div>
-                </div>
-                <div className={styles.flowStep}>
-                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div><div className={styles.flowLine}></div></div>
-                  <div className={styles.flowText}>동행인 탭 → 별점 평가 다이얼로그</div>
-                </div>
-                <div className={styles.flowStep}>
-                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div></div>
-                  <div className={styles.flowText}>평가 제출 → 완료 다이얼로그 + 프로필 온도 갱신</div>
-                </div>
-              </div>
-
-              <div className={styles.featureLabel}>주요 화면</div>
-              <div className={styles.screenshotRow}>
-                <div className={styles.screenshotItem}>
-                  <img src="/images/ballballball/ondo1.png" alt="동행 평가 화면" />
-                  <div className={styles.scLabel}>동행 평가</div>
-                </div>
-                <div className={styles.screenshotItem}>
-                  <img src="/images/ballballball/ondo2.png" alt="별점 다이얼로그" />
-                  <div className={styles.scLabel}>별점 평가</div>
-                </div>
-                <div className={styles.screenshotItem}>
-                  <img src="/images/ballballball/ondo3.png" alt="완료 다이얼로그" />
-                  <div className={styles.scLabel}>평가 완료</div>
-                </div>
-              </div>
-
-              <div className={styles.challenge}>
-                <div className={styles.challengeTitle}>기술적 챌린지</div>
-                <ul>
-                  <li>Riverpod으로 멤버별 평가 상태 개별 관리</li>
-                  <li>별점 평가 결과를 동행 온도에 실시간 반영</li>
-                  <li>평가 완료 후 MenuProvider 자동 갱신 처리</li>
-                </ul>
-              </div>
-            </div>
-
-            {/* 7. AR 실내 길찾기 */}
+            {/* 1. AR 실내 길찾기 */}
             <div className={styles.featureCard}>
               <div className={styles.featureHeader}>
                 <div>
@@ -516,6 +219,305 @@ export default function BallBallBallDetail() {
                   <li>카메라 Yaw 각도 기반 화살표 방향 보정 및 앵커 재설정</li>
                   <li>OCR 결과 모호 시 후보 다이얼로그 → 수동 위치 선택 폴백 처리</li>
                   <li>Riverpod IndoorArNotifier로 측위·경로·POI 상태 통합 관리</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* 2. 커뮤니티 */}
+            <div className={styles.featureCard}>
+              <div className={styles.featureHeader}>
+                <div>
+                  <div className={styles.featureTitle}>커뮤니티</div>
+                  <div className={styles.featureSubtitle}>게시판 / 댓글 / 리액션</div>
+                </div>
+              </div>
+
+              <div className={styles.featureLabel}>구현 내용</div>
+              <ul>
+                <li>게시판: 자유 게시판, 맛집 추천, 직관 후기</li>
+                <li>게시글 CRUD (작성/조회/수정/삭제)</li>
+                <li>이미지 첨부 (S3 업로드)</li>
+                <li>댓글 작성/수정/삭제</li>
+                <li>이모지 리액션</li>
+                <li>게시글 30건 단위 커서 기반 무한 스크롤 페이지네이션</li>
+              </ul>
+
+              <div className={styles.featureLabel}>주요 화면</div>
+              <div className={styles.screenshotRow}>
+                <div className={styles.screenshotItem}>
+                  <img src="/images/ballballball/community.png" alt="게시글 목록" />
+                  <div className={styles.scLabel}>게시글 목록</div>
+                </div>
+                <div className={styles.screenshotItem}>
+                  <img src="/images/ballballball/community1.png" alt="게시글 상세" />
+                  <div className={styles.scLabel}>게시글 상세</div>
+                </div>
+              </div>
+
+              <div className={styles.challenge}>
+                <div className={styles.challengeTitle}>기술적 챌린지</div>
+                <ul>
+                  <li>목록 API가 myReaction을 반환하지 않아 단순 keepAlive만으로는 서버 재조회 시 로컬 토글 상태가 덮어써지는 문제 — likeCount(서버)와 myReaction(keepAlive 로컬)의 신뢰 출처를 분리해 관리</li>
+                  <li>새로고침마다 _mergeServerDataWithOverrides()로 두 출처를 합성, 서버 응답이 로컬 상태를 덮지 않도록 보장</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* 3. 더치페이 */}
+            <div className={styles.featureCard}>
+              <div className={styles.featureHeader}>
+                <div>
+                  <div className={styles.featureTitle}>더치페이</div>
+                  <div className={styles.featureSubtitle}>더치페이 / 결제 시스템</div>
+                </div>
+              </div>
+
+              <div className={styles.featureLabel}>구현 내용</div>
+              <ul>
+                <li>토스페이먼츠 API 모바일 결제 시스템</li>
+                <li>더치페이 목록 생성 → 멤버 선택 → 금액 입력 → 결제 전체 플로우</li>
+                <li>WebView 기반 토스 결제 화면 연동</li>
+                <li>결제 성공/실패 콜백 처리</li>
+                <li>더치페이 취소 시 환불 재시도 메커니즘</li>
+              </ul>
+
+              <div className={styles.featureLabel}>주요 흐름</div>
+              <div className={styles.flowSteps}>
+                <div className={styles.flowStep}>
+                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div><div className={styles.flowLine}></div></div>
+                  <div className={styles.flowText}>더치페이 생성 (금액 입력 + 참여 멤버 선택)</div>
+                </div>
+                <div className={styles.flowStep}>
+                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div><div className={styles.flowLine}></div></div>
+                  <div className={styles.flowText}>토스페이먼츠 결제 HTML 생성 → WebView 로딩</div>
+                </div>
+                <div className={styles.flowStep}>
+                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div><div className={styles.flowLine}></div></div>
+                  <div className={styles.flowText}>결제 성공 / 실패 콜백 수신</div>
+                </div>
+                <div className={styles.flowStep}>
+                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div><div className={styles.flowLine}></div></div>
+                  <div className={styles.flowText}>백엔드 결제 확인 API 호출 → 더치페이 상태 업데이트</div>
+                </div>
+                <div className={styles.flowStep}>
+                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div></div>
+                  <div className={styles.flowText}>취소 시 환불 API 호출 → 실패 시 재시도</div>
+                </div>
+              </div>
+
+              <div className={styles.featureLabel}>주요 화면</div>
+              <div className={styles.screenshotRow}>
+                <div className={styles.screenshotItem}>
+                  <img src="/images/ballballball/dutchpay.gif" alt="더치페이 주요 화면" />
+                  <div className={styles.scLabel}>더치페이 흐름</div>
+                </div>
+              </div>
+
+              <div className={styles.challenge}>
+                <div className={styles.challengeTitle}>기술적 챌린지</div>
+                <ul>
+                  <li>외부 결제 앱(카카오페이 등) 복귀 시 NavigationDelegate로는 콜백 감지 불가 — NavigationDelegate.onNavigationRequest + AppLinks.uriLinkStream 이중 감지 구조로 어느 경로로 복귀해도 동일하게 처리</li>
+                  <li>intent:// 스킴 감지 시 결제 앱 미설치 환경을 위해 browser_fallback_url 또는 Play Store로 자동 폴백</li>
+                  <li>confirm API 타임아웃 → 최대 3회 재시도, 최종 실패 시 PaymentFailScreen으로 이동해 재시도 선택권 제공</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* 4. 동행 평가 */}
+            <div className={styles.featureCard}>
+              <div className={styles.featureHeader}>
+                <div>
+                  <div className={styles.featureTitle}>동행 평가</div>
+                  <div className={styles.featureSubtitle}>동행 종료 후 동행인 별점 평가</div>
+                </div>
+              </div>
+
+              <div className={styles.featureLabel}>구현 내용</div>
+              <ul>
+                <li>동행 종료 후 함께한 동행인 목록 표시</li>
+                <li>동행인 탭 시 별점 평가 다이얼로그 표시</li>
+                <li>1~5점 별점 평가 후 동행 온도(신뢰도)에 반영</li>
+                <li>평가 완료 후 완료 다이얼로그 표시 및 프로필 갱신</li>
+              </ul>
+
+              <div className={styles.featureLabel}>주요 흐름</div>
+              <div className={styles.flowSteps}>
+                <div className={styles.flowStep}>
+                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div><div className={styles.flowLine}></div></div>
+                  <div className={styles.flowText}>내 프로필 → 동행 목록 탭 진입</div>
+                </div>
+                <div className={styles.flowStep}>
+                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div><div className={styles.flowLine}></div></div>
+                  <div className={styles.flowText}>종료된 동행 선택 → 동행인 목록 화면</div>
+                </div>
+                <div className={styles.flowStep}>
+                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div><div className={styles.flowLine}></div></div>
+                  <div className={styles.flowText}>동행인 탭 → 별점 평가 다이얼로그</div>
+                </div>
+                <div className={styles.flowStep}>
+                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div></div>
+                  <div className={styles.flowText}>평가 제출 → 완료 다이얼로그 + 프로필 온도 갱신</div>
+                </div>
+              </div>
+
+              <div className={styles.featureLabel}>주요 화면</div>
+              <div className={styles.screenshotRow}>
+                <div className={styles.screenshotItem}>
+                  <img src="/images/ballballball/ondo1.png" alt="동행 평가 화면" />
+                  <div className={styles.scLabel}>동행 평가</div>
+                </div>
+                <div className={styles.screenshotItem}>
+                  <img src="/images/ballballball/ondo2.png" alt="별점 다이얼로그" />
+                  <div className={styles.scLabel}>별점 평가</div>
+                </div>
+                <div className={styles.screenshotItem}>
+                  <img src="/images/ballballball/ondo3.png" alt="완료 다이얼로그" />
+                  <div className={styles.scLabel}>평가 완료</div>
+                </div>
+              </div>
+
+              <div className={styles.challenge}>
+                <div className={styles.challengeTitle}>기술적 챌린지</div>
+                <ul>
+                  <li>Riverpod으로 멤버별 평가 상태 개별 관리</li>
+                  <li>별점 평가 결과를 동행 온도에 실시간 반영</li>
+                  <li>평가 완료 후 MenuProvider 자동 갱신 처리</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* 5. 프로필 */}
+            <div className={styles.featureCard}>
+              <div className={styles.featureHeader}>
+                <div>
+                  <div className={styles.featureTitle}>프로필 관리</div>
+                  <div className={styles.featureSubtitle}>마이 프로필 / 유저 프로필</div>
+                </div>
+              </div>
+
+              <div className={styles.featureLabel}>구현 내용</div>
+              <ul>
+                <li>마이 프로필 조회 (닉네임, 자기소개, 프로필 이미지, 동행 온도, 마이팀, 직관기록, 동행목록)</li>
+                <li>프로필 수정 (닉네임, 자기소개)</li>
+                <li>S3 Presigned URL 프로필 이미지 업로드</li>
+                <li>다른 유저 프로필 조회 (동행 히스토리, 온도, 통계)</li>
+                <li>동행 온도(신뢰도) 시각화 위젯</li>
+              </ul>
+
+              <div className={styles.featureLabel}>주요 화면</div>
+              <div className={styles.screenshotRow}>
+                <div className={styles.screenshotItem}>
+                  <img src="/images/ballballball/myprofile.png" alt="마이 프로필" />
+                  <div className={styles.scLabel}>마이 프로필</div>
+                </div>
+                <div className={styles.screenshotItem}>
+                  <img src="/images/ballballball/otherprofile.png" alt="유저 프로필" />
+                  <div className={styles.scLabel}>유저 프로필</div>
+                </div>
+                <div className={styles.screenshotItem}>
+                  <img src="/images/ballballball/profileupdate.png" alt="프로필 수정" />
+                  <div className={styles.scLabel}>프로필 수정</div>
+                </div>
+              </div>
+
+              <div className={styles.challenge}>
+                <div className={styles.challengeTitle}>기술적 챌린지</div>
+                <ul>
+                  <li>S3 Presigned URL로 서버 부하 없이 직접 업로드</li>
+                  <li>동행 온도 커스텀 시각화 위젯 구현</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* 6. 로그인/로그아웃 */}
+            <div className={styles.featureCard}>
+              <div className={styles.featureHeader}>
+                <div>
+                  <div className={styles.featureTitle}>로그인 / 로그아웃</div>
+                  <div className={styles.featureSubtitle}>OAuth 소셜 로그인</div>
+                </div>
+              </div>
+
+              <div className={styles.featureLabel}>구현 내용</div>
+              <ul>
+                <li>네이버 OAuth 소셜 로그인 연동</li>
+                <li>Deep Link를 활용한 OAuth 콜백 처리</li>
+                <li>JWT 토큰 기반 인증 (Access + Refresh Token)</li>
+                <li>Flutter Secure Storage 토큰 보안 저장</li>
+                <li>로그인 후 FCM 토큰 자동 등록</li>
+                <li>신규/기존 유저 분기 처리</li>
+                <li>Dio InterceptorsWrapper onRequest에서 Secure Storage 토큰을 읽어 Authorization 헤더 자동 주입</li>
+                <li>DioErrorInterceptor: 네트워크 타임아웃 발생 시 최대 3회, 1초 간격 자동 재시도</li>
+                <li>HTTP 상태코드 6종(400/401/403/404/409/500+)별 타입 지정 AppException 변환</li>
+              </ul>
+
+              <div className={styles.featureLabel}>주요 흐름</div>
+              <div className={styles.flowSteps}>
+                <div className={styles.flowStep}>
+                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div><div className={styles.flowLine}></div></div>
+                  <div className={styles.flowText}>로그인 버튼 클릭 (네이버)</div>
+                </div>
+                <div className={styles.flowStep}>
+                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div><div className={styles.flowLine}></div></div>
+                  <div className={styles.flowText}>OAuth 서버 리다이렉트 → Deep Link로 앱 복귀</div>
+                </div>
+                <div className={styles.flowStep}>
+                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div><div className={styles.flowLine}></div></div>
+                  <div className={styles.flowText}>백엔드 API로 토큰 교환 → Secure Storage 저장</div>
+                </div>
+                <div className={styles.flowStep}>
+                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div><div className={styles.flowLine}></div></div>
+                  <div className={styles.flowText}>FCM 토큰 등록</div>
+                </div>
+                <div className={styles.flowStep}>
+                  <div className={styles.flowDotCol}><div className={styles.flowDot}></div></div>
+                  <div className={styles.flowText}>신규 유저 → 프로필 설정 / 기존 유저 → 메인 화면</div>
+                </div>
+              </div>
+
+              <div className={styles.featureLabel}>주요 화면</div>
+              <div className={styles.screenshotRow}>
+                <div className={styles.screenshotItem}>
+                  <img src="/images/ballballball/login.png" alt="로그인 화면" />
+                  <div className={styles.scLabel}>로그인</div>
+                </div>
+                <div className={styles.screenshotItem}>
+                  <img src="/images/ballballball/profilesetup.png" alt="프로필 설정" />
+                  <div className={styles.scLabel}>프로필 설정</div>
+                </div>
+              </div>
+
+              <div className={styles.challenge}>
+                <div className={styles.challengeTitle}>기술적 챌린지</div>
+                <ul>
+                  <li>Deep Link URL에 토큰이 평문으로 포함되는 구조 — 수신 즉시 FlutterSecureStorage(OS Keychain / Keystore)에 저장해 메모리 노출 시간 최소화</li>
+                  <li>isNewUser / signupCompleted 문자열 → Boolean 파싱 후 AuthState 저장, GoRouter redirect 분기 조건으로 활용</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* 7. 메뉴 */}
+            <div className={styles.featureCard}>
+              <div className={styles.featureHeader}>
+                <div>
+                  <div className={styles.featureTitle}>메뉴 / 설정</div>
+                  <div className={styles.featureSubtitle}>앱 설정 및 정보</div>
+                </div>
+              </div>
+
+              <div className={styles.featureLabel}>구현 내용</div>
+              <ul>
+                <li>이용약관 / 개인정보처리방침</li>
+                <li>오픈소스 라이선스 안내</li>
+                <li>앱 정보 페이지</li>
+                <li>로그아웃 (API 호출 + 토큰 삭제 + 화면 전환)</li>
+              </ul>
+
+              <div className={styles.challenge}>
+                <div className={styles.challengeTitle}>기술적 포인트</div>
+                <ul>
+                  <li>모듈화된 MenuItemTile 위젯 재사용</li>
+                  <li>로그아웃 시 Go Router 자동 리다이렉트</li>
                 </ul>
               </div>
             </div>
@@ -885,7 +887,7 @@ export default function BallBallBallDetail() {
             </div>
           </section>
 
-        </div>
+        </DetailContainer>
       </div>
     </div>
   )

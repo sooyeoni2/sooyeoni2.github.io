@@ -6,7 +6,7 @@ const PROJECTS = [
     id: 'ballballball',
     emoji: null,
     name: '뽈뽈뽈 (BallBallBall)',
-    period: '2025.01 ~ 2025.02 (6주)',
+    period: '2026.01 ~ 2026.02 (6주)',
     team: '6명 (FE 2 / BE 4)',
     role: 'Flutter 프론트엔드',
     desc: '야구 동행 매칭 앱. 직관 메이트를 찾고 더치페이를 관리하며 팬들이 함께 경기를 즐길 수 있는 플랫폼입니다.',

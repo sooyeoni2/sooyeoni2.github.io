@@ -4,7 +4,7 @@ const PROJECTS = [
   {
     emoji: '⚾',
     name: '뽈뽈뽈 (BallBallBall)',
-    period: '2024',
+    period: '2026',
     role: 'Flutter 모바일 개발 (프론트엔드)',
     desc: '야구 동행 매칭 앱. 직관 메이트를 찾고 더치페이를 관리하며 팬들이 함께 경기를 즐길 수 있는 플랫폼입니다.',
     stack: ['Flutter', 'Dart', 'WebSocket', 'FCM', 'WebView', 'Toss Payments'],

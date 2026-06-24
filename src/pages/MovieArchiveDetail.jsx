@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from './MovieArchiveDetail.module.css'
+import DetailContainer from '../components/DetailContainer'
 
 export default function MovieArchiveDetail() {
   const navigate = useNavigate()
@@ -25,7 +26,7 @@ export default function MovieArchiveDetail() {
       </div>
 
       <div className={styles.content}>
-        <div className={styles.container}>
+        <DetailContainer>
 
           {/* Hero */}
           <div className={styles.hero}>
@@ -368,19 +369,19 @@ export default function MovieArchiveDetail() {
               </div>
               <div className={styles.troubleRow}>
                 <span className={`${styles.troubleLabel} ${styles.problem}`}>문제</span>
-                <span className={styles.troubleText}>AI 응답이 JSON 형식을 따르지 않아 프론트에서 파싱 오류가 빈번하게 발생했습니다.</span>
+                <span className={styles.troubleText}>AI 응답이 JSON 형식을 따르지 않아 프론트에서 파싱 오류 빈번 발생</span>
               </div>
               <div className={styles.troubleRow}>
                 <span className={`${styles.troubleLabel} ${styles.cause}`}>원인</span>
-                <span className={styles.troubleText}>프롬프트에 출력 형식을 명시하지 않아 AI가 자연어 문장이나 마크다운 코드블록 등 다양한 형태로 응답하였습니다.</span>
+                <span className={styles.troubleText}>프롬프트에 출력 형식을 명시하지 않아 AI가 자연어 문장, 마크다운 코드블록 등 다양한 형태로 응답</span>
               </div>
               <div className={styles.troubleRow}>
                 <span className={`${styles.troubleLabel} ${styles.solve}`}>해결</span>
-                <span className={styles.troubleText}>프롬프트에 "반드시 다음 JSON 형식으로만 답변하세요"와 함께 스키마를 명시하고, 백엔드에서 JSON 파싱 실패 시 재시도 로직을 추가했습니다.</span>
+                <span className={styles.troubleText}>프롬프트에 "반드시 다음 JSON 형식으로만 답변하세요"와 함께 스키마를 명시, 백엔드에서 JSON 파싱 실패 시 재시도 로직 추가</span>
               </div>
               <div className={styles.troubleRow}>
                 <span className={`${styles.troubleLabel} ${styles.learn}`}>배운 점</span>
-                <span className={styles.troubleText}>생성형 AI 활용 시 모델 자체보다 어떤 정보를 어떻게 전달하느냐가 결과 품질에 큰 영향을 미친다는 것을 실감했습니다.</span>
+                <span className={styles.troubleText}>생성형 AI 활용 시 모델 자체보다 어떤 정보를 어떻게 전달하느냐가 결과 품질에 큰 영향을 미침</span>
               </div>
             </div>
 
@@ -391,19 +392,19 @@ export default function MovieArchiveDetail() {
               </div>
               <div className={styles.troubleRow}>
                 <span className={`${styles.troubleLabel} ${styles.problem}`}>문제</span>
-                <span className={styles.troubleText}>개발 중반에 프론트엔드가 요구하는 응답 필드명과 백엔드 Serializer의 필드명이 달라 화면이 깨지는 현상이 반복되었습니다.</span>
+                <span className={styles.troubleText}>개발 중반에 프론트엔드가 요구하는 응답 필드명과 백엔드 Serializer 필드명이 달라 화면이 깨지는 현상 반복</span>
               </div>
               <div className={styles.troubleRow}>
                 <span className={`${styles.troubleLabel} ${styles.cause}`}>원인</span>
-                <span className={styles.troubleText}>초기에 API 명세를 충분히 합의하지 않고 각자 개발을 시작해 응답 구조가 서로 달라졌습니다.</span>
+                <span className={styles.troubleText}>초기에 API 명세를 충분히 합의하지 않고 각자 개발을 시작해 응답 구조가 서로 달라짐</span>
               </div>
               <div className={styles.troubleRow}>
                 <span className={`${styles.troubleLabel} ${styles.solve}`}>해결</span>
-                <span className={styles.troubleText}>중간 점검에서 응답 JSON 구조를 문서화하고 합의한 뒤, Serializer의 필드명을 프론트엔드 요구사항에 맞게 수정했습니다.</span>
+                <span className={styles.troubleText}>중간 점검에서 응답 JSON 구조를 문서화하고 합의 후, Serializer 필드명을 프론트엔드 요구사항에 맞게 수정</span>
               </div>
               <div className={styles.troubleRow}>
                 <span className={`${styles.troubleLabel} ${styles.learn}`}>배운 점</span>
-                <span className={styles.troubleText}>기능 구현에 앞서 API 응답 구조를 먼저 합의하는 것이 전체 개발 속도를 높이는 핵심이라는 것을 경험했습니다.</span>
+                <span className={styles.troubleText}>기능 구현 전 API 응답 구조를 먼저 합의하는 것이 전체 개발 속도를 높이는 핵심</span>
               </div>
             </div>
 
@@ -414,19 +415,19 @@ export default function MovieArchiveDetail() {
               </div>
               <div className={styles.troubleRow}>
                 <span className={`${styles.troubleLabel} ${styles.problem}`}>문제</span>
-                <span className={styles.troubleText}>커뮤니티 API 수정 시 댓글 수 집계나 좋아요 수 응답 등 연관된 다른 기능에서 예상치 못한 오류가 발생했습니다.</span>
+                <span className={styles.troubleText}>커뮤니티 API 수정 시 댓글 수 집계, 좋아요 수 응답 등 연관 기능에서 예상치 못한 오류 발생</span>
               </div>
               <div className={styles.troubleRow}>
                 <span className={`${styles.troubleLabel} ${styles.cause}`}>원인</span>
-                <span className={styles.troubleText}>화면에 보이는 부분만 수정하다 보니 직접적으로 드러나지 않는 연관 API 흐름을 놓쳤습니다.</span>
+                <span className={styles.troubleText}>화면에 보이는 부분만 수정하다 보니 직접적으로 드러나지 않는 연관 API 흐름을 놓침</span>
               </div>
               <div className={styles.troubleRow}>
                 <span className={`${styles.troubleLabel} ${styles.solve}`}>해결</span>
-                <span className={styles.troubleText}>수정 전 해당 View와 연결된 Serializer, Model, 연관 엔드포인트를 전체적으로 확인하는 습관을 만들었습니다.</span>
+                <span className={styles.troubleText}>수정 전 해당 View와 연결된 Serializer, Model, 연관 엔드포인트를 전체적으로 확인하는 습관으로 개선</span>
               </div>
               <div className={styles.troubleRow}>
                 <span className={`${styles.troubleLabel} ${styles.learn}`}>배운 점</span>
-                <span className={styles.troubleText}>백엔드 로직은 하나의 수정이 여러 API와 데이터 흐름에 영향을 줄 수 있어, 단순한 수정도 전체 구조를 함께 고려해야 합니다.</span>
+                <span className={styles.troubleText}>백엔드 로직은 하나의 수정이 여러 API와 데이터 흐름에 영향을 줄 수 있어 전체 구조를 함께 고려해야 함</span>
               </div>
             </div>
           </section>
@@ -460,7 +461,7 @@ export default function MovieArchiveDetail() {
             </div>
           </section>
 
-        </div>
+        </DetailContainer>
       </div>
     </div>
   )
