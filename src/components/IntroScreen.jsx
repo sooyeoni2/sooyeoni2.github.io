@@ -5,14 +5,31 @@ const LETTERS = ['P', 'o', 'r', 't', 'f', 'o', 'l', 'i', 'o']
 
 const PAPER_ICONS = [
   { kind: 'smile', top: '12%', left: '9%', size: 'small', rotate: '-10deg', delay: '0ms' },
+  { kind: 'heart', top: '16%', left: '27%', size: 'tiny', rotate: '14deg', delay: '120ms' },
+  { kind: 'note', top: '17%', left: '64%', size: 'small', rotate: '-8deg', delay: '160ms' },
   { kind: 'camera', top: '82%', left: '8%', size: 'small', rotate: '-8deg', delay: '220ms' },
-  { kind: 'star', top: '15%', left: '77%', size: 'tiny', rotate: '9deg', delay: '80ms' },
-  { kind: 'star', top: '22%', left: '83%', size: 'small', rotate: '16deg', delay: '180ms' },
-  { kind: 'plane', top: '31%', left: '90%', size: 'medium', rotate: '14deg', delay: '260ms' },
+  { kind: 'spark', top: '41%', left: '15%', size: 'tiny', rotate: '18deg', delay: '120ms' },
+  { kind: 'star', top: '23%', left: '37%', size: 'tiny', rotate: '9deg', delay: '80ms' },
+  { kind: 'star', top: '21%', left: '84%', size: 'small', rotate: '16deg', delay: '180ms' },
+  { kind: 'plane', top: '30%', left: '91%', size: 'medium', rotate: '14deg', delay: '260ms' },
+  { kind: 'code', top: '33%', left: '77%', size: 'small', rotate: '-12deg', delay: '300ms' },
+  { kind: 'mail', top: '55%', left: '14%', size: 'small', rotate: '-9deg', delay: '260ms' },
+  { kind: 'heart', top: '61%', left: '86%', size: 'tiny', rotate: '18deg', delay: '340ms' },
+  { kind: 'note', top: '74%', left: '24%', size: 'tiny', rotate: '10deg', delay: '420ms' },
+  { kind: 'spark', top: '76%', left: '69%', size: 'tiny', rotate: '-18deg', delay: '460ms' },
   { kind: 'crumpledStar', top: '64%', left: '94%', size: 'small', rotate: '-11deg', delay: '360ms' },
-  { kind: 'crumpledStar', top: '81%', left: '87%', size: 'tiny', rotate: '15deg', delay: '440ms' },
+  { kind: 'crumpledStar', top: '82%', left: '73%', size: 'tiny', rotate: '15deg', delay: '440ms' },
   { kind: 'crumpledStar', top: '88%', left: '96%', size: 'small', rotate: '8deg', delay: '520ms' },
+  { kind: 'star', top: '83%', left: '17%', size: 'tiny', rotate: '-14deg', delay: '500ms' },
 ]
+
+function formatToday() {
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  }).format(new Date())
+}
 
 function PaperDoodle({ kind }) {
   if (kind === 'smile') {
@@ -47,6 +64,48 @@ function PaperDoodle({ kind }) {
     )
   }
 
+  if (kind === 'heart') {
+    return (
+      <svg viewBox="0 0 82 82" aria-hidden="true">
+        <path d="M41 67C20 50 12 38 16 27c3-9 15-11 24 1 9-12 22-10 25-1 4 11-4 23-24 40z" />
+      </svg>
+    )
+  }
+
+  if (kind === 'note') {
+    return (
+      <svg viewBox="0 0 82 82" aria-hidden="true">
+        <path d="M22 18h38l8 9v37H22z" />
+        <path d="M58 18v12h10M31 36h24M31 48h20" />
+      </svg>
+    )
+  }
+
+  if (kind === 'mail') {
+    return (
+      <svg viewBox="0 0 90 70" aria-hidden="true">
+        <path d="M14 18h62v40H14z" />
+        <path d="M15 20l30 25 30-25M15 58l22-22M75 58 53 36" />
+      </svg>
+    )
+  }
+
+  if (kind === 'code') {
+    return (
+      <svg viewBox="0 0 90 70" aria-hidden="true">
+        <path d="M34 24 18 36l16 12M56 24l16 12-16 12M49 18 40 54" />
+      </svg>
+    )
+  }
+
+  if (kind === 'spark') {
+    return (
+      <svg viewBox="0 0 82 82" aria-hidden="true">
+        <path d="M41 8c4 18 10 27 28 33-18 5-26 13-31 33-4-19-11-28-29-33 19-6 28-15 32-33z" />
+      </svg>
+    )
+  }
+
   return (
     <svg viewBox="0 0 82 82" aria-hidden="true">
       <path d="M40 8 49 30 73 27 55 43 62 67 41 54 20 68 27 44 9 29 32 30z" />
@@ -56,12 +115,27 @@ function PaperDoodle({ kind }) {
 
 export default function IntroScreen({ onEnter }) {
   const [leaving, setLeaving] = useState(false)
+  const [today, setToday] = useState(formatToday)
   const paperIcons = useMemo(() => PAPER_ICONS, [])
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
     return () => { document.body.style.overflow = '' }
   }, [])
+
+  useEffect(() => {
+    const timer = setInterval(() => setToday(formatToday()), 60 * 1000)
+    return () => clearInterval(timer)
+  }, [])
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Enter') handleEnter()
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  })
 
   const handleEnter = () => {
     if (leaving) return
@@ -118,7 +192,8 @@ export default function IntroScreen({ onEnter }) {
         ))}
       </div>
 
-      <div className={styles.tagline}>Frontend * Backend * Mobile * Web</div>
+      <div className={styles.dateStamp}>{today}</div>
+      <div className={styles.enterHint}>Click anywhere or press Enter to continue</div>
     </button>
   )
 }

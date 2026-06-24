@@ -46,17 +46,12 @@
   justify-content: center;
   width: 4.6rem;
   height: 4.6rem;
-  padding: 0.65rem;
-  color: #252019;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.42), rgba(214, 208, 194, 0.2)),
-    radial-gradient(circle at 22% 18%, rgba(255, 255, 255, 0.65) 0 8%, transparent 9%),
-    radial-gradient(circle at 72% 76%, rgba(150, 135, 112, 0.12) 0 10%, transparent 11%),
-    #eee8dc;
-  box-shadow:
-    0 12px 24px rgba(79, 67, 48, 0.16),
-    inset 0 0 0 1px rgba(75, 62, 45, 0.08);
-  filter: drop-shadow(0 3px 0 rgba(255, 255, 255, 0.55));
+  padding: 0;
+  color: #4b4034;
+  filter:
+    drop-shadow(0.8px 0.8px 0 rgba(255, 255, 255, 0.75))
+    drop-shadow(-0.8px 0.6px 0 rgba(84, 62, 42, 0.08));
+  opacity: 0.72;
   transform: translate(-50%, -50%) rotate(var(--rotate));
   animation:
     paperPop 0.58s cubic-bezier(0.22, 1, 0.36, 1) var(--delay) both,
@@ -65,14 +60,12 @@
 
 .paperIcon::before {
   position: absolute;
-  inset: 0;
+  inset: 16%;
   content: '';
-  background-image:
-    linear-gradient(93deg, transparent 0 47%, rgba(116, 105, 88, 0.12) 48% 50%, transparent 51%),
-    radial-gradient(rgba(92, 80, 61, 0.12) 1px, transparent 1px);
-  background-size: 100% 100%, 6px 6px;
-  mix-blend-mode: multiply;
-  opacity: 0.55;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.045;
+  filter: blur(7px);
 }
 
 .paperIcon svg {
@@ -83,9 +76,10 @@
   overflow: visible;
   fill: none;
   stroke: currentColor;
-  stroke-width: 6;
+  stroke-width: 5.4;
   stroke-linecap: round;
   stroke-linejoin: round;
+  opacity: 0.92;
 }
 
 .paperIcon svg circle:nth-child(n + 2) {
@@ -108,34 +102,43 @@
 }
 
 .smile {
-  border-radius: 44% 56% 48% 52% / 56% 45% 55% 44%;
-  clip-path: polygon(14% 4%, 82% 9%, 95% 48%, 79% 91%, 21% 86%, 4% 39%);
+  color: #3f3328;
 }
 
 .star {
-  color: #252019;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.48), rgba(214, 208, 194, 0.2)),
-    radial-gradient(circle at 28% 22%, rgba(255, 255, 255, 0.62) 0 8%, transparent 9%),
-    radial-gradient(circle at 72% 76%, rgba(150, 135, 112, 0.12) 0 10%, transparent 11%),
-    #eee8dc;
-  clip-path: polygon(10% 17%, 83% 6%, 94% 76%, 23% 94%, 4% 52%);
+  color: #6b8fbe;
 }
 
 .camera {
-  clip-path: polygon(6% 24%, 25% 8%, 88% 16%, 95% 78%, 16% 91%);
+  color: #3f3328;
 }
 
 .plane {
-  clip-path: polygon(11% 17%, 90% 4%, 96% 76%, 67% 94%, 7% 68%);
+  color: #7b5f49;
 }
 
 .crumpledStar {
-  clip-path: polygon(14% 10%, 44% 0, 79% 11%, 100% 38%, 86% 80%, 48% 100%, 10% 84%, 0 43%);
-  background:
-    linear-gradient(122deg, rgba(255, 255, 255, 0.48) 0 24%, rgba(175, 170, 161, 0.22) 25% 34%, rgba(244, 240, 231, 0.9) 35%),
-    linear-gradient(52deg, transparent 0 58%, rgba(103, 94, 81, 0.2) 59% 61%, transparent 62%),
-    #eee9df;
+  color: #5f5142;
+}
+
+.heart {
+  color: #cf8a8a;
+}
+
+.note {
+  color: #9a8b64;
+}
+
+.mail {
+  color: #75a0c5;
+}
+
+.code {
+  color: #8b9f72;
+}
+
+.spark {
+  color: #d2a65f;
 }
 
 .topLabel {
@@ -185,7 +188,7 @@
 
 .letterWrap {
   display: inline-block;
-  font-size: 9.8rem;
+  font-size: 10.6rem;
   font-weight: 700;
   letter-spacing: 0;
 }
@@ -193,7 +196,7 @@
 .scriptWrap {
   margin: 0 0.12em;
   font-family: 'Pinyon Script', cursive;
-  font-size: 13.8rem;
+  font-size: 14.8rem;
   font-weight: 400;
   line-height: 0.6;
 }
@@ -237,6 +240,40 @@
   opacity: 0;
   transform: translateX(-50%) translateY(12px);
   animation: labelIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.5s forwards;
+}
+
+.dateStamp {
+  position: absolute;
+  bottom: 9%;
+  left: 50%;
+  z-index: 3;
+  color: #756b5f;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-50%) translateY(12px);
+  animation: labelIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.5s forwards;
+}
+
+.enterHint {
+  position: absolute;
+  bottom: 5.7%;
+  left: 50%;
+  z-index: 3;
+  color: #9b9287;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-50%) translateY(10px);
+  animation:
+    labelIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.68s forwards,
+    hintBlink 1.45s ease-in-out 2.45s infinite;
 }
 
 @keyframes overlayFade {
@@ -295,6 +332,17 @@
   }
 }
 
+@keyframes hintBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.38;
+  }
+}
+
 @keyframes letterStomp {
   0% {
     opacity: 0;
@@ -342,11 +390,11 @@
   }
 
   .letterWrap {
-    font-size: 6.9rem;
+    font-size: 7.4rem;
   }
 
   .scriptWrap {
-    font-size: 9.6rem;
+    font-size: 10.3rem;
   }
 
   .tagline {
@@ -370,11 +418,11 @@
   }
 
   .letterWrap {
-    font-size: 4.1rem;
+    font-size: 4.45rem;
   }
 
   .scriptWrap {
-    font-size: 6.2rem;
+    font-size: 6.7rem;
   }
 
   .tagline {
@@ -383,6 +431,16 @@
     padding: 0.38rem 1rem;
     font-size: 0.82rem;
     white-space: normal;
+  }
+
+  .dateStamp {
+    bottom: 10.5%;
+    font-size: 0.9rem;
+  }
+
+  .enterHint {
+    bottom: 7%;
+    font-size: 0.72rem;
   }
 
   .small {
