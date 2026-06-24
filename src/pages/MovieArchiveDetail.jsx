@@ -48,7 +48,7 @@ export default function MovieArchiveDetail() {
             </div>
             <div className={styles.overviewItem}>
               <span className={styles.overviewLabel}>개발 기간</span>
-              <span className={styles.overviewValue}>2025.11 ~ 2025.12</span>
+              <span className={styles.overviewValue}>2025.12</span>
             </div>
             <div className={styles.overviewItem}>
               <span className={styles.overviewLabel}>팀 구성</span>

@@ -39,7 +39,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 38px;
+  margin-bottom: 56px;
 }
 
 .subDeco {
@@ -69,7 +69,7 @@
   position: relative;
   display: inline-block;
   align-self: flex-start;
-  margin-bottom: 38px;
+  margin-bottom: 56px;
   margin-left: 60px;
 }
 
@@ -137,7 +137,7 @@
   font-size: 1.38rem;
   color: #222;
   line-height: 1.9;
-  margin-bottom: 38px;
+  margin-bottom: 52px;
 }
 
 .desc strong {
@@ -158,7 +158,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-top: 4px;
+  margin-top: 20px;
 }
 
 .infoLabel {

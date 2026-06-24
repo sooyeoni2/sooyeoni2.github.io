@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import styles from './Skills.module.css'
-import RansomTitle from './RansomTitle'
+import useTypewriter from '../hooks/useTypewriter'
+import useInView from '../hooks/useInView'
 
 const I = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons'
 
@@ -24,11 +25,18 @@ const SKILLS = [
 ]
 
 export default function Skills() {
+  const [sectionRef, inView] = useInView(0.2)
+  const { displayed, done } = useTypewriter('Skills', 110, inView)
+
   return (
-    <section id="skills" className={styles.section}>
+    <section id="skills" className={styles.section} ref={sectionRef}>
       <div className={styles.inner}>
         <div className={styles.header}>
-          <h2 className={styles.title}><RansomTitle text="Skills" cutout seed={0} /></h2>
+          <span className={styles.deco}>✦</span>
+          <h2 className={styles.title}>
+            {displayed}{!done && <span className={styles.cursor}>|</span>}
+          </h2>
+          <span className={styles.deco}>✦</span>
         </div>
 
         <div className={styles.iconGrid}>
