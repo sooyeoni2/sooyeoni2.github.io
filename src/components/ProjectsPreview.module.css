@@ -250,11 +250,47 @@
   color: #111;
 }
 
+@media (max-width: 1024px) {
+  .section {
+    padding: 80px 48px;
+  }
+}
+
+@media (max-width: 800px) {
+  .section {
+    padding: 60px 24px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .titleRow {
+    margin-bottom: 48px;
+  }
+}
+
 @media (max-width: 700px) {
   .section {
     padding: 60px 16px;
   }
   .grid {
     grid-template-columns: 1fr;
+  }
+  .name {
+    font-size: 1.08rem;
+  }
+  .desc {
+    font-size: 0.95rem;
+  }
+  .cardToolbar {
+    padding: 8px 12px;
+    gap: 10px;
+  }
+  .toolbarUrl {
+    font-size: 0.72rem;
+  }
+  .allBtn {
+    width: 100%;
+    text-align: center;
   }
 }

@@ -121,6 +121,12 @@
   color: #111;
 }
 
+@media (max-width: 1024px) {
+  .section {
+    padding: 80px 48px;
+  }
+}
+
 @media (max-width: 700px) {
   .section {
     padding: 60px 16px;
@@ -130,6 +136,7 @@
   }
   .iconGrid {
     gap: 24px 20px;
+    justify-content: center;
   }
   .icon {
     width: 38px;
@@ -137,5 +144,9 @@
   }
   .iconName {
     font-size: 0.72rem;
+  }
+  .detailBtn {
+    align-self: center;
+    margin-top: 48px;
   }
 }

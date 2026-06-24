@@ -91,6 +91,10 @@
 }
 
 @media (max-width: 700px) {
+  .inner {
+    padding: 0 20px;
+  }
+
   .hamburger {
     display: flex;
   }
@@ -101,14 +105,23 @@
     top: 56px;
     left: 0;
     right: 0;
-    background: #fff;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     flex-direction: column;
-    border-bottom: 1.5px solid #111;
-    padding: 12px 24px 16px;
+    border-bottom: 1.5px solid rgba(17,17,17,0.15);
+    padding: 12px 20px 16px;
     gap: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   }
 
   .tabs.open {
     display: flex;
+  }
+
+  .tab {
+    font-size: 0.95rem;
+    padding: 10px 20px;
+    text-align: center;
   }
 }

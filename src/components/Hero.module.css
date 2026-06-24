@@ -370,7 +370,7 @@
 }
 
 /* ── Responsive ── */
-@media (max-width: 800px) {
+@media (max-width: 1024px) {
   .hero {
     padding: 80px 24px 80px;
   }
@@ -382,7 +382,7 @@
     justify-content: center;
   }
   .photoWrap {
-    margin: 20px 60px 40px;
+    margin: 20px 40px 40px;
   }
   .annotation {
     top: -40px;
@@ -395,7 +395,7 @@
     font-size: 5rem;
   }
   .speechBubble {
-    left: -48px;
+    left: -32px;
     bottom: -29px;
     font-size: 0.9rem;
     padding: 8px 14px;
@@ -403,7 +403,72 @@
   .name {
     white-space: normal;
   }
+  .paperWrap {
+    margin-left: 0;
+    margin-bottom: 32px;
+  }
+  .nameEn {
+    margin-left: 0;
+    margin-top: 8px;
+    margin-bottom: 16px;
+  }
+  .subRow {
+    margin-bottom: 32px;
+  }
+  .desc {
+    font-size: 1.18rem;
+    margin-bottom: 32px;
+  }
+  .infoBlock {
+    margin-top: 12px;
+  }
+  .infoItem {
+    font-size: 0.95rem;
+  }
   .stickerB {
     display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 72px 16px 60px;
+  }
+  .inner {
+    gap: 24px;
+  }
+  .photoWrap {
+    margin: 0 16px 32px;
+  }
+  .photoBox {
+    width: 160px;
+    height: 200px;
+    font-size: 4rem;
+  }
+  .speechBubble {
+    left: -12px;
+    font-size: 0.8rem;
+    padding: 7px 11px;
+    white-space: normal;
+    max-width: 200px;
+  }
+  .annotation {
+    font-size: 1.4rem;
+    top: -36px;
+    right: -4px;
+  }
+  .subRow {
+    margin-bottom: 20px;
+  }
+  .desc {
+    font-size: 1.05rem;
+  }
+  .contactLink {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    gap: 5px;
+  }
+  .contacts {
+    gap: 8px;
   }
 }
