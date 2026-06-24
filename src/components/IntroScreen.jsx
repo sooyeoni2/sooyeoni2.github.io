@@ -11,15 +11,15 @@ const PAPER_ICONS = [
   { kind: 'spark', top: '41%', left: '15%', size: 'tiny', rotate: '18deg', delay: '120ms' },
   { kind: 'star', top: '23%', left: '37%', size: 'tiny', rotate: '9deg', delay: '80ms' },
   { kind: 'star', top: '21%', left: '84%', size: 'small', rotate: '16deg', delay: '180ms' },
-  { kind: 'plane', top: '30%', left: '91%', size: 'medium', rotate: '14deg', delay: '260ms' },
+  { kind: 'plane', top: '30%', left: '88%', size: 'medium', rotate: '14deg', delay: '260ms' },
   { kind: 'code', top: '33%', left: '77%', size: 'small', rotate: '-12deg', delay: '300ms' },
   { kind: 'mail', top: '55%', left: '14%', size: 'small', rotate: '-9deg', delay: '260ms' },
   { kind: 'heart', top: '61%', left: '86%', size: 'tiny', rotate: '18deg', delay: '340ms' },
   { kind: 'note', top: '74%', left: '24%', size: 'tiny', rotate: '10deg', delay: '420ms' },
   { kind: 'spark', top: '76%', left: '69%', size: 'tiny', rotate: '-18deg', delay: '460ms' },
-  { kind: 'crumpledStar', top: '64%', left: '94%', size: 'small', rotate: '-11deg', delay: '360ms' },
+  { kind: 'crumpledStar', top: '64%', left: '90%', size: 'small', rotate: '-11deg', delay: '360ms' },
   { kind: 'crumpledStar', top: '82%', left: '73%', size: 'tiny', rotate: '15deg', delay: '440ms' },
-  { kind: 'crumpledStar', top: '88%', left: '96%', size: 'small', rotate: '8deg', delay: '520ms' },
+  { kind: 'crumpledStar', top: '88%', left: '91%', size: 'small', rotate: '8deg', delay: '520ms' },
   { kind: 'star', top: '83%', left: '17%', size: 'tiny', rotate: '-14deg', delay: '500ms' },
 ]
 

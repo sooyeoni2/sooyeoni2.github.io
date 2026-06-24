@@ -588,25 +588,27 @@
   }
 
   .keyboardBody {
-    padding: 12px 14px 16px;
-    gap: 7px;
-  }
-
-  .keyboardRow {
+    padding: 10px 10px 14px;
     gap: 6px;
   }
 
+  .keyboardRow {
+    gap: 4px;
+    padding-left: 0 !important;
+    justify-content: center;
+  }
+
   .keycap {
-    width: 58px;
-    height: 58px;
+    width: 48px;
+    height: 48px;
   }
 
   .keycapIcon {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
   }
 
   .keycapName {
-    font-size: 8px;
+    font-size: 7px;
   }
 }
