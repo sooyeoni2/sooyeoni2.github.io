@@ -22,7 +22,7 @@ export default function Hero() {
 
 
           <p className={styles.desc}>
-            서비스 전체 흐름을 이해하고,<br /><strong>아이디어를 실제 기능으로 구현합니다.</strong>
+            사용자의 입장에서 서비스 흐름을 이해하고,<br /><strong>그 흐름이 이어지도록 화면으로 구현</strong>하는 프론트엔드 개발자입니다.
           </p>
 
         </div>
