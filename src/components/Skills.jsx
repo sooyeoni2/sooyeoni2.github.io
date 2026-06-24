@@ -39,21 +39,23 @@ export default function Skills() {
           <span className={styles.deco}>✦</span>
         </div>
 
-        <div className={styles.iconGrid}>
-          {SKILLS.map((skill, i) => (
-            <div key={skill.name}>
-              <div
-                className={styles.iconItem}
-                style={{ animationDelay: `${(i * 0.2) % 2}s` }}
-              >
-                <img src={skill.icon} className={styles.icon} alt={skill.name} />
-                <span className={styles.iconName}>{skill.name}</span>
+        <div style={{ opacity: done ? 1 : 0, transition: 'opacity 0.5s ease' }}>
+          <div className={styles.iconGrid}>
+            {SKILLS.map((skill, i) => (
+              <div key={skill.name}>
+                <div
+                  className={styles.iconItem}
+                  style={{ animationDelay: `${(i * 0.2) % 2}s` }}
+                >
+                  <img src={skill.icon} className={styles.icon} alt={skill.name} />
+                  <span className={styles.iconName}>{skill.name}</span>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        <Link to="/skills" className={styles.detailBtn}>자세히 보기</Link>
+          <Link to="/skills" className={styles.detailBtn}>자세히 보기</Link>
+        </div>
       </div>
     </section>
   )

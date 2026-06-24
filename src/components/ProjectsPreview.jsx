@@ -40,7 +40,8 @@ export default function ProjectsPreview() {
           <span className={styles.deco}>✦</span>
         </div>
 
-        <div className={styles.grid}>
+        <div style={{ opacity: done ? 1 : 0, transition: 'opacity 0.5s ease' }}>
+          <div className={styles.grid}>
           {PROJECTS.map((p) => (
             <div key={p.id} className={styles.cardWrap} onClick={() => navigate(`/projects/${p.id}`)}>
               {/* 폴더 탭 */}
@@ -88,11 +89,12 @@ export default function ProjectsPreview() {
               </div>
             </div>
           ))}
-        </div>
+          </div>
 
-        <button className={styles.allBtn} onClick={() => navigate('/projects')}>
-          전체 프로젝트 보기
-        </button>
+          <button className={styles.allBtn} onClick={() => navigate('/projects')}>
+            전체 프로젝트 보기
+          </button>
+        </div>
       </div>
     </section>
   )
