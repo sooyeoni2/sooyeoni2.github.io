@@ -255,11 +255,10 @@ function Keycap({ tech, selected, onSelect }) {
     <button
       className={`${styles.keycap} ${selected ? styles.keycapSelected : ''} ${pressed ? styles.keycapPressed : ''}`}
       style={{ background: tech.bg }}
-      onMouseDown={() => setPressed(true)}
-      onMouseUp={() => { setPressed(false); onSelect(tech.id) }}
-      onMouseLeave={() => setPressed(false)}
-      onTouchStart={e => { e.preventDefault(); setPressed(true) }}
-      onTouchEnd={() => { setPressed(false); onSelect(tech.id) }}
+      onPointerDown={() => setPressed(true)}
+      onPointerUp={() => { setPressed(false); onSelect(tech.id) }}
+      onPointerLeave={() => setPressed(false)}
+      onPointerCancel={() => setPressed(false)}
     >
       <img src={tech.icon} className={styles.keycapIcon} alt={tech.name} />
       <span className={styles.keycapName}>{tech.name}</span>
