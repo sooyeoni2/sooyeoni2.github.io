@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import styles from './Skills.module.css'
 import RansomTitle from './RansomTitle'
+import useInView from '../hooks/useInView'
 
 const I = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons'
 
@@ -24,10 +25,23 @@ const SKILLS = [
 ]
 
 export default function Skills() {
+  const [sectionRef, sectionInView] = useInView(0.1)
+
   return (
-    <section id="skills" className={styles.section}>
+    <section
+      id="skills"
+      className={styles.section}
+      ref={sectionRef}
+    >
       <div className={styles.inner}>
-        <div className={styles.header}>
+        <div
+          className={styles.header}
+          style={{
+            opacity: sectionInView ? 1 : 0,
+            transform: sectionInView ? 'translateY(0)' : 'translateY(24px)',
+            transition: 'opacity 0.6s ease, transform 0.6s ease',
+          }}
+        >
           <h2 className={styles.title}><RansomTitle text="Skills" cutout seed={0} /></h2>
         </div>
 
@@ -35,16 +49,32 @@ export default function Skills() {
           {SKILLS.map((skill, i) => (
             <div
               key={skill.name}
-              className={styles.iconItem}
-              style={{ animationDelay: `${(i * 0.2) % 2}s` }}
+              style={{
+                opacity: sectionInView ? 1 : 0,
+                transform: sectionInView ? 'translateY(0)' : 'translateY(20px)',
+                transition: `opacity 0.5s ease ${0.15 + i * 0.04}s, transform 0.5s ease ${0.15 + i * 0.04}s`,
+              }}
             >
-              <img src={skill.icon} className={styles.icon} alt={skill.name} />
-              <span className={styles.iconName}>{skill.name}</span>
+              <div
+                className={styles.iconItem}
+                style={{ animationDelay: `${(i * 0.2) % 2}s` }}
+              >
+                <img src={skill.icon} className={styles.icon} alt={skill.name} />
+                <span className={styles.iconName}>{skill.name}</span>
+              </div>
             </div>
           ))}
         </div>
 
-        <Link to="/skills" className={styles.detailBtn}>자세히 보기</Link>
+        <Link
+          to="/skills"
+          className={styles.detailBtn}
+          style={{
+            opacity: sectionInView ? 1 : 0,
+            transform: sectionInView ? 'translateY(0)' : 'translateY(16px)',
+            transition: 'opacity 0.5s ease 0.8s, transform 0.5s ease 0.8s',
+          }}
+        >자세히 보기</Link>
       </div>
     </section>
   )
