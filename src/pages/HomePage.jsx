@@ -39,10 +39,12 @@ export default function HomePage() {
         padding: '24px',
         color: '#A8A9A9',
         fontSize: '0.82rem',
-        background: 'white',
-        borderTop: '1px solid #E8EAED'
+        backgroundColor: '#FFF8F0',
+        backgroundImage: 'radial-gradient(circle, #e0c9b0 1px, transparent 1px)',
+        backgroundSize: '24px 24px',
+        borderTop: 'none'
       }}>
-        © 2025 김수연. All rights reserved.
+        © 2026 김수연. All rights reserved.
       </footer>
     </>
   )
