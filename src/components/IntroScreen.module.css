@@ -47,11 +47,11 @@
   width: 4.6rem;
   height: 4.6rem;
   padding: 0;
-  color: #4b4034;
+  color: #6d6257;
   filter:
     drop-shadow(0.8px 0.8px 0 rgba(255, 255, 255, 0.75))
     drop-shadow(-0.8px 0.6px 0 rgba(84, 62, 42, 0.08));
-  opacity: 0.72;
+  opacity: 0.54;
   transform: translate(-50%, -50%) rotate(var(--rotate));
   animation:
     paperPop 0.58s cubic-bezier(0.22, 1, 0.36, 1) var(--delay) both,
@@ -102,43 +102,43 @@
 }
 
 .smile {
-  color: #3f3328;
+  color: #6b5f53;
 }
 
 .star {
-  color: #6b8fbe;
+  color: #92add0;
 }
 
 .camera {
-  color: #3f3328;
+  color: #6b5f53;
 }
 
 .plane {
-  color: #7b5f49;
+  color: #9b7f68;
 }
 
 .crumpledStar {
-  color: #5f5142;
+  color: #827568;
 }
 
 .heart {
-  color: #cf8a8a;
+  color: #dda7a7;
 }
 
 .note {
-  color: #9a8b64;
+  color: #b4a782;
 }
 
 .mail {
-  color: #75a0c5;
+  color: #96b7d3;
 }
 
 .code {
-  color: #8b9f72;
+  color: #a8b894;
 }
 
 .spark {
-  color: #d2a65f;
+  color: #dfbd7d;
 }
 
 .topLabel {
