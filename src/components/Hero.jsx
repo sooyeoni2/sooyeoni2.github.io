@@ -25,6 +25,14 @@ export default function Hero() {
             사용자의 입장에서 서비스 흐름을 이해하고,<br /><strong>그 흐름이 이어지도록 화면으로 구현</strong>하는 프론트엔드 개발자입니다.
           </p>
 
+          <div className={styles.infoBlock}>
+            <span className={styles.infoLabel}>Education</span>
+            <ul className={styles.infoList}>
+              <li className={styles.infoItem}><span className={styles.check}>✓</span>강릉원주대학교 · 물리학과 / 생물학과 (복수전공)</li>
+              <li className={styles.infoItem}><span className={styles.check}>✓</span>SSAFY 14기 수료</li>
+            </ul>
+          </div>
+
         </div>
 
         <div className={styles.right}>

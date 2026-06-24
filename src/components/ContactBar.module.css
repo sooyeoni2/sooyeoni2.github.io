@@ -3,7 +3,7 @@
   background: #FFF8F0;
   background-image: radial-gradient(circle, #e0c9b0 1px, transparent 1px);
   background-size: 24px 24px;
-  padding: 28px 80px;
+  padding: 28px 80px 56px;
 }
 
 .section::after {

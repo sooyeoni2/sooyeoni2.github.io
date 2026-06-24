@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import styles from './ProjectsPreview.module.css'
 import RansomTitle from './RansomTitle'
-import useInView from '../hooks/useInView'
 
 const PROJECTS = [
   {
@@ -26,33 +25,16 @@ const PROJECTS = [
 
 export default function ProjectsPreview() {
   const navigate = useNavigate()
-  const [sectionRef, sectionInView] = useInView(0.1)
 
   return (
-    <section id="projects" className={styles.section} ref={sectionRef}>
+    <section id="projects" className={styles.section}>
       <div className={styles.inner}>
-        <div
-          className={styles.titleRow}
-          style={{
-            opacity: sectionInView ? 1 : 0,
-            transform: sectionInView ? 'translateY(0)' : 'translateY(24px)',
-            transition: 'opacity 0.6s ease, transform 0.6s ease',
-          }}
-        >
+        <div className={styles.titleRow}>
           <h2 className={styles.title}><RansomTitle text="Projects" cutout seed={3} /></h2>
         </div>
         <div className={styles.grid}>
-          {PROJECTS.map((p, i) => (
-            <div
-              key={p.id}
-              className={styles.card}
-              onClick={() => navigate(`/projects/${p.id}`)}
-              style={{
-                opacity: sectionInView ? 1 : 0,
-                transform: sectionInView ? 'translateY(0)' : 'translateY(32px)',
-                transition: `opacity 0.6s ease ${0.2 + i * 0.15}s, transform 0.6s ease ${0.2 + i * 0.15}s`,
-              }}
-            >
+          {PROJECTS.map((p) => (
+            <div key={p.id} className={styles.card} onClick={() => navigate(`/projects/${p.id}`)}>
               <div className={styles.tape} />
               <div className={styles.tapeRight} />
               <div className={styles.cardTop}>
@@ -75,15 +57,7 @@ export default function ProjectsPreview() {
             </div>
           ))}
         </div>
-        <button
-          className={styles.allBtn}
-          onClick={() => navigate('/projects')}
-          style={{
-            opacity: sectionInView ? 1 : 0,
-            transform: sectionInView ? 'translateY(0)' : 'translateY(16px)',
-            transition: 'opacity 0.5s ease 0.55s, transform 0.5s ease 0.55s',
-          }}
-        >
+        <button className={styles.allBtn} onClick={() => navigate('/projects')}>
           전체 프로젝트 보기
         </button>
       </div>
