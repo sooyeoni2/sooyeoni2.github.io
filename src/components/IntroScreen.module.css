@@ -420,20 +420,25 @@
     font-size: 0.8rem;
   }
 
+  .wordmark {
+    font-family: 'Pixelify Sans', monospace;
+    font-size: min(3.8rem, 13vw);
+    letter-spacing: 0.05em;
+    line-height: 1;
+  }
+
   .letterWrap {
-    font-size: min(4.45rem, 10.5vw);
+    font-size: inherit;
   }
 
   .scriptWrap {
-    font-size: min(6.7rem, 16vw);
+    font-size: inherit;
+    transform: none !important;
+    font-family: inherit;
   }
 
-  .scriptWrap:first-child {
-    transform: translateY(0.55rem);
-  }
-
-  .scriptWrap:nth-child(5) {
-    transform: translateY(0.35rem);
+  .scriptLetter {
+    font-family: inherit;
   }
 
   .dateStamp {
