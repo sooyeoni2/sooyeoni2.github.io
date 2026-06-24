@@ -16,16 +16,16 @@ const TECHS = [
   { id: 'vue',    name: 'Vue',         icon: `${I}/vuejs/vuejs-original.svg`,          category: 'Framework', hearts: 4,   bg: 'linear-gradient(145deg,#42d392,#35a876)', shadow: '#1a7850', desc: 'Composition API 기반 컴포넌트 설계와 Vuex/Pinia를 활용한 상태관리에 능숙합니다.' },
   { id: 'django', name: 'Django',      icon: `${I}/django/django-plain.svg`,           category: 'Framework', hearts: 4,   bg: 'linear-gradient(145deg,#2ba977,#0d6e4f)', shadow: '#044030', desc: 'REST API 설계 및 ORM을 활용한 데이터베이스 연동에 능숙하게 활용하고 있습니다.' },
   { id: 'spring', name: 'Spring',     icon: `${I}/spring/spring-original.svg`,         category: 'Framework', hearts: 2.5, bg: 'linear-gradient(145deg,#78c840,#4a9020)', shadow: '#2a6800', desc: 'MVC 구조와 JPA, Swagger 등을 활용한 백엔드 개발 및 MSA 기반 서비스 개발 경험이 있습니다.' },
-  { id: 'git',    name: 'Git',        icon: `${I}/git/git-original.svg`,               category: 'Tools',     hearts: 5,   bg: 'linear-gradient(145deg,#f06050,#c02828)', shadow: '#901010', desc: 'Git Flow 전략을 기반으로 한 브랜치 관리, 코드 리뷰 및 협업을 능숙하게 수행하고 있습니다.' },
+  { id: 'git',    name: 'Git',        icon: `${I}/git/git-original.svg`,               category: 'Tools',     hearts: 4,   bg: 'linear-gradient(145deg,#f06050,#c02828)', shadow: '#901010', desc: 'Git Flow 전략을 기반으로 한 브랜치 관리, 코드 리뷰 및 협업을 능숙하게 수행하고 있습니다.' },
   { id: 'docker', name: 'Docker',     icon: `${I}/docker/docker-original.svg`,         category: 'Tools',     hearts: 2,   bg: 'linear-gradient(145deg,#2aacf0,#0870c8)', shadow: '#054898', desc: '기본적인 컨테이너 환경 구성과 docker-compose를 활용한 서비스 구성 경험이 있습니다.' },
   { id: 'figma',  name: 'Figma',      icon: `${I}/figma/figma-original.svg`,           category: 'Tools',     hearts: 4,   bg: 'linear-gradient(145deg,#f05828,#a040c0)', shadow: '#802890', desc: '와이어프레임, 프로토타입 제작과 팀 협업을 위한 디자인 시스템 구성에 능숙합니다.' },
   { id: 'jira',   name: 'Jira',       icon: `${I}/jira/jira-original.svg`,             category: 'Tools',     hearts: 4,   bg: 'linear-gradient(145deg,#2060d0,#0040a8)', shadow: '#002880', desc: 'Scrum 기반 스프린트 계획, 이슈 트래킹 및 팀 프로젝트 관리에 능숙하게 활용하고 있습니다.' },
 ]
 
 const ROWS = [
-  ['js', 'ts', 'python', 'java', 'dart', 'sql'],
-  ['flutter', 'react', 'rn', 'vue', 'django', 'spring'],
-  ['git', 'docker', 'figma', 'jira'],
+  ['python', 'js', 'ts', 'dart', 'java', 'sql'],
+  ['vue', 'django', 'flutter', 'react', 'rn', 'spring'],
+  ['git', 'figma', 'jira', 'docker'],
 ]
 
 const PROF_LABELS = { 1: '입문', 2: '기초', 3: '보통', 4: '능숙', 5: '숙련' }
@@ -241,7 +241,7 @@ function CanvasContent({ tech }) {
           <span className={styles.techBadge}>{tech.category}</span>
         </div>
         <div className={styles.techHearts}>
-          {[0,1,2,3,4].map(i => <PixelHeart key={i} filled={i < Math.floor(tech.hearts)} half={tech.hearts % 1 !== 0 && i === Math.floor(tech.hearts)} size={20} />)}
+          {[0,1,2,3,4].map(i => <PixelHeart key={i} filled={i < Math.floor(tech.hearts)} half={tech.hearts % 1 !== 0 && i === Math.floor(tech.hearts)} size={26} />)}
         </div>
         <p className={styles.techDesc}>{tech.desc}</p>
       </div>
