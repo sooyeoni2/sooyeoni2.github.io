@@ -150,7 +150,7 @@ export default function DuckChiDetail() {
           {/* 주요 기능 */}
           <section className={styles.section}>
             <h2>주요 기능</h2>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div className={styles.featureListWrap}>
               <div className={styles.featureList}>
                 {[
                   { title: '카카오 로그인', desc: 'OAuth WebView 방식, 프로필 초기 설정' },

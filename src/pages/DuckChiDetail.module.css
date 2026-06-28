@@ -277,6 +277,24 @@
 }
 
 /* ===== Feature List ===== */
+.featureListWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 960px) {
+  .featureListWrap {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .featureListWrap img {
+    align-self: center;
+    margin-right: 0 !important;
+  }
+}
+
 .featureList {
   display: flex;
   flex-direction: column;
@@ -788,4 +806,9 @@
   .heroCard { padding: 32px 6%; }
   .section { padding: 24px 5%; }
   .featureCard { padding: 20px 16px; }
+  .featureList { min-width: 0; }
+}
+
+@media (max-width: 960px) {
+  .featureList { min-width: 0; }
 }

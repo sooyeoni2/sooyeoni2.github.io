@@ -50,6 +50,11 @@
   border-color: #A8DDB5;
 }
 
+.teal {
+  background: linear-gradient(135deg, #E8F7F8 0%, #F0FAFA 100%);
+  border-color: #60b8c0;
+}
+
 .yellow {
   background: linear-gradient(135deg, #FFFDE7 0%, #FFFDF5 100%);
   border-color: #F9C846;

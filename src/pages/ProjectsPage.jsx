@@ -10,7 +10,7 @@ const PROJECTS = [
     period: '2026.01 ~ 2026.02 (6주)',
     team: '6명 (FE 2 / BE 4)',
     role: 'Flutter 프론트엔드',
-    desc: '야구 동행 매칭 앱. 직관 메이트를 찾고 더치페이를 관리하며 팬들이 함께 경기를 즐길 수 있는 플랫폼입니다.',
+    desc: '야구 동행 매칭 앱. 직관 메이트를 찾고 더치페이를 관리하며 팬들이 함께 경기를 즐길 수 있는 플랫폼',
     stack: ['Flutter', 'Dart', 'WebSocket', 'FCM', 'WebView', 'Toss Payments'],
     highlights: [
       '로그인 / 회원가입 (JWT, Secure Storage)',
@@ -47,7 +47,7 @@ const PROJECTS = [
     period: '2025.12',
     team: '2명 (FE 1 / BE 1)',
     role: 'Django 백엔드 · AI 추천 · 프론트엔드 일부',
-    desc: '영화 탐색, 커뮤니티, 워치리스트, Watchlist 기반 AI 추천을 제공하는 영화 아카이브 서비스입니다.',
+    desc: '영화 탐색, 커뮤니티, 워치리스트, Watchlist 기반 AI 추천을 제공하는 영화 아카이브 서비스',
     stack: ['Vue 3', 'Django', 'TMDB API', 'YouTube API', 'OpenAI API'],
     highlights: [
       '영화 검색 및 상세 조회 (TMDB API 연동)',
@@ -84,7 +84,7 @@ const PROJECTS = [
     period: '2026.02 ~ 2026.03',
     team: '6명 (Full-Stack 6)',
     role: 'Full-Stack (FE 리더 · BE 참여)',
-    desc: 'SSAFY 금융 API 기반 모임 지출 관리 & 정산 핀테크 앱. 계좌 연동, OCR 영수증 인식, 모임방 공동 정산을 제공합니다.',
+    desc: 'SSAFY 금융 API 기반 모임 지출 관리 & 정산 핀테크 앱. 계좌 연동, OCR 영수증 인식, 모임방 공동 정산을 제공',
     stack: ['React Native', 'TypeScript', 'Expo', 'Zustand', 'Spring Boot', 'Kafka', 'Redis', 'AWS'],
     highlights: [
       'Feature-First MVVM 구조 설계 & 공용 컴포넌트',
