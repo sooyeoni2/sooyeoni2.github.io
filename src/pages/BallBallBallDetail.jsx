@@ -238,12 +238,9 @@ export default function BallBallBallDetail() {
 
               <div className={styles.featureLabel}>구현 내용</div>
               <ul>
-                <li>게시판: 자유 게시판, 맛집 추천, 직관 후기</li>
-                <li>게시글 CRUD (작성/조회/수정/삭제)</li>
-                <li>이미지 첨부 (S3 업로드)</li>
-                <li>댓글 작성/수정/삭제</li>
-                <li>이모지 리액션</li>
-                <li>게시글 30건 단위 커서 기반 무한 스크롤 페이지네이션</li>
+                <li>S3 이미지 첨부 업로드</li>
+                <li>커서 기반 무한 스크롤 페이지네이션 (30건 단위)</li>
+                <li>이모지 리액션 낙관적 업데이트</li>
               </ul>
 
               <div className={styles.featureLabel}>주요 화면</div>
@@ -278,11 +275,9 @@ export default function BallBallBallDetail() {
 
               <div className={styles.featureLabel}>구현 내용</div>
               <ul>
-                <li>토스페이먼츠 API 모바일 결제 시스템</li>
-                <li>더치페이 목록 생성 → 멤버 선택 → 금액 입력 → 결제 전체 플로우</li>
-                <li>WebView 기반 토스 결제 화면 연동</li>
-                <li>결제 성공/실패 콜백 처리</li>
-                <li>더치페이 취소 시 환불 재시도 메커니즘</li>
+                <li>WebView 기반 토스페이먼츠 결제 화면 연동</li>
+                <li>커스텀 URL 스킴으로 결제 콜백 수신 (NavigationDelegate + AppLinks 이중 감지)</li>
+                <li>취소 시 환불 API 재시도 메커니즘 (최대 3회)</li>
               </ul>
 
               <div className={styles.featureLabel}>주요 흐름</div>
@@ -338,10 +333,8 @@ export default function BallBallBallDetail() {
 
               <div className={styles.featureLabel}>구현 내용</div>
               <ul>
-                <li>동행 종료 후 함께한 동행인 목록 표시</li>
-                <li>동행인 탭 시 별점 평가 다이얼로그 표시</li>
-                <li>1~5점 별점 평가 후 동행 온도(신뢰도)에 반영</li>
-                <li>평가 완료 후 완료 다이얼로그 표시 및 프로필 갱신</li>
+                <li>1~5점 별점 평가 → 동행 온도(신뢰도) 실시간 반영</li>
+                <li>Riverpod으로 멤버별 평가 상태 개별 관리</li>
               </ul>
 
               <div className={styles.featureLabel}>주요 흐름</div>
@@ -401,11 +394,9 @@ export default function BallBallBallDetail() {
 
               <div className={styles.featureLabel}>구현 내용</div>
               <ul>
-                <li>마이 프로필 조회 (닉네임, 자기소개, 프로필 이미지, 동행 온도, 마이팀, 직관기록, 동행목록)</li>
-                <li>프로필 수정 (닉네임, 자기소개)</li>
-                <li>S3 Presigned URL 프로필 이미지 업로드</li>
-                <li>다른 유저 프로필 조회 (동행 히스토리, 온도, 통계)</li>
-                <li>동행 온도(신뢰도) 시각화 위젯</li>
+                <li>S3 Presigned URL 프로필 이미지 직접 업로드</li>
+                <li>동행 온도(신뢰도) 커스텀 시각화 위젯</li>
+                <li>마이 프로필 · 타 유저 프로필 조회 (온도, 직관 기록, 동행 히스토리)</li>
               </ul>
 
               <div className={styles.featureLabel}>주요 화면</div>
@@ -444,15 +435,10 @@ export default function BallBallBallDetail() {
 
               <div className={styles.featureLabel}>구현 내용</div>
               <ul>
-                <li>네이버 OAuth 소셜 로그인 연동</li>
-                <li>Deep Link를 활용한 OAuth 콜백 처리</li>
-                <li>JWT 토큰 기반 인증 (Access + Refresh Token)</li>
-                <li>Flutter Secure Storage 토큰 보안 저장</li>
-                <li>로그인 후 FCM 토큰 자동 등록</li>
-                <li>신규/기존 유저 분기 처리</li>
-                <li>Dio InterceptorsWrapper onRequest에서 Secure Storage 토큰을 읽어 Authorization 헤더 자동 주입</li>
-                <li>DioErrorInterceptor: 네트워크 타임아웃 발생 시 최대 3회, 1초 간격 자동 재시도</li>
-                <li>HTTP 상태코드 6종(400/401/403/404/409/500+)별 타입 지정 AppException 변환</li>
+                <li>네이버 OAuth + Deep Link 콜백 처리 → JWT Secure Storage 저장</li>
+                <li>Dio InterceptorWrapper — Authorization 헤더 자동 주입</li>
+                <li>타임아웃 발생 시 최대 3회 자동 재시도 (1초 간격)</li>
+                <li>HTTP 상태코드 6종별 타입 지정 AppException 변환</li>
               </ul>
 
               <div className={styles.featureLabel}>주요 흐름</div>
@@ -511,10 +497,8 @@ export default function BallBallBallDetail() {
 
               <div className={styles.featureLabel}>구현 내용</div>
               <ul>
-                <li>이용약관 / 개인정보처리방침</li>
-                <li>오픈소스 라이선스 안내</li>
-                <li>앱 정보 페이지</li>
-                <li>로그아웃 (API 호출 + 토큰 삭제 + 화면 전환)</li>
+                <li>로그아웃 (서버 세션 해제 + FCM 토큰 삭제 + Secure Storage 초기화)</li>
+                <li>모듈화된 MenuItemTile 위젯 재사용</li>
               </ul>
 
               <div className={styles.challenge}>

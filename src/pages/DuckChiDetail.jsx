@@ -195,12 +195,9 @@ export default function DuckChiDetail() {
 
               <div className={styles.featureLabel}>구현 내용</div>
               <ul>
-                <li>프로젝트 초기 구조 설계 및 fe_docs 문서화 (폴더 구조, 네이밍, MVVM 가이드)</li>
-                <li>PrimaryButton / OutlineButton — 공용 버튼 컴포넌트</li>
-                <li>CustomAppBar — 공용 상단 네비게이션 바</li>
-                <li>DeleteConfirmModal — 삭제 확인 공용 모달</li>
-                <li>Toast 알림 시스템 (글로벌 Toast Provider)</li>
-                <li>LoadingIndicator / ErrorView / EmptyView — 공통 피드백 컴포넌트</li>
+                <li>Feature-First MVVM 구조 설계 및 fe_docs 문서화 (폴더 구조, 네이밍 가이드)</li>
+                <li>Toast 알림 시스템 — 글로벌 Provider로 어디서든 1줄 호출</li>
+                <li>LoadingIndicator / ErrorView / EmptyView 공통 피드백 컴포넌트</li>
               </ul>
 
               <div className={styles.challenge}>
@@ -224,12 +221,9 @@ export default function DuckChiDetail() {
 
               <div className={styles.featureLabel}>구현 내용</div>
               <ul>
-                <li>SSAFY 금융 API 연동 — 계좌 목록 조회, 잔액 조회</li>
-                <li>계좌 등록 플로우 (BankAccountSetup → BankAccountRegister → BankAccountVerify → BankAccountComplete)</li>
-                <li>계좌 삭제 및 대표 계좌 설정</li>
-                <li>결제 비밀번호 설정 / 확인 / 변경 화면 구현</li>
-                <li>이체 한도 설정 화면 구현</li>
-                <li>결제 비밀번호 API 연결 및 에러 처리</li>
+                <li>SSAFY 금융 API 연동 — 계좌 목록 조회, 잔액 조회, 1원 인증</li>
+                <li>결제 비밀번호 설정 / 변경 및 이체 한도 설정</li>
+                <li>Zustand lockedBanksStore — 인증 실패 시 bankCode 24시간 잠금</li>
               </ul>
 
               <div className={styles.featureLabel}>주요 흐름</div>
@@ -266,22 +260,27 @@ export default function DuckChiDetail() {
               <div className={styles.featureHeader}>
                 <div>
                   <div className={styles.featureTitle}>뱃지 시스템</div>
-                  <div className={styles.featureSubtitle}>뱃지 목록 · FCM 알림 · 자동 갱신</div>
+                  <div className={styles.featureSubtitle}>뱃지 목록 · FCM 알림 · 자동 갱신 · BE 도메인 설계</div>
                 </div>
               </div>
 
-              <div className={styles.featureLabel}>구현 내용</div>
+              <div className={styles.featureLabel}>BE 구현</div>
               <ul>
-                <li>뱃지 전체보기 화면 (획득 / 미획득 뱃지 목록)</li>
-                <li>FCM 푸시 알림으로 뱃지 획득 이벤트 수신</li>
-                <li>알림 수신 시 Profile Provider 자동 갱신 → 실시간 반영</li>
+                <li>Badge / BadgeProgress / UserBadge 엔티티 설계 및 Repository 구현</li>
+                <li>BadgeServiceImpl — 뱃지 획득 조건 판별 · 진행도 업데이트 로직</li>
+              </ul>
+
+              <div className={styles.featureLabel}>FE 구현</div>
+              <ul>
+                <li>뱃지 전체보기 화면 (획득 / 미획득 목록)</li>
+                <li>FCM 알림 수신 시 Zustand 스토어 idle 초기화 → 자동 재조회</li>
               </ul>
 
               <div className={styles.challenge}>
                 <div className={styles.challengeTitle}>기술적 포인트</div>
                 <ul>
                   <li>뱃지 목록 FlatList에서 중복 key 에러 발생 → id 기반 keyExtractor로 수정</li>
-                  <li>FCM 알림과 Profile Provider 연동 → 앱 재시작 없이 뱃지 상태 즉시 반영</li>
+                  <li>FCM 알림과 Zustand 스토어 연동 → 앱 재시작 없이 즉시 반영</li>
                 </ul>
               </div>
             </div>
@@ -291,17 +290,22 @@ export default function DuckChiDetail() {
               <div className={styles.featureHeader}>
                 <div>
                   <div className={styles.featureTitle}>프로필 관리</div>
-                  <div className={styles.featureSubtitle}>프로필 조회·수정 · 설정 · 계좌 삭제</div>
+                  <div className={styles.featureSubtitle}>프로필 조회·수정 · 설정 · BE API 설계</div>
                 </div>
               </div>
 
-              <div className={styles.featureLabel}>구현 내용</div>
+              <div className={styles.featureLabel}>BE 구현</div>
               <ul>
-                <li>프로필 data / domain / presentation 전 레이어 구현 (MVVM)</li>
-                <li>프로필 조회 (닉네임, 프로필 이미지, 대표 계좌, 뱃지)</li>
-                <li>프로필 수정 (닉네임, 프로필 이미지 S3 업로드)</li>
-                <li>대표 계좌 삭제 (삭제 확인 모달)</li>
-                <li>설정 화면 (결제 비밀번호 변경, 이체 한도 설정, 로그아웃, 약관)</li>
+                <li>UserProfileController — 프로필 조회 / 수정 / 이미지 수정 엔드포인트</li>
+                <li>UserProfileServiceImpl — 프로필 상세 조회 (뱃지 포함) · 수정 로직</li>
+                <li>UserProfileDetailResponse / UserProfileBadgeResponse 등 DTO 설계</li>
+              </ul>
+
+              <div className={styles.featureLabel}>FE 구현</div>
+              <ul>
+                <li>data / domain / presentation 전 레이어 구현 (MVVM)</li>
+                <li>프로필 이미지 S3 업로드 및 닉네임 수정</li>
+                <li>설정 화면 — 결제 비밀번호 변경, 이체 한도, 로그아웃 연결</li>
               </ul>
 
               <div className={styles.challenge}>
@@ -323,12 +327,9 @@ export default function DuckChiDetail() {
 
               <div className={styles.featureLabel}>구현 내용</div>
               <ul>
-                <li>WebView 기반 카카오 소셜 로그인 (OAuth 2.0)</li>
-                <li>로그인 model / viewmodel 전체 레이어 구현</li>
-                <li>신규 / 기존 유저 분기 처리 → 프로필 초기 설정 화면 이동</li>
-                <li>이용약관 동의 화면 구현 (필수 / 선택 항목 체크)</li>
-                <li>개인정보 처리방침 화면 구현</li>
-                <li>설정 화면 내 약관 재확인 연결</li>
+                <li>WebView 기반 카카오 OAuth 2.0 로그인</li>
+                <li>로그인 model / viewmodel 전체 레이어 구현 (MVVM)</li>
+                <li>신규 / 기존 유저 분기 → 온보딩 또는 메인 화면 이동</li>
               </ul>
 
               <div className={styles.featureLabel}>주요 흐름</div>

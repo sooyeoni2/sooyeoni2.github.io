@@ -166,10 +166,8 @@ export default function MovieArchiveDetail() {
 
               <div className={styles.featureLabel}>구현 내용</div>
               <ul>
-                <li>Django REST Framework 기반 REST API 설계</li>
-                <li>회원가입 / 로그인 / 로그아웃 인증 API 구현</li>
                 <li>사용자, 영화, 커뮤니티, Watchlist ERD 설계 및 모델 구현</li>
-                <li>Serializer를 활용한 데이터 직렬화 / 역직렬화</li>
+                <li>Permission 클래스로 인증 필요 엔드포인트 분리</li>
                 <li>CORS 설정으로 Vue 프론트엔드와 API 연동</li>
               </ul>
 
@@ -212,11 +210,9 @@ export default function MovieArchiveDetail() {
 
               <div className={styles.featureLabel}>구현 내용</div>
               <ul>
-                <li>게시글 작성 / 조회 / 수정 / 삭제 API</li>
-                <li>댓글 작성 / 수정 / 삭제 + 댓글 수 집계 응답</li>
-                <li>좋아요 / 싫어요 토글 API (중복 방지)</li>
-                <li>게시글 목록 조회 시 댓글 수 · 좋아요 수 포함 응답</li>
-                <li>작성자 본인만 수정 / 삭제 가능한 권한 처리</li>
+                <li>좋아요 / 싫어요 토글 API (유니크 제약으로 중복 방지)</li>
+                <li>게시글 목록 응답에 댓글 수 · 리액션 수 집계 포함</li>
+                <li>View 레벨 권한 처리 — 작성자 본인만 수정/삭제 가능</li>
               </ul>
 
               <div className={styles.featureLabel}>주요 흐름 (좋아요 토글)</div>
@@ -310,12 +306,10 @@ export default function MovieArchiveDetail() {
 
               <div className={styles.featureLabel}>구현 내용</div>
               <ul>
-                <li>AI 응답(장르 · 테마 · 분위기 · 감독 스타일)을 파싱해 6개 축 점수 계산</li>
-                <li>6축 레이더 차트를 Vue에서 순수 SVG로 직접 구현 (외부 라이브러리 미사용)</li>
-                <li>배경 격자(pentagon), 축 선, 데이터 영역(polygon), 데이터 포인트(circle) 직접 렌더링</li>
-                <li>파란~보라 그라디언트 채움 영역으로 시각적 완성도 향상</li>
+                <li>6축 레이더 차트 — Vue에서 순수 SVG로 직접 구현 (외부 라이브러리 미사용)</li>
+                <li>AI 응답(장르·테마·분위기·감독 스타일) 파싱 → 축별 가중치 점수 계산</li>
+                <li>전체 점수 정규화 + 최솟값 보정으로 차트 표시 보장</li>
                 <li>화면 너비별 차트 크기 동적 조정 (320px ~ 500px 반응형)</li>
-                <li>점수 정규화 및 최솟값 보정으로 차트가 너무 작게 표시되지 않도록 처리</li>
               </ul>
 
               <div className={styles.featureLabel}>6축 항목</div>
