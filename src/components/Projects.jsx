@@ -2,6 +2,7 @@ import styles from './Projects.module.css'
 
 const PROJECTS = [
   {
+    main: true,
     emoji: '⚾',
     name: '뽈뽈뽈 (BallBallBall)',
     period: '2026',
@@ -16,6 +17,22 @@ const PROJECTS = [
       '성능 최적화 – 불필요한 위젯 rebuild 최소화',
     ],
     color: 'blue',
+  },
+  {
+    emoji: null,
+    img: '/duckchi_character.png',
+    imgAlt: 'DuckChi',
+    name: 'DuckChi (덕치)',
+    period: '2026',
+    role: 'Full-Stack (FE 리더 · BE 참여)',
+    desc: 'SSAFY 금융 API 기반 모임 지출 관리 & 정산 앱. 계좌 연동, OCR 영수증 인식, 모임방 공동 정산을 제공하는 핀테크 서비스입니다.',
+    stack: ['React Native', 'TypeScript', 'Expo', 'Zustand', 'Spring Boot', 'Kafka', 'Redis', 'AWS'],
+    highlights: [
+      '카카오 OAuth WebView 로그인',
+      'SSAFY 금융 API 계좌 연동',
+      '프로필 · 뱃지 · 설정 (MVVM 전 레이어)',
+    ],
+    color: 'yellow',
   },
 ]
 
@@ -35,13 +52,19 @@ export default function Projects() {
   )
 }
 
-function ProjectCard({ emoji, name, period, role, desc, stack, highlights, color }) {
+function ProjectCard({ main, emoji, img, imgAlt, name, period, role, desc, stack, highlights, color }) {
   return (
     <div className={`${styles.card} ${styles[color]}`}>
       <div className={styles.cardHeader}>
-        <span className={styles.emoji}>{emoji}</span>
+        {emoji
+          ? <span className={styles.emoji}>{emoji}</span>
+          : <img src={img} alt={imgAlt} className={styles.emoji} style={{ width: '2.4rem', height: '2.4rem', objectFit: 'contain' }} />
+        }
         <div>
-          <h3 className={styles.projectName}>{name}</h3>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+            <h3 className={styles.projectName} style={{ margin: 0 }}>{name}</h3>
+            {main && <span className={styles.mainBadge}>메인</span>}
+          </div>
           <p className={styles.meta}>{period} · {role}</p>
         </div>
       </div>

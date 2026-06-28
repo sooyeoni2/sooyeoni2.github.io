@@ -4,6 +4,7 @@ import styles from './ProjectsPage.module.css'
 const PROJECTS = [
   {
     id: 'ballballball',
+    main: true,
     emoji: null,
     name: '뽈뽈뽈 (BallBallBall)',
     period: '2026.01 ~ 2026.02 (6주)',
@@ -74,6 +75,44 @@ const PROJECTS = [
       shadow:      'rgba(15, 58, 64, 0.12)',
     },
   },
+  {
+    id: 'duckchi',
+    emoji: null,
+    img: '/duckchi_character.png',
+    imgAlt: 'DuckChi',
+    name: 'DuckChi (덕치)',
+    period: '2026.02 ~ 2026.03',
+    team: '6명 (Full-Stack 6)',
+    role: 'Full-Stack (FE 리더 · BE 참여)',
+    desc: 'SSAFY 금융 API 기반 모임 지출 관리 & 정산 핀테크 앱. 계좌 연동, OCR 영수증 인식, 모임방 공동 정산을 제공합니다.',
+    stack: ['React Native', 'TypeScript', 'Expo', 'Zustand', 'Spring Boot', 'Kafka', 'Redis', 'AWS'],
+    highlights: [
+      'Feature-First MVVM 구조 설계 & 공용 컴포넌트',
+      'SSAFY 금융 API 계좌 등록 / 조회 / 삭제',
+      '뱃지 시스템 (FCM 알림 · 실시간 갱신)',
+      '프로필 조회·수정 · 설정 (MVVM 전 레이어)',
+      '카카오 OAuth WebView 로그인 / 온보딩',
+    ],
+    accent: {
+      border:      '#F9C846',
+      titleBar:    '#7a5800',
+      winBtn:      '#a07200',
+      winBtnBorder:'#c89000',
+      navBg:       '#fffbe8',
+      navBorder:   '#F9C846',
+      navBtn:      '#fffdf0',
+      urlText:     '#7a5800',
+      scrollBg:    '#fdf0b0',
+      scrollBtn:   '#f5e070',
+      scrollThumb: '#F9C846',
+      tag:         { bg: '#fff8d0', color: '#4a3800', border: '#F9C846' },
+      divider:     '#f5d060',
+      check:       '#c8960a',
+      detail:      '#7a5800',
+      shadow:      'rgba(122, 88, 0, 0.12)',
+      shadow:      'rgba(122, 88, 0, 0.12)',
+    },
+  },
 ]
 
 export default function ProjectsPage() {
@@ -127,7 +166,10 @@ export default function ProjectsPage() {
                       : <img src={p.img || '/ball_kung.png'} alt={p.imgAlt || p.name} className={styles.emoji} style={{ width: '3.6rem', height: '3.6rem', objectFit: 'contain' }} />
                     }
                     <div>
-                      <h2 className={styles.name}>{p.name}</h2>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                        <h2 className={styles.name} style={{ margin: 0 }}>{p.name}</h2>
+                        {p.main && <span className={styles.mainBadge}>메인</span>}
+                      </div>
                       <p className={styles.meta}>{p.period} · {p.team} · {p.role}</p>
                     </div>
                   </div>

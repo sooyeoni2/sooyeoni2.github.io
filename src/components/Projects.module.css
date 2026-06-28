@@ -45,6 +45,16 @@
   border-color: #BFE6FF;
 }
 
+.green {
+  background: linear-gradient(135deg, #F0FBF2 0%, #FAFFFE 100%);
+  border-color: #A8DDB5;
+}
+
+.yellow {
+  background: linear-gradient(135deg, #FFFDE7 0%, #FFFDF5 100%);
+  border-color: #F9C846;
+}
+
 .cardHeader {
   display: flex;
   align-items: center;
@@ -62,6 +72,19 @@
   font-weight: 800;
   color: var(--text);
   margin-bottom: 4px;
+}
+
+.mainBadge {
+  display: inline-flex;
+  align-items: center;
+  background: #2d4a88;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
 }
 
 .meta {

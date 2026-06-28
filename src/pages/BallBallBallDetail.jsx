@@ -64,6 +64,10 @@ export default function BallBallBallDetail() {
               <span className={styles.overviewValue}>프론트엔드 개발</span>
             </div>
             <div className={styles.overviewItem}>
+              <span className={styles.overviewLabel}>분류</span>
+              <span className={styles.overviewValue}>SSAFY 14기 공통 프로젝트</span>
+            </div>
+            <div className={styles.overviewItem}>
               <span className={styles.overviewLabel}>GitHub</span>
               <span className={styles.overviewValue}><a href="https://github.com/sooyeoni2/ballballball" target="_blank" rel="noopener noreferrer">뽈뽈뽈 보러가기</a></span>
             </div>

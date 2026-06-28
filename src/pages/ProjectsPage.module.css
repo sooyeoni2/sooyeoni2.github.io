@@ -199,6 +199,19 @@
   margin-bottom: 4px;
 }
 
+.mainBadge {
+  display: inline-flex;
+  align-items: center;
+  background: #2d4a88;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
 .meta {
   font-size: 0.8rem;
   color: #666;
